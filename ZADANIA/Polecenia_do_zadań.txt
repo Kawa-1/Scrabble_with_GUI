@@ -1,0 +1,47 @@
+zad1 
+
+Utwórz board'a 15x15, gdzie puste pola będą oznaczane jako "-". W celu stworzenia tejże tablicy posłuż się mocą COMPREHENSION LISTS tj. np. x = [0 for i in range(15)], w naszym
+przypadku będzie to macierz dwuwymiarowa. Jeżeli nie wiesz w jaki sposób stworzyć tablicę 2d przy pomocy COMPREHENSION LISTS, możesz zajrzeć do pliku board.py, na samej górze pliku będziesz miał rozwiązanie.
+W taki sam sposób stwórz drugą tablicę o nazwie board_numbers gdzie zainicjalizujesz same zera, w polach 15x15 w taki sam sposób jak poprzednio. W następnych linijkach za pomocą indeksowania dwuwymiarowej tablicy
+utwórz 3-literowe słowo (w kolumnie lub wierszu), a następnie (NAJŁATWIEJ: w dwóch osobnych pętlach, gdzie jedna z nich  będzie potrójnie, a druga podwójnie zagnieżdzona) SPRAW: 
+1) aby pola dookoła liter ze zmiennej board, na tablicy board_numbers miały dookoła siebie jedynki (z wyłączeniem rogów literek, tzn. poruszamy się góra, dół, lewo, prawo)
+2) aby na koordach poszczególnych liter z tablicy board, na tablicy board_numbers pojawiły się dwójki.
+
+P.S. Przyda się wam zmienna possible_moves_ones znajdująca się w metodzie create_sum_board_4_connection z pliku board.py 
+oraz na slajdzie 5-iątym z prezentacji jest zobrazowane jawnie o co chodzi.
+
+Zad2
+
+Uzupełnij plik zad2.py: 
+
+1) uzupełnij funkcję place_letters_get_points(), w której
+parametry wraz z podpowiedziami zostały już podane w definicji. Uzupełnić
+ją należy w taki sposób, aby zwracała zaktualizowanego board'a gry o krótkie (3-5 liter) 
+nowe słowo wraz z liczbą punktów, za poszczególne litery (patrz values_of_letters)
+np. za słowo "GIT" powinniśmy otrzymać 4 punkty
+
+P.S. W koncepcji owe słowo powinno być jednym wierszu lub kolumnie, a kafelki powinny
+ze sobą graniczyć 
+
+2) Uzupełnij klasę Tablica o: konstruktor, w którym będzie
+inicjalizowana zmienna obiektu o nazwie "board", której wartość początkowa to "[[]]"
+
+Dodatkowo w tej samej klasie dokończ definicje statycznej metody klasy Tablica, gdzie
+przyjmowany jest parametr board, a zwracana jest zmienna o zainicjalizowanych
+umownych pustych polach na naszej tablicy do gry scrabble pod postacią myślników "-"
+o rozmiarach 15x15
+P.S. Wykorzystaj pewien dekorator...
+
+3) Za pomocą statycznej metody klasy Tablica, zaktualizuj zmienną self.board o tablicę
+15x15 wypełnioną myślnikami "-" z tejże metody
+
+
+4) Do zmiennej board z obiektu utworzonego z klasy Tablica, oraz do innej zmiennej przypisz wynik zwrócony przez funkcję
+place_letter_get_points(), a następnie wyprintuj zmienną board tego obiektu oraz liczbę zdobytych punktów za słowo, w celu sprawdzenia
+poprawności wykonanego przez siebie zadania.
+
+Zad3
+
+Do stworzonego pliku (zad3.py) proszę uzupełnić drugi obiekt, który odpali się gdy wpisana przez użytkownika liczba będzie większa niż 5. 
+Obiekt trzeba uzupełnić o zielony kolor tła, a stworzony wcześniej label ma wyświetlać tekst: "Dobrze!". 
+Dodatkowo metoda otwierania nowego forma przez przycisk ma być uzupełniona o samoistne zamknięcie go po 3 sekundach.
