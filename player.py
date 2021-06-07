@@ -4,10 +4,8 @@ class Player:
     """
     def __init__(self, name: str, rack: list):
         self._name = name
-         #self.rack jeszcze do ustalenia czy to atrybut gracza będzie...
         self._rack = rack
         self._score = 0
-        # After 6-8 swaps the player ends his game
         self._fails = 0
         self._swapped = 0
 
