@@ -22,7 +22,7 @@ class Board:
         self.round = 1
         # "WORD": [[X,Y],[X1,Y1]...[X3,Y3]]
         self.checked_words = {}
-        # It storages the possibility of placing letters on the board \
+        # It storages the possibilities of placing letters on the board \
         # 0 - not connected cell, 1 - Available cell to start a word, 2 - letter on board
         self.board_of_numbers = [[0 for i in range(15)] for j in range(15)]
 
