@@ -27,7 +27,7 @@ class Word:
     def check_validity_of_word(word: str, loaded_dictionary: dict) -> bool:
         word = word.upper()
         letter = word[0]
-        print(os.getcwd())
+        # print(os.getcwd())
         if word in loaded_dictionary.get(letter):
             return True
 
@@ -37,7 +37,7 @@ class Word:
     # It is the path to the specific file depending on the first letter of the word
     @staticmethod
     def get_path_for_divided(starting_letter: str) -> str:
-        print(os.getcwd())
+        # print(os.getcwd())
         _platform = platform.system()
         if _platform == "Windows":
             path_of_main_dict = "{}{}".format(os.getcwd(), "\\dict_for_game")
