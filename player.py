@@ -5,6 +5,8 @@ class Player:
     # Empty string mean player, EASY means AI as well as HARD means AI; considering difficulty parameter
     def __init__(self, name: str, rack: list, bot=False, difficulty=""):
         self._name = name
+        if bot is True:
+            self._name = name + "_AI"
         self._rack = rack
         self._score = 0
         self._fails = 0
