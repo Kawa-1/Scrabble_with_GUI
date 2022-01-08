@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>images/edit.png</file>
+    <file>images/gear.png</file>
+    <file>images/icon1.png</file>
+    <file>images/lookingglass.png</file>
+    <file>images/pencil.png</file>
+    <file>images/returnleft.png</file>
+    <file>images/scroll.png</file>
+    <file>images/gamer.png</file>
+    <file>images/swords.png</file>
+    <file>images/3x.png</file>
+  </qresource>
+</RCC>
