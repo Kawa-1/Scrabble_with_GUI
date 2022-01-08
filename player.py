@@ -64,7 +64,8 @@ class Player:
         self._bot = flag
 
     @difficulty.setter
-    def difficulty(self, ):
+    def difficulty(self, level):
+        self._difficulty = level
 
     @fails.deleter
     def fails(self):
