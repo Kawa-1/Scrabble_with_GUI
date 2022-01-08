@@ -73,7 +73,7 @@ class ManagementGeneralLeaderboard:
             return False
 
     @staticmethod
-    def acquire_board(game_id: str) -> [bool | list]:
+    def acquire_board(game_id: int) -> [bool | list]:
         """
         ACCEPTS: game_id generated upon game start
         RETURNS: list of tuples (game_id, player that did the move, move id in respect to the game start, board2string)

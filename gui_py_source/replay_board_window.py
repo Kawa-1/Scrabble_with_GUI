@@ -1,7 +1,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_board_window(object):
+class Ui_replay_board_window(object):
     def setupUi(self, Form):
         self.form = Form
         Form.setObjectName("Form")
@@ -1631,7 +1631,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_board_window()
+    ui = Ui_replay_board_window()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec())

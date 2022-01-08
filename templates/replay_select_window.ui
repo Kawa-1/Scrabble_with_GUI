@@ -202,7 +202,7 @@ QPushButton{
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="game4_button">
+          <widget class="QPushButton" name="game2_button">
            <property name="text">
             <string>PushButton</string>
            </property>
@@ -216,7 +216,7 @@ QPushButton{
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="game2_button">
+          <widget class="QPushButton" name="game4_button">
            <property name="text">
             <string>PushButton</string>
            </property>

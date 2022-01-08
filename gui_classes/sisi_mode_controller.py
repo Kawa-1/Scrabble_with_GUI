@@ -18,7 +18,7 @@ class SisiModeController(DummyWindow):
         set_image_to_button(self.ui.return_to_menu_button, 'returnleft.png')
 
         ### SET BUTTON EVENT HANDLERS
-        self.ui.return_to_menu_button.clicked.connect(lambda: return_to_menu(self, self.menu_handle))
+        self.ui.return_to_menu_button.clicked.connect(lambda: self.return_to_menu())
         self.ui.player_button.clicked.connect(
             lambda: self.ui.game_mode_stacked.setCurrentWidget(self.ui.player_si_level_select_page)
         )
