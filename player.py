@@ -2,7 +2,8 @@ class Player:
     """This class will hold information involved with information of user
     who has logged in to play the game
     """
-    def __init__(self, name: str, rack: list, bot=False, difficulty=None):
+    # Empty string mean player, EASY means AI as well as HARD means AI; considering difficulty parameter
+    def __init__(self, name: str, rack: list, bot=False, difficulty=""):
         self._name = name
         self._rack = rack
         self._score = 0
