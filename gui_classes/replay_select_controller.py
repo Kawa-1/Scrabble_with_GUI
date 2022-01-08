@@ -12,7 +12,11 @@ class ReplaySelectController(DummyWindow):
     def __init__(self, menu):
         DummyWindow.__init__(self)
         self.menu_handle = menu
-        self.saved_games = ManagementGeneralLeaderboard.acquire_games_list()
+        """
+            TODO: if paging is implemented, param number can be omitted
+            now: len(saved_games) == 4
+        """
+        self.saved_games = ManagementGeneralLeaderboard.acquire_games_list(number=4)
 
         self.ui = Ui_replay_select_window()
         self.ui.setupUi(self)
@@ -28,6 +32,17 @@ class ReplaySelectController(DummyWindow):
         self.ui.forwards_button.clicked.connect(lambda: self.page_forwards())
         self.ui.backwards_button.clicked.connect(lambda: self.page_forwards())
 
+        ### SET OPEN REPLAY METHODS TO BUTTONS
+        """
+            TODO: extend to all saved games -> add paging: 4 buttons(game_id) per page
+            REQUIRED: custom QWidgets: QStackedWidget
+        """
+        for i in range(4):
+            _game_index = self.saved_games[1][i][0]
+            _players = self.saved_games[1][i][1]
+            _text_2_btn = "{}{}{}".format(_game_index, ': ', _players)
+            eval("self.ui.game{}_button".format(_game_index)).setText(_text_2_btn)
+
         ### ASSUME FOR NOW THAT ONLY FOUR GAMES CAN BE REPLAYED
         hide_labels([self.ui.backwards_button, self.ui.forwards_button])
 
@@ -41,6 +56,15 @@ class ReplaySelectController(DummyWindow):
 
     def page_forwards(self) -> None:
         pass
+
+    def open_chosen_replay(self, game_id: int) -> None:
+        print('replay: {} opened'.format(game_id))
+
+        # TODO: uncomment the below when finished
+        # ReplayManagerController(menu=self.menu)
+        # # TODO: signal to menu that replay had finished
+        # self.menu_handle._is_replay_open = False
+        # self.close()
 
     def signal_closing(self) -> None:
         self.menu_handle._is_replay_open = False

@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '/Users/mzieba/Documents/szkola/code/Scrabble_with_GUI/templates/menu_window.ui'
+# Form implementation generated from reading ui file '/Users/mzieba/Documents/szkola/3rok/5semestr/io.nosync/scrabble/Scrabble_with_GUI/Scrabble_with_GUI/templates/menu_window.ui'
 #
 # Created by: PyQt6 UI code generator 6.0.3
 #
@@ -54,13 +54,6 @@ class Ui_menu_window(object):
         self.exit_button.setDefault(False)
         self.exit_button.setFlat(False)
         self.exit_button.setObjectName("exit_button")
-        self.emoji_label = QtWidgets.QLabel(self.menu_frame)
-        self.emoji_label.setGeometry(QtCore.QRect(40, 440, 151, 121))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.emoji_label.setFont(font)
-        self.emoji_label.setAlignment(QtCore.Qt.Alignment.AlignCenter)
-        self.emoji_label.setObjectName("emoji_label")
         self.game_mode_frame = QtWidgets.QFrame(self.menu_frame)
         self.game_mode_frame.setGeometry(QtCore.QRect(40, 110, 231, 311))
         self.game_mode_frame.setStyleSheet("QFrame {\n"
@@ -301,6 +294,43 @@ class Ui_menu_window(object):
 "    color: rgb(226, 225, 158);\n"
 "}")
         self.logout_label.setObjectName("logout_label")
+        self.replay_frame = QtWidgets.QFrame(self.menu_frame)
+        self.replay_frame.setGeometry(QtCore.QRect(40, 440, 231, 111))
+        self.replay_frame.setStyleSheet("QFrame {\n"
+"background-color: rgb(22, 60, 27);\n"
+"}\n"
+"")
+        self.replay_frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.replay_frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.replay_frame.setObjectName("replay_frame")
+        self.replay_label = QtWidgets.QLabel(self.replay_frame)
+        self.replay_label.setGeometry(QtCore.QRect(30, 20, 161, 31))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setItalic(True)
+        self.replay_label.setFont(font)
+        self.replay_label.setStyleSheet("QLabel {\n"
+"    color: rgb(226, 224, 158);\n"
+"\n"
+"}")
+        self.replay_label.setObjectName("replay_label")
+        self.open_replay_button = QtWidgets.QPushButton(self.replay_frame)
+        self.open_replay_button.setGeometry(QtCore.QRect(100, 65, 100, 20))
+        self.open_replay_button.setStyleSheet("QPushButton{\n"
+"    background-color: beige;\n"
+"    color:black;\n"
+"    border-radius: 5px;\n"
+"    max-height: 20px;\n"
+"}")
+        self.open_replay_button.setObjectName("open_replay_button")
+        self.replay_icon_label = QtWidgets.QPushButton(self.replay_frame)
+        self.replay_icon_label.setGeometry(QtCore.QRect(40, 60, 41, 31))
+        self.replay_icon_label.setStyleSheet("QPushButton{\n"
+"    background-color: transparent;\n"
+"    image: url(:/newPrefix/images/swords.png);\n"
+"}")
+        self.replay_icon_label.setText("")
+        self.replay_icon_label.setObjectName("replay_icon_label")
         self.horizontalLayout.addWidget(self.menu_frame)
         menu_window.setCentralWidget(self.centralwidget)
 
@@ -311,7 +341,6 @@ class Ui_menu_window(object):
         _translate = QtCore.QCoreApplication.translate
         menu_window.setWindowTitle(_translate("menu_window", "MainWindow"))
         self.name_label.setText(_translate("menu_window", "<html><head/><body><p><span style=\" font-weight:700;\">Scrabble</span></p><p><br/></p></body></html>"))
-        self.emoji_label.setText(_translate("menu_window", "<html><head/><body><p><img src=\":/newPrefix/images/3x.png\"/></p></body></html>"))
         self.game_mode_label.setText(_translate("menu_window", "<html><head/><body><p><span style=\" font-size:18pt;\">Tryb gry</span></p></body></html>"))
         self.hotseat_mode_label.setText(_translate("menu_window", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:700; font-style:italic;\">hot seat</span></p></body></html>"))
         self.ai_mode_label.setText(_translate("menu_window", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700; font-style:italic;\">kontra SI</span></p></body></html>"))
@@ -335,6 +364,8 @@ class Ui_menu_window(object):
         self.help_label.setText(_translate("menu_window", "pomoc"))
         self.acc_manage_label.setText(_translate("menu_window", "konto"))
         self.logout_label.setText(_translate("menu_window", "wyloguj"))
+        self.replay_label.setText(_translate("menu_window", "<html><head/><body><p><span style=\" font-size:18pt;\">Powtórki</span></p></body></html>"))
+        self.open_replay_button.setText(_translate("menu_window", "przeglądaj"))
 
 
 if __name__ == "__main__":

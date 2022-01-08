@@ -2,6 +2,7 @@ from auxiliary.gui_base_methods import *
 from auxiliary.window_movement import DummyWindow
 from gui_classes.board_gui_controller import Board_gui
 from gui_classes.hotseat_player_count_controller import HotseatPlayerCountController
+from gui_classes.replay_select_controller import ReplaySelectController
 from gui_classes.settings_window_controller import SettingsController
 from gui_classes.sisi_mode_controller import SisiModeController
 from gui_py_source.menu_window import *
@@ -22,12 +23,13 @@ class MenuWindowController(DummyWindow):
         self.ui.setupUi(self)
 
         ### SET SHADOW / IMAGES
-        set_image_to_label(self.ui.emoji_label, '3x.png')
+        # set_image_to_label(self.ui.emoji_label, '3x.png')
         set_image_to_button(self.ui.hotseat_button, 'gamer.png')
         set_image_to_button(self.ui.help_button, 'edit.png')
         set_image_to_button(self.ui.logout_button, 'returnleft.png')
         set_image_to_button(self.ui.account_button, 'lookingglass.png')
         set_image_to_button(self.ui.vs_si_button, 'swords.png')
+        set_image_to_button(self.ui.replay_icon_label, 'gamer.png')
 
         ### ADD BUTTON EVENT HANDLERS
         self.ui.exit_button.clicked.connect(lambda: quit_window(self))
@@ -36,6 +38,7 @@ class MenuWindowController(DummyWindow):
         self.ui.hotseat_button.clicked.connect(lambda: self.init_hotseat_game())
         self.ui.account_button.clicked.connect(lambda: self.open_account_settings())
         self.ui.logout_button.clicked.connect(lambda: self.open_logout_alert())
+        self.ui.open_replay_button.clicked.connect(lambda: self.open_replay_select())
 
         ### SET TOP5
         self.fetch_and_set_players_score()
@@ -44,6 +47,13 @@ class MenuWindowController(DummyWindow):
         # find_object_by_substring()
 
         self.show()
+
+    def open_replay_select(self) -> None:
+        print('replay selection chosen')
+        if not self._is_replay_open:
+            self._is_replay_open = True
+            ReplaySelectController(menu=self)
+            self.hide()
 
     def init_vs_si_game(self) -> None:
         print('vssi game mode chosen')

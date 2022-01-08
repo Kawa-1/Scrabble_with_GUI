@@ -105,27 +105,6 @@
         <bool>false</bool>
        </property>
       </widget>
-      <widget class="QLabel" name="emoji_label">
-       <property name="geometry">
-        <rect>
-         <x>40</x>
-         <y>440</y>
-         <width>151</width>
-         <height>121</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/newPrefix/images/3x.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
       <widget class="QFrame" name="game_mode_frame">
        <property name="geometry">
         <rect>
@@ -670,13 +649,100 @@ image: url(:/newPrefix/images/lookingglass.png);
         </property>
        </widget>
       </widget>
+      <widget class="QFrame" name="replay_frame">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>440</y>
+         <width>231</width>
+         <height>111</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QFrame {
+background-color: rgb(22, 60, 27);
+}
+</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QLabel" name="replay_label">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>20</y>
+          <width>161</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <italic>true</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	color: rgb(226, 224, 158);
+
+}</string>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Powtórki&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="open_replay_button">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>65</y>
+          <width>100</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	background-color: beige;
+	color:black;
+	border-radius: 5px;
+	max-height: 20px;
+}</string>
+        </property>
+        <property name="text">
+         <string>przeglądaj</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="replay_icon_label">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>60</y>
+          <width>41</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	background-color: transparent;
+	image: url(:/newPrefix/images/swords.png);
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </item>
    </layout>
   </widget>
  </widget>
  <resources>
-  <include location="../src_qt.qrc"/>
+  <include location="../../../../../../../code/Scrabble_with_GUI/src_qt.qrc"/>
  </resources>
  <connections/>
 </ui>
