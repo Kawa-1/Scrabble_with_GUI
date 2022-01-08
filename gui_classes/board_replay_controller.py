@@ -1,7 +1,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtWidgets import QApplication, QMainWindow
 
-from auxiliary.gui_base_methods import set_image_to_label, set_image_to_button, hide_labels
+from auxiliary.gui_base_methods import set_image_to_label, set_image_to_button, hide_labels, string_to_board
 from auxiliary.window_movement import DummyWindow
 from gui_py_source.replay_board_window import Ui_replay_board_window
 from gui_py_source.replay_manager_window import Ui_replay_manager_window
@@ -20,6 +20,7 @@ class BoardReplayController(DummyWindow):
             copy all_saved_moves[0][3] (str) -> board -> into replay_board
         """
         self._current_move_id = 0
+        self.default_board_tile_stylesheets = []
 
         # all saved moves does not account for turns when no tiles were placed
         self.total_moves = len(self.all_saved_moves)
@@ -49,6 +50,14 @@ class BoardReplayController(DummyWindow):
         self.board_window = DummyWindow()
         self.ui2 = Ui_replay_board_window()
         self.ui2.setupUi(self.board_window)
+
+        ### LOAD 1ST MOVE
+        self.update_board()
+
+        ### DEFAULT STYLING TO REVERT CHANGES APPLIED BY MOVES OVERRIDING ORIGINAL BOARD
+        ### throws name error self not defined
+        # self.default_board_tile_stylesheets = [
+        #     [eval('self.ui2.board_label_{}_{}'.format(i, j)).styleSheet() for i in range(15)] for j in range(15)]
 
         ### SHOW BOARD AND MANAGER
         self.show()
@@ -88,7 +97,14 @@ class BoardReplayController(DummyWindow):
 
     def update_board(self) -> None:
         print('update board')
-        pass
+        _new_board = string_to_board(self.all_saved_moves[self._current_move_id][3])
+        for row in range(15):
+            for column in range(15):
+                if _new_board[row][column] != "-":
+                    _tile = eval('self.ui2.board_label_{}_{}'.format(row, column))
+                    _tile.setText(_new_board[row][column])
+                    _tile.setStyleSheet(str(_tile.styleSheet()) + ';border: 2px solid red; color: black;')
+                    # eval('self.ui2.board_label_{}_{}'.format(row, column)).setStyleSheet('background-color: green; color: black;')
 
     def signal_closing(self) -> None:
         self.menu_handle._is_replay_open = False

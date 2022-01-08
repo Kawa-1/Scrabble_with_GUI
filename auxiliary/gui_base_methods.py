@@ -144,9 +144,12 @@ def string_to_board(string: str) -> list:
     get string from db and convert it to board to pass to gui
     char at string[i+j] corresponds to board[i][j] letter tile
     """
-    _list = [['0' for i in range(15)] for j in range(15)]
-    for i in range(15):
-        for j in range(15):
-            print(string[i+j])
-            _list[i][j] = string[i+j]
+    _list = []
+    for i in range(len(string)):
+        if i % 15 == 0:
+            sub = string[i:i + 15]
+            lst = []
+            for j in sub:
+                lst.append(j)
+            _list.append(lst)
     return _list

@@ -23,7 +23,7 @@ class Ui_replay_board_window(object):
 
         self.widget_4 = QtWidgets.QWidget(Form)
         self.widget_4.setGeometry(QtCore.QRect(0, 0, 661, 789))
-        self.widget_4.setStyleSheet("background-color:\"coral\"\n""")
+        self.widget_4.setStyleSheet("background-color:\"aquamarine\"\n""")
         self.widget_4.setObjectName("widget_4")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.widget_4)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
