@@ -1,3 +1,5 @@
+import os
+
 from PyQt6 import QtWidgets
 from PyQt6.QtCore import Qt, QFile, QSize
 from PyQt6.QtGui import QPixmap, QIcon
@@ -16,7 +18,7 @@ def quit_window(window) -> None:
 ### IMAGE SETTERS
 @dispatch(QLabel, str)
 def set_image_to_label(widget: QLabel, image: str) -> None:
-    _file = "../images/" + image
+    _file = '{}{}{}'.format(os.getcwd(), '/images/', image)
     _pixmap = QPixmap(_file)
     _pixmap.scaled(
         widget.width(),
@@ -29,7 +31,7 @@ def set_image_to_label(widget: QLabel, image: str) -> None:
 
 @dispatch(list, str)
 def set_image_to_label(labels, image: str) -> None:
-    _file = "../images/" + image
+    _file = '{}{}{}'.format(os.getcwd(), '/images/', image)
     _pixmap = QPixmap(_file)
     for widget in labels:
         _pixmap.scaled(
@@ -43,14 +45,14 @@ def set_image_to_label(labels, image: str) -> None:
 
 @dispatch(QPushButton, str)
 def set_image_to_button(button: QPushButton, image: str) -> None:
-    _file = "../images/" + image
+    _file = '{}{}{}'.format(os.getcwd(), '/images/', image)
     button.setIcon(QIcon(_file))
     button.setIconSize(QSize(button.width(), button.height()))
 
 
 @dispatch(list, str)
 def set_image_to_button(elements, image: str) -> None:
-    _file = "../images/" + image
+    _file = '{}{}{}'.format(os.getcwd(), '/images/', image)
     for button in elements:
         button.setIcon(QIcon(_file))
         button.setIconSize(QSize(button.width(), button.height()))
