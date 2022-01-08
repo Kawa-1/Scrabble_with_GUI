@@ -14,6 +14,7 @@ class MenuWindowController(DummyWindow):
         self._is_hs_open = False
         self._is_si_open = False
         self._is_sett_open = False
+        self._is_replay_open = False
         # self._is_rank_open = False
         DummyWindow.__init__(self)
 

@@ -136,3 +136,22 @@ class ManagementGeneralLeaderboard:
         except Exception as e:
             print(e)
             return False
+
+    @staticmethod
+    def acquire_games_list(number=None) -> [bool | int]:
+        try:
+            # con = sl.connect("{}{}".format(os.getcwd(), "/leaderboard.db"))
+            con = sl.connect(ManagementGeneralLeaderboard._path)
+            cur = con.cursor()
+            if number is not None:
+                cur.execute("SELECT * FROM all_games ORDER BY game_id LIMIT (?)", (number,))
+            elif number is None:
+                cur.execute("SELECT * FROM all_games")
+            _all_moves_per_game = cur.fetchall()
+            con.commit()
+            con.close()
+            return [True, _all_moves_per_game]
+        except Exception as e:
+            print(e)
+            return [False, []]
+
