@@ -84,26 +84,39 @@ class HotseatPlayerLoginController(DummyWindow):
             if CredentialsManager.verify_credentials(_log, _passw):
                 print('correct creds')
 
-                # using one of names of passed objects to get reference to
-                _adequate_stacked_logged = find_object_by_substring(
-                    QWidget, passw.objectName(), 'p', '_pass', self, 'player', '_stacked'
-                )
+                if not self.is_player_already_logged(_log):
 
-                _successful_logged_widget = find_object_by_substring(
-                    QWidget, passw.objectName(), 'p', '_pass', self, 'player', '_logged_stacked'
-                )
+                    # using one of names of passed objects to get reference to
+                    _adequate_stacked_logged = find_object_by_substring(
+                        QWidget, passw.objectName(), 'p', '_pass', self, 'player', '_stacked'
+                    )
 
-                _player_name_label = find_object_by_substring(
-                    QLabel, passw.objectName(), 'p', '_pass', self, 'player', '_name_label'
-                )
+                    _successful_logged_widget = find_object_by_substring(
+                        QWidget, passw.objectName(), 'p', '_pass', self, 'player', '_logged_stacked'
+                    )
 
-                ### SET STACKED PAGE THAT INDICATES CORRECT AUTHORIZATION
-                _adequate_stacked_logged.setCurrentWidget(_successful_logged_widget)
-                ### ASSUME THAT ENTERED LOGIN IS PLAYER NAME
-                _player_name_label.setText(_log)
+                    _player_name_label = find_object_by_substring(
+                        QLabel, passw.objectName(), 'p', '_pass', self, 'player', '_name_label'
+                    )
 
-                ### APPEND NEW PLAYER
-                self.players.append(self.create_player_object(_log))
+                    ### SET STACKED PAGE THAT INDICATES CORRECT AUTHORIZATION
+                    _adequate_stacked_logged.setCurrentWidget(_successful_logged_widget)
+                    ### ASSUME THAT ENTERED LOGIN IS PLAYER NAME
+                    _player_name_label.setText(_log)
+
+                    ### APPEND NEW PLAYER
+                    self.players.append(self.create_player_object(_log))
+
+                # player of such credentials has been authenticated
+                else:
+                    clear_input(passw, log)
+                    _player_error_label = find_object_by_substring(
+                        QLabel, passw.objectName(), 'p', '_pass', self, 'wrong_cred_label_', ''
+                    )
+                    _player_error_label.setText('gracz już zalogowany')
+                    _player_error_label.setVisible(1)
+                    ### SET FOCUS ON LOGIN INPUT FIELD
+                    log.setFocus()
 
             # clear input if creds are incorrect
             else:
@@ -132,6 +145,14 @@ class HotseatPlayerLoginController(DummyWindow):
     def create_player_object(self, name: str) -> Player:
         ### ASSUMING LOGIN IS AN UNIQUE ID
         return Player(name, [])
+
+    # checks if player object of given name == login from db is already added to player pool for a game
+    def is_player_already_logged(self, name: str) -> bool:
+        _logged = [player.name for player in self.players]
+        if name not in _logged:
+            return False
+        else:
+            return True
 
     def init_game(self) -> None:
         if len(self.players) != self.number_of_players:
