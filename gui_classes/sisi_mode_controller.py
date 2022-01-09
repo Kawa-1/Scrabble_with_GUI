@@ -1,5 +1,6 @@
 from gui_classes.hotseat_players_login_controller import *
 from gui_py_source.sisi_mode_window import Ui_sisi_mode_window
+from player import Player
 import random
 
 
@@ -36,15 +37,14 @@ class SisiModeController(DummyWindow):
 
         self.show()
 
-    @staticmethod
-    def start_player_si_game(ai: str) -> None:
+    def start_player_si_game(self, ai: str) -> None:
             _names = ("David", "Mati", "Jerzy", "Jeff", "Joe", "Alice", "Robert", "Leokadia", "Kamil", "Barbara")
             name = _names[random.randint(0, len(_names)-1)] + "_AI" + str(random.randint(0,20))
             print('%s %s' % ('player', ai))
             # ### GET CURRENT PLAYER ID
-            # _player = Player(self.menu_handle.host_id, [])
-            # _ai = AI(ai)
-            # Board_gui(2, [_player, _ai], self.menu_handle)
+            _player = Player(self.menu_handle.host_id, [])
+            _ai = Player(name, [], True, ai.upper())
+            Board_gui(2, [_player, _ai], self.menu_handle)
 
     def verify_checkboxes(self) -> bool:
         _s1_checkboxes = [checkbox for checkbox in self.findChildren(QCheckBox, QRegularExpression('s1_*')) if checkbox.isChecked()]

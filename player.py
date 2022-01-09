@@ -12,6 +12,7 @@ class Player:
         self._fails = 0
         self._bot = bot
         self._difficulty = difficulty
+        #self.tiles_put_statistics = ""
         #self._swapped = 0
 
     @property
