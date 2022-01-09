@@ -113,7 +113,7 @@ class ManagementGeneralLeaderboard:
             # con = sl.connect("{}{}".format(os.getcwd(), "/leaderboard.db"))
             con = sl.connect(ManagementGeneralLeaderboard._path)
             cur = con.cursor()
-            cur.execute("SELECT count(game_id) FROM all_games")
+            cur.execute("SELECT max(game_id) FROM all_games")
             _last_index = cur.fetchall()[0][0]
             cur.execute("INSERT INTO all_games(game_id, players) VALUES(?, ?)", (_last_index+1, players,))
             con.commit()
