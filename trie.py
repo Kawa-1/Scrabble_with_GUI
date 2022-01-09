@@ -1,3 +1,5 @@
+from __future__ import annotations
+from tile import Tile
 import platform
 import os
 
@@ -80,7 +82,7 @@ class Trie(object):
         elif _platform == "Darwin":
             path_of_dict = "{}{}".format(os.getcwd(), "/dict_for_game/Collins.txt")
 
-        with open("dict_for_game\\Collins.txt", mode='r') as f:
+        with open(path_of_dict, mode='r') as f:
             for word in f:
                 word = word.strip('\n')
                 trie.insert(word)

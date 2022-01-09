@@ -16,6 +16,9 @@ from management_database import ManagementGeneralLeaderboard
 from help import Ui_Form9
 from gui_py_source.board_window import Ui_board_window
 
+from trie import Trie, TrieNode
+from bot_AI import BotAI
+
 
 class Board_gui(QtWidgets.QMainWindow):
     def __init__(self, aux_number_of_players, aux_players, menu):
@@ -57,6 +60,12 @@ class Board_gui(QtWidgets.QMainWindow):
         self.letters_used = []
         self.coords_of_letters_used = []
         self.loaded_dictionary = Word.get_the_dictionary_for_words()
+        print(self.loaded_dictionary)
+
+        # AI LEXICON !!!!!! Trie Data Structure & rack_AI
+        self.t = Trie()
+        self.t = Trie.load_lexicon(self.t)
+        self.rack_AI = []
 
         self.managment_db = ManagementGeneralLeaderboard()
         self.board = Board()
@@ -85,10 +94,13 @@ class Board_gui(QtWidgets.QMainWindow):
 
         for i in range(self.number_of_players):
             self.dict_players[i] = self.racks.bag.generate_rack_for_player()
+            self.players[i].rack = self.dict_players[i]
+            print("XDDD-", self.players[i].rack)
             self.dict_players[i].append(self.players[i].name)
             self.dict_players[i].append(self.players[i].score)
             self.dict_players[i].append(self.players[i].fails)
             #self.dict_players[i].append(self.players[i].swapped)
+
 
         # self.letter_list = ['A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'B', 'B', 'C', 'C', 'D', 'D',
         #                     'D', 'D', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'F', 'F', 'G', 'G', 'G',
@@ -226,8 +238,23 @@ class Board_gui(QtWidgets.QMainWindow):
         return clicked_label
 
     def clicked_confirm(self):
-        #if (self.which_move == 1 or self.pass_first_move_check == 0) and self.players[self.current_player].bot is False:
-        if (self.which_move == 1 or self.pass_first_move_check == 0):
+        words_4_score = {}
+        if (self.which_move == 1 or self.pass_first_move_check == 0) and self.players[self.current_player].bot is True:
+            if self.players[self.current_player].difficulty == "HARD":
+                print("Clicked Confirm 243", self.players[self.current_player].rack)
+                self.players[self.current_player].rack = self.players[self.current_player].rack[:7]
+                print(self.players[self.current_player])
+                print(type(self.loaded_dictionary))
+                self.valid_move, words_4_score, self.rack_AI = BotAI.ai_first_move_hard(self.loaded_dictionary,
+                                                                                   self.players[self.current_player].rack)
+                if self.valid_move is True:
+                    self.pass_first_move_check = 1
+
+            elif self.players[self.current_player].difficulty == "EASY":
+                pass
+
+
+        elif (self.which_move == 1 or self.pass_first_move_check == 0):
             self.letter_coordinates_dict = self.board.place_letters(self.letters_used, self.coords_of_letters_used, self.new_player_move_board)
             self.valid_move, words_4_score = self.board.first_move(self.coords_of_letters_used, self.new_player_move_board, self.loaded_dictionary)
             if self.valid_move is True:
@@ -243,7 +270,37 @@ class Board_gui(QtWidgets.QMainWindow):
             if self.validity_rows_check is True and self.validity_columns_check is True:
                 self.valid_move, words_4_score = self.board.check_words_from_board(self.loaded_dictionary, self.new_player_move_board)
 
-        if self.valid_move is True and words_4_score != {}:
+        if self.valid_move is True and words_4_score != {} and self.players[self.current_player].bot is True:
+            # increment moves_count
+            self.moves_count += 1
+            # index of score field
+            print("277", self.dict_players[self.current_player])
+            self.dict_players[self.current_player][8] += self.board.get_score(words_4_score, self.new_player_move_board)
+            # update players score on gui
+            self.players[self.current_player].score = self.dict_players[self.current_player][8]
+            # copy the player's board onto main board
+            self.actual_board = self.new_player_move_board
+            ### INSERT BOARD INTO DB
+            _b2string = board_to_string(self.actual_board)
+            # TODO: copy self.new_player_move_board into db
+            ManagementGeneralLeaderboard.save_board(_b2string, self.game_id, self.players[self.current_player].name,
+                                                    self.moves_count)
+            # acquire all board per move info; index[1][0][3] denotes board2string; index[] is bool
+            _string2b = string_to_board(ManagementGeneralLeaderboard.acquire_board(self.game_id)[1][0][3])
+
+            self.board.actual_board = self.actual_board
+            # check for new adjacencies 0,1,2
+            self.board.create_sum_board_4_connection()
+
+            for i in range(15):
+                for j in range(15):
+                    self.dict_board_labels[eval("self.ui.board_label_" + str(i) + "_" + str(j))] = \
+                        [eval("self.ui.board_label_" + str(i) + "_" + str(j)).text(),
+                        eval("self.ui.board_label_" + str(i) + "_" + str(j)).styleSheet(), i, j]
+
+
+
+        elif self.valid_move is True and words_4_score != {}:
             # increment moves_count
             self.moves_count += 1
             # index of score field
@@ -264,7 +321,7 @@ class Board_gui(QtWidgets.QMainWindow):
             # check for new adjacencies 0,1,2
             self.board.create_sum_board_4_connection()
 
-            self.dict_players[self.current_player][9] = 0
+            # self.dict_players[self.current_player][9] = 0
             # no foul committed; delete all warnings for the player if valid move
             # del self.players[self.current_player].fails
 
@@ -292,20 +349,86 @@ class Board_gui(QtWidgets.QMainWindow):
                         eval("self.ui.board_label_" + str(i) + "_" + str(j)).setStyleSheet(
                             self.dict_board_labels[eval("self.ui.board_label_" + str(i) + "_" + str(j))][1])
 
+        # Generating new Tiles on the rack
+        if self.valid_move is True and self.players[self.current_player].bot is True:
+            # SWITCH would be useful...
+            how_many_tiles_used = 7 - len(self.rack_AI)
+            last_write = 0
+            for i in range(0, how_many_tiles_used):
+                self.new_letter = self.racks.bag.generate_letter_from_bag()
+                if i == 0:
+                    self.ui.pushButton1.setText(self.new_letter)
+                    # bylo git self.dict_players[self.current_player][1] = self.new_letter
+                    self.dict_players[self.current_player][0] = self.new_letter
+                elif i == 1:
+                    self.ui.pushButton2.setText(self.new_letter)
+                    self.dict_players[self.current_player][1] = self.new_letter
+                elif i == 2:
+                    self.ui.pushButton3.setText(self.new_letter)
+                    self.dict_players[self.current_player][2] = self.new_letter
+                elif i == 3:
+                    self.ui.pushButton4.setText(self.new_letter)
+                    self.dict_players[self.current_player][3] = self.new_letter
+                elif i == 4:
+                    self.ui.pushButton5.setText(self.new_letter)
+                    self.dict_players[self.current_player][4] = self.new_letter
+                elif i == 5:
+                    self.ui.pushButton6.setText(self.new_letter)
+                    self.dict_players[self.current_player][5] = self.new_letter
+                elif i == 6:
+                    self.ui.pushButton7.setText(self.new_letter)
+                    self.dict_players[self.current_player][6] = self.new_letter
+
+                # To check how many tiles were not touched during the move
+                last_write = i
+
+            # Add letters to the rack which stayed on the rack; Order will be different on the rack
+            index = 0
+            for i in range(last_write+1, 7):
+                if i == 0:
+                    self.ui.pushButton1.setText(self.new_letter)
+                    self.dict_players[self.current_player][0] = self.rack_AI[index]
+                elif i == 1:
+                    self.ui.pushButton2.setText(self.new_letter)
+                    self.dict_players[self.current_player][1] = self.rack_AI[index]
+                elif i == 2:
+                    self.ui.pushButton3.setText(self.new_letter)
+                    self.dict_players[self.current_player][2] = self.rack_AI[index]
+                elif i == 3:
+                    self.ui.pushButton4.setText(self.new_letter)
+                    self.dict_players[self.current_player][3] = self.rack_AI[index]
+                elif i == 4:
+                    self.ui.pushButton5.setText(self.new_letter)
+                    self.dict_players[self.current_player][4] = self.rack_AI[index]
+                elif i == 5:
+                    self.ui.pushButton6.setText(self.new_letter)
+                    self.dict_players[self.current_player][5] = self.rack_AI[index]
+                elif i == 6:
+                    self.ui.pushButton7.setText(self.new_letter)
+                    self.dict_players[self.current_player][6] = self.rack_AI[index]
+
+                index += 1
+
+            self.players[self.current_player].rack = self.dict_players[self.current_player][:7]
 
         # player can skip move and exchange letters on rack
-        if self.valid_move is True:
+        elif self.valid_move is True:
             #self.dict_players[self.current_player][10] = 0
             #del self.players[self.current_player].swapped
             if self.pushButton1_used == 1:
                 self.new_letter = self.racks.bag.generate_letter_from_bag()
                 self.ui.pushButton1.setText(self.new_letter)
-                self.dict_players[self.current_player][1] = self.new_letter
+                # bylo git self.dict_players[self.current_player][1] = self.new_letter
+                self.dict_players[self.current_player][0] = self.new_letter
+                #print(self.dict_players[self.current_player])
+                #print(self.dict_players[self.current_player][0])
 
             if self.pushButton2_used == 1:
                 self.new_letter = self.racks.bag.generate_letter_from_bag()
                 self.ui.pushButton2.setText(self.new_letter)
                 self.dict_players[self.current_player][1] = self.new_letter
+                #print(self.dict_players[self.current_player])
+                #print(self.dict_players[self.current_player][1])
 
             if self.pushButton3_used == 1:
                 self.new_letter = self.racks.bag.generate_letter_from_bag()
@@ -501,8 +624,9 @@ class Board_gui(QtWidgets.QMainWindow):
             self.which_move += 1
             self.ui.number_of_letters.setText(str(self.racks.bag.get_size_of_bag()))
 
-            self.dict_players[self.current_player][10] += 1
+            #self.dict_players[self.current_player][10] += 1
             #self.players[self.current_player].swapped = 1
+            self.dict_players[self.current_player][9] += 1
             self.players[self.current_player].fails = 1
 
             self.safe_words()

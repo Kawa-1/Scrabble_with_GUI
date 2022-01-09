@@ -50,6 +50,7 @@ class BotAI:
                 else:
                     continue
 
+        print(found_words)
         choose_word = BotAI.find_best_word(found_words)
         length_chosen = len(choose_word)
 
@@ -74,8 +75,10 @@ class BotAI:
         # print(words_4_score)
         end = time.perf_counter()
         print(end - start)
+        for letter in choose_word:
+            rack.remove(letter)
 
-        return True, words_4_score
+        return True, words_4_score, rack
 
     @staticmethod
     def find_best_word(found_words: set) -> list:
@@ -100,7 +103,7 @@ class BotAI:
 
             else:
                 continue
-        print(word_with_points[1])
+        #print(word_with_points[1])
         return word_with_points[0]
 
 
