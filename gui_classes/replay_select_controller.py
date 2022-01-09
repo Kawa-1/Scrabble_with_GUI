@@ -1,9 +1,10 @@
 from PyQt6.QtCore import QRegularExpression
-from PyQt6.QtWidgets import QMainWindow, QApplication, QLabel
+from PyQt6.QtWidgets import QMainWindow, QApplication, QLabel, QPushButton
 
 from auxiliary.gui_base_methods import disable_mac_focus, set_image_to_label, set_image_to_button, return_to_menu, \
     hide_labels
 from auxiliary.window_movement import DummyWindow
+from gui_classes.board_replay_controller import BoardReplayController
 from gui_py_source.replay_select_window import Ui_replay_select_window
 from management_database import ManagementGeneralLeaderboard
 
@@ -16,7 +17,8 @@ class ReplaySelectController(DummyWindow):
             TODO: if paging is implemented, param number can be omitted
             now: len(saved_games) == 4
         """
-        self.saved_games = ManagementGeneralLeaderboard.acquire_games_list(number=4)
+        # omit [0] param == status
+        self.saved_games = ManagementGeneralLeaderboard.acquire_games_list(number=4)[1]
 
         self.ui = Ui_replay_select_window()
         self.ui.setupUi(self)
@@ -27,27 +29,33 @@ class ReplaySelectController(DummyWindow):
         set_image_to_button(self.ui.backwards_button, 'returnleft.png')
         set_image_to_button(self.ui.return_to_menu_button, 'returnleft.png')
 
+        ### HIDE BUTTONS <- zabije sie
+        hide_labels(self.findChildren(QPushButton, QRegularExpression('game*')))
+
         ### SET BUTTON EVENT HANDLERS
-        self.ui.return_to_menu_button.clicked.connect(lambda: return_to_menu(self, self.menu_handle))
+        self.ui.return_to_menu_button.clicked.connect(lambda: self.return_to_menu())
         self.ui.forwards_button.clicked.connect(lambda: self.page_forwards())
         self.ui.backwards_button.clicked.connect(lambda: self.page_forwards())
+        ### THIS WAY EXIT CLICKED DOESNT BUST THE WHOLE APP
+        self.ui.exit_button.clicked.connect(lambda: return_to_menu(self, self.menu_handle))
 
         ### SET OPEN REPLAY METHODS TO BUTTONS
         """
             TODO: extend to all saved games -> add paging: 4 buttons(game_id) per page
             REQUIRED: custom QWidgets: QStackedWidget
         """
-        for i in range(4):
-            _game_index = self.saved_games[1][i][0]
-            _players = self.saved_games[1][i][1]
+        for i in range(len(self.saved_games)):
+            print(self.saved_games)
+            print(self.saved_games[i][0])
+            _game_index = self.saved_games[i][0]
+            _players = self.saved_games[i][1]
             _text_2_btn = "{}{}{}".format(_game_index, ': ', _players)
-            eval("self.ui.game{}_button".format(_game_index)).setText(_text_2_btn)
+            eval("self.ui.game{}_button".format(i+1)).setText(_text_2_btn)
+            eval("self.ui.game{}_button".format(i+1)).clicked.connect(lambda state, x=_game_index: self.open_chosen_replay(x))
+            eval("self.ui.game{}_button".format(i+1)).setVisible(1)
 
         ### ASSUME FOR NOW THAT ONLY FOUR GAMES CAN BE REPLAYED
         hide_labels([self.ui.backwards_button, self.ui.forwards_button])
-
-        ### THIS WAY EXIT CLICKED DOESNT BUST THE WHOLE APP
-        self.ui.exit_button.clicked.connect(lambda: return_to_menu(self, self.menu_handle))
 
         self.show()
 
@@ -57,14 +65,14 @@ class ReplaySelectController(DummyWindow):
     def page_forwards(self) -> None:
         pass
 
-    def open_chosen_replay(self, game_id: int) -> None:
-        print('replay: {} opened'.format(game_id))
+    def open_chosen_replay(self, game: int) -> None:
+        print('replay: {} opened'.format(game))
 
         # TODO: uncomment the below when finished
-        # ReplayManagerController(menu=self.menu)
-        # # TODO: signal to menu that replay had finished
-        # self.menu_handle._is_replay_open = False
-        # self.close()
+        BoardReplayController(menu=self.menu_handle, game_id=game)
+        # TODO: signal to menu that replay had finished
+        self.menu_handle._is_replay_open = False
+        self.close()
 
     def signal_closing(self) -> None:
         self.menu_handle._is_replay_open = False

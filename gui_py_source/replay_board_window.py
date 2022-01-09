@@ -1,7 +1,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_board_window(object):
+class Ui_replay_board_window(object):
     def setupUi(self, Form):
         self.form = Form
         Form.setObjectName("Form")
@@ -23,7 +23,7 @@ class Ui_board_window(object):
 
         self.widget_4 = QtWidgets.QWidget(Form)
         self.widget_4.setGeometry(QtCore.QRect(0, 0, 661, 789))
-        self.widget_4.setStyleSheet("background-color:\"coral\"\n""")
+        self.widget_4.setStyleSheet("background-color:\"aquamarine\"\n""")
         self.widget_4.setObjectName("widget_4")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.widget_4)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -1631,7 +1631,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_board_window()
+    ui = Ui_replay_board_window()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec())
