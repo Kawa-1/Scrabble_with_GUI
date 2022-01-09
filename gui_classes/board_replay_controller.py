@@ -32,8 +32,9 @@ class BoardReplayController(DummyWindow):
 
         ### SET LABELS
         self.ui.game_id_label.setText('game_id: {}'.format(str(game_id)))
-        self.ui.label.setText('move: {} of {}'.format(1, self.total_moves))
-        self.ui.current_player_label.setText('current player: {}'.format(self.all_saved_moves[0][1]))
+        self.ui.label.setText('move: {} of {}'.format(0, self.total_moves))
+        # self.ui.current_player_label.setText('current player: {}'.format(self.all_saved_moves[0][1]))
+        self.ui.current_player_label.setText('')
 
         hide_labels([self.ui.status_label])
 
@@ -52,12 +53,15 @@ class BoardReplayController(DummyWindow):
         self.ui2.setupUi(self.board_window)
 
         ### LOAD 1ST MOVE
-        self.update_board()
+        # albo w sumie chuj, nie laduje 1st move
+        # self.update_board()
 
         ### DEFAULT STYLING TO REVERT CHANGES APPLIED BY MOVES OVERRIDING ORIGINAL BOARD
         ### throws name error self not defined
         # self.default_board_tile_stylesheets = [
         #     [eval('self.ui2.board_label_{}_{}'.format(i, j)).styleSheet() for i in range(15)] for j in range(15)]
+
+        print(eval('self.ui2.board_label_{}_{}'.format(2, 2)).styleSheet())
 
         ### SHOW BOARD AND MANAGER
         self.show()
@@ -93,7 +97,11 @@ class BoardReplayController(DummyWindow):
         self.ui.current_player_label.setText(
             'current player: {}'.format(self.all_saved_moves[self._current_move_id][1])
         )
-        self.ui.label.setText('move: {} of {}'.format(self._current_move_id + 1, self.total_moves))
+        # self.ui.label.setText('move: {} of {}'.format(self._current_move_id + 1, self.total_moves))
+        self.ui.label.setText('move: {} of {}'.format(self._current_move_id, self.total_moves))
+        self.ui.next_player_label.setText(
+            'current player: {}'.format(self.all_saved_moves[self._current_move_id + 1][1])
+        )
 
     def update_board(self) -> None:
         print('update board')
