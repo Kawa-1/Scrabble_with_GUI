@@ -793,6 +793,9 @@ class Board_gui(QtWidgets.QMainWindow):
         ### SET WINNER ASSUMING SORTED[0][1] IS WINNER
         ManagementGeneralLeaderboard.update_game_winner(self.game_id, self.players_sorted[0][1])
 
+        ### UPDATE MENU LEADERBOARD
+        self.menu_handle.fetch_and_set_players_score()
+
         self.window4 = QtWidgets.QMainWindow()
         self.ui4 = game_over.Ui_Form8(self.players_sorted, self)
         self.ui4.setupUi(self.window4)

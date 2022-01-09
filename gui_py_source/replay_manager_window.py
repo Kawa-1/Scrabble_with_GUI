@@ -64,10 +64,10 @@ class Ui_replay_manager_window(object):
         self.player_icon_label.setText("")
         self.player_icon_label.setObjectName("player_icon_label")
         self.label = QtWidgets.QLabel(self.menu_frame)
-        self.label.setGeometry(QtCore.QRect(40, 180, 121, 31))
+        self.label.setGeometry(QtCore.QRect(30, 180, 111, 31))
         self.label.setObjectName("label")
         self.next_player_label = QtWidgets.QLabel(self.menu_frame)
-        self.next_player_label.setGeometry(QtCore.QRect(170, 180, 121, 31))
+        self.next_player_label.setGeometry(QtCore.QRect(150, 180, 161, 31))
         self.next_player_label.setStyleSheet("QLabel{\n"
 "    color: beige;\n"
 "}")

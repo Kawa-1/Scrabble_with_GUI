@@ -10,6 +10,7 @@ from management_database import ManagementGeneralLeaderboard
 
 class BoardReplayController(DummyWindow):
     def __init__(self, menu, game_id: int):
+        self.game_id = game_id
         self.menu_handle = menu
         # TODO: acquire all moves per game_id
         # get list of moves [1], not status [0]
@@ -31,7 +32,7 @@ class BoardReplayController(DummyWindow):
         self.ui.setupUi(self)
 
         ### SET LABELS
-        self.ui.game_id_label.setText('game_id: {}'.format(str(game_id)))
+        self.ui.game_id_label.setText('game_id: {}'.format(str(self.game_id)))
         self.ui.label.setText('move: {} of {}'.format(0, self.total_moves))
         # self.ui.current_player_label.setText('current player: {}'.format(self.all_saved_moves[0][1]))
         self.ui.current_player_label.setText('')
@@ -58,14 +59,14 @@ class BoardReplayController(DummyWindow):
 
         ### DEFAULT STYLING TO REVERT CHANGES APPLIED BY MOVES OVERRIDING ORIGINAL BOARD
         ### throws name error self not defined
-        # self.default_board_tile_stylesheets = [
-        #     [eval('self.ui2.board_label_{}_{}'.format(i, j)).styleSheet() for i in range(15)] for j in range(15)]
-
-        print(eval('self.ui2.board_label_{}_{}'.format(2, 2)).styleSheet())
+        self.default_board_tile_stylesheets = self.collect_def_board_stylesheets()
 
         ### SHOW BOARD AND MANAGER
         self.show()
         self.board_window.show()
+
+    def collect_def_board_stylesheets(self) -> list:
+        return [[eval('self.ui2.board_label_{}_{}'.format(i, j), {'self': self}).styleSheet() for i in range(15)] for j in range(15)]
 
     def show_next_move(self) -> None:
         print('next move clicked')
@@ -100,7 +101,7 @@ class BoardReplayController(DummyWindow):
         # self.ui.label.setText('move: {} of {}'.format(self._current_move_id + 1, self.total_moves))
         self.ui.label.setText('move: {} of {}'.format(self._current_move_id, self.total_moves))
         self.ui.next_player_label.setText(
-            'current player: {}'.format(self.all_saved_moves[self._current_move_id + 1][1])
+            'next player: {}'.format(self.all_saved_moves[self._current_move_id + 1][1])
         )
 
     def update_board(self) -> None:
@@ -108,8 +109,11 @@ class BoardReplayController(DummyWindow):
         _new_board = string_to_board(self.all_saved_moves[self._current_move_id][3])
         for row in range(15):
             for column in range(15):
+                _tile = eval('self.ui2.board_label_{}_{}'.format(row, column))
+                _tile.setText('')
+                # set default board stylesheet
+                _tile.setStyleSheet(self.default_board_tile_stylesheets[row][column])
                 if _new_board[row][column] != "-":
-                    _tile = eval('self.ui2.board_label_{}_{}'.format(row, column))
                     _tile.setText(_new_board[row][column])
                     _tile.setStyleSheet(str(_tile.styleSheet()) + ';border: 2px solid red; color: black;')
                     # eval('self.ui2.board_label_{}_{}'.format(row, column)).setStyleSheet('background-color: green; color: black;')
