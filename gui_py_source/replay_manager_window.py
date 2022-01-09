@@ -12,11 +12,11 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_replay_manager_window(object):
     def setupUi(self, replay_manager_window):
         replay_manager_window.setObjectName("replay_manager_window")
-        replay_manager_window.resize(600, 650)
+        replay_manager_window.resize(330, 280)
         self.centralwidget = QtWidgets.QWidget(replay_manager_window)
         self.centralwidget.setObjectName("centralwidget")
         self.menu_frame = QtWidgets.QFrame(self.centralwidget)
-        self.menu_frame.setGeometry(QtCore.QRect(260, 100, 311, 261))
+        self.menu_frame.setGeometry(QtCore.QRect(10, 10, 311, 261))
         self.menu_frame.setStyleSheet("QFrame {\n"
 "    border-radius: 7px;\n"
 "    color: rgb(62, 231, 41);\n"
@@ -64,14 +64,14 @@ class Ui_replay_manager_window(object):
         self.player_icon_label.setText("")
         self.player_icon_label.setObjectName("player_icon_label")
         self.label = QtWidgets.QLabel(self.menu_frame)
-        self.label.setGeometry(QtCore.QRect(30, 180, 121, 31))
+        self.label.setGeometry(QtCore.QRect(40, 180, 121, 31))
         self.label.setObjectName("label")
-        self.new_word_label = QtWidgets.QLabel(self.menu_frame)
-        self.new_word_label.setGeometry(QtCore.QRect(170, 180, 121, 31))
-        self.new_word_label.setStyleSheet("QLabel{\n"
+        self.next_player_label = QtWidgets.QLabel(self.menu_frame)
+        self.next_player_label.setGeometry(QtCore.QRect(170, 180, 121, 31))
+        self.next_player_label.setStyleSheet("QLabel{\n"
 "    color: beige;\n"
 "}")
-        self.new_word_label.setObjectName("new_word_label")
+        self.next_player_label.setObjectName("next_player_label")
         self.prev_move_button = QtWidgets.QPushButton(self.menu_frame)
         self.prev_move_button.setGeometry(QtCore.QRect(70, 220, 71, 32))
         self.prev_move_button.setStyleSheet("QPushButton{\n"
@@ -100,8 +100,8 @@ class Ui_replay_manager_window(object):
         self.name_label.setText(_translate("replay_manager_window", "<html><head/><body><p><span style=\" font-weight:700;\">Scrabble</span></p><p><br/></p></body></html>"))
         self.game_id_label.setText(_translate("replay_manager_window", "TextLabel"))
         self.current_player_label.setText(_translate("replay_manager_window", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:700; font-style:italic;\">current player</span></p><p><br/></p></body></html>"))
-        self.label.setText(_translate("replay_manager_window", "new word: "))
-        self.new_word_label.setText(_translate("replay_manager_window", "new word pholder"))
+        self.label.setText(_translate("replay_manager_window", "next player: "))
+        self.next_player_label.setText(_translate("replay_manager_window", "new word pholder"))
         self.status_label.setText(_translate("replay_manager_window", "TextLabel"))
 
 

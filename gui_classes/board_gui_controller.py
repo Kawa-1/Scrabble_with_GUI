@@ -533,6 +533,7 @@ class Board_gui(QtWidgets.QMainWindow):
     def clicked_clear(self):
         self.letters_used.clear()
         self.coords_of_letters_used.clear()
+
         for i in range(15):
             for j in range(15):
                 if self.check_in_which_move[i][j] == self.which_move:
