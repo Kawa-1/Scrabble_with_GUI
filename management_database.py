@@ -99,6 +99,7 @@ class ManagementGeneralLeaderboard:
             cur = con.cursor()
             cur.execute("SELECT count(game_id) FROM all_games")
             _last_index = cur.fetchall()
+            print("102 ManagmentDatabase", _last_index)
             con.commit()
             con.close()
             return [True, _last_index]
