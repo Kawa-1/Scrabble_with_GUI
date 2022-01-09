@@ -140,7 +140,7 @@
 }</string>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="login_content">
         <widget class="QFrame" name="login_container">
@@ -303,7 +303,7 @@ lineedit-password-character: 9679;
         <widget class="QFrame" name="register_container">
          <property name="geometry">
           <rect>
-           <x>0</x>
+           <x>-10</x>
            <y>10</y>
            <width>251</width>
            <height>181</height>

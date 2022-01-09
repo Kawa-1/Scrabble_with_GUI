@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '/Users/mzieba/Documents/szkola/code/Scrabble_with_GUI/templates/login_window.ui'
+# Form implementation generated from reading ui file '/Users/mzieba/Documents/szkola/3rok/5semestr/io.nosync/scrabble/Scrabble_with_GUI/Scrabble_with_GUI/templates/login_window.ui'
 #
 # Created by: PyQt6 UI code generator 6.0.3
 #
@@ -133,7 +133,7 @@ class Ui_login_window(object):
 "}")
         self.register_content.setObjectName("register_content")
         self.register_container = QtWidgets.QFrame(self.register_content)
-        self.register_container.setGeometry(QtCore.QRect(0, 10, 251, 181))
+        self.register_container.setGeometry(QtCore.QRect(-10, 10, 251, 181))
         self.register_container.setStyleSheet("QFrame {\n"
 "    background-color: transparent;\n"
 "}")
@@ -200,7 +200,7 @@ class Ui_login_window(object):
         login_window.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(login_window)
-        self.login_reg_stacked.setCurrentIndex(0)
+        self.login_reg_stacked.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(login_window)
 
     def retranslateUi(self, login_window):

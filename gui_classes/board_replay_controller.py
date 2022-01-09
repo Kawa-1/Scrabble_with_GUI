@@ -21,7 +21,6 @@ class BoardReplayController(DummyWindow):
             copy all_saved_moves[0][3] (str) -> board -> into replay_board
         """
         self._current_move_id = 0
-        self.default_board_tile_stylesheets = []
 
         # all saved moves does not account for turns when no tiles were placed
         self.total_moves = len(self.all_saved_moves)
@@ -32,10 +31,11 @@ class BoardReplayController(DummyWindow):
         self.ui.setupUi(self)
 
         ### SET LABELS
-        self.ui.game_id_label.setText('game_id: {}'.format(str(self.game_id)))
-        self.ui.label.setText('move: {} of {}'.format(0, self.total_moves))
-        # self.ui.current_player_label.setText('current player: {}'.format(self.all_saved_moves[0][1]))
-        self.ui.current_player_label.setText('')
+        # self.ui.game_id_label.setText('game_id: {}'.format(str(self.game_id)))
+        self.ui.game_id_label.hide()
+        self.ui.label.setText('move: {} of {}'.format(1, self.total_moves))
+        self.ui.current_player_label.setText('current player: {}'.format(self.all_saved_moves[0][1]))
+        self.ui.next_player_label.setText(self.all_saved_moves[self._current_move_id + 1][1])
 
         hide_labels([self.ui.status_label])
 
@@ -55,11 +55,13 @@ class BoardReplayController(DummyWindow):
 
         ### LOAD 1ST MOVE
         # albo w sumie chuj, nie laduje 1st move
-        # self.update_board()
 
         ### DEFAULT STYLING TO REVERT CHANGES APPLIED BY MOVES OVERRIDING ORIGINAL BOARD
         ### throws name error self not defined
         self.default_board_tile_stylesheets = self.collect_def_board_stylesheets()
+        self.default_board_tile_txt = self.collect_def_board_txt()
+
+        self.update_board()
 
         ### SHOW BOARD AND MANAGER
         self.show()
@@ -68,10 +70,13 @@ class BoardReplayController(DummyWindow):
     def collect_def_board_stylesheets(self) -> list:
         return [[eval('self.ui2.board_label_{}_{}'.format(i, j), {'self': self}).styleSheet() for i in range(15)] for j in range(15)]
 
+    def collect_def_board_txt(self) -> list:
+        return [[eval('self.ui2.board_label_{}_{}'.format(i, j), {'self': self}).text() for i in range(15)] for j in range(15)]
+
     def show_next_move(self) -> None:
         print('next move clicked')
         hide_labels([self.ui.status_label])
-        if self._current_move_id + 1 > self.total_moves - 1:
+        if self._current_move_id + 1 >= self.total_moves:
             print('cant go +')
             self.ui.status_label.setText('cannot go further')
             self.ui.status_label.setStyleSheet('color: red;')
@@ -99,10 +104,13 @@ class BoardReplayController(DummyWindow):
             'current player: {}'.format(self.all_saved_moves[self._current_move_id][1])
         )
         # self.ui.label.setText('move: {} of {}'.format(self._current_move_id + 1, self.total_moves))
-        self.ui.label.setText('move: {} of {}'.format(self._current_move_id, self.total_moves))
-        self.ui.next_player_label.setText(
-            'next player: {}'.format(self.all_saved_moves[self._current_move_id + 1][1])
-        )
+        self.ui.label.setText('move: {} of {}'.format(self._current_move_id + 1, self.total_moves))
+        if self._current_move_id + 1 < self.total_moves:
+            self.ui.next_player_label.setText(
+                'next player: {}'.format(self.all_saved_moves[self._current_move_id+1][1])
+            )
+        else:
+            self.ui.next_player_label.setText('last move')
 
     def update_board(self) -> None:
         print('update board')
@@ -113,10 +121,10 @@ class BoardReplayController(DummyWindow):
                 _tile.setText('')
                 # set default board stylesheet
                 _tile.setStyleSheet(self.default_board_tile_stylesheets[row][column])
+                _tile.setText(self.default_board_tile_txt[row][column])
                 if _new_board[row][column] != "-":
                     _tile.setText(_new_board[row][column])
                     _tile.setStyleSheet(str(_tile.styleSheet()) + ';border: 2px solid red; color: black;')
-                    # eval('self.ui2.board_label_{}_{}'.format(row, column)).setStyleSheet('background-color: green; color: black;')
 
     def signal_closing(self) -> None:
         self.menu_handle._is_replay_open = False
