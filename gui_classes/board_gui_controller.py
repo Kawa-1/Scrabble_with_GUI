@@ -237,6 +237,19 @@ class Board_gui(QtWidgets.QMainWindow):
 
         return clicked_label
 
+    def ai_place_letter(self, word: str, coords: list) -> None:
+        _letters = list(word)
+        for index, _tile in enumerate(coords):
+            _label = eval("self.ui.board_label_" + str(_tile[0]) + "_" + str(_tile[1]))
+            if _label.styleSheet() != 'background-color:lightyellow':
+                _label.setStyleSheet('background-color:lightyellow; color: black')
+                _label.setText(self._letters[index])
+                self.new_player_move_board[_tile[0]][_tile[1]] = _letters[index]
+                self.check_in_which_move[_tile[0]][_tile[1]] = _letters[index]
+
+            self.letters_used.append(_letters[index])
+            self.coords_of_letters_used.append([_tile[0], _tile[1]])
+
     def clicked_confirm(self):
         words_4_score = {}
         if (self.which_move == 1 or self.pass_first_move_check == 0) and self.players[self.current_player].bot is True:
