@@ -178,6 +178,8 @@ class Board_gui(QtWidgets.QMainWindow):
         for label in self.dict_board_labels:
             label.mousePressEvent = self.factory(
                 label, self.dict_board_labels[label][2], self.dict_board_labels[label][3])
+            print(label, self.dict_board_labels[label][2], self.dict_board_labels[label][3])
+
 
     def factory(self, label, i, j):
         def clicked_label(event):
@@ -249,6 +251,12 @@ class Board_gui(QtWidgets.QMainWindow):
                                                                                    self.players[self.current_player].rack)
                 if self.valid_move is True:
                     self.pass_first_move_check = 1
+                    #word_letters = ""
+                    #coords = []
+                    # 0 - word, 1 - coords
+                    for word_and_coords in words_4_score.items():
+                        self.letter_coordinates_dict = self.board.place_letters(word_and_coords[0], word_and_coords[1],
+                                                                                self.new_player_move_board)
 
             elif self.players[self.current_player].difficulty == "EASY":
                 pass
@@ -262,7 +270,16 @@ class Board_gui(QtWidgets.QMainWindow):
 
         # Here somewhere should be check if player is bot or not
         #elif self.players[self.current_player].bot is False:
+        # WORKFLOW for AI
+        elif self.players[self.current_player].bot is True and self.pass_first_move_check == 1:
+            if self.players[self.current_player].difficulty == "HARD":
+                print("After first_move WORFLOW AI")
+                self.players[self.current_player].rack = self.players[self.current_player].rack[:7]
+                pass
+
+
         else:
+            # It is the normal workflow for player /not/ AI!!!
             self.letter_coordinates_dict = self.board.place_letters(self.letters_used, self.coords_of_letters_used, self.new_player_move_board)
             self.validity_rows_check = self.board.check_validity_placement_rows(self.new_player_move_board)
             self.validity_columns_check = self.board.check_validity_placement_columns(self.new_player_move_board)
