@@ -14,6 +14,7 @@ class ManagementGeneralLeaderboard:
 
     @staticmethod
     def insert_db(players_with_score: dict) -> noReturn:
+        """Need to change it..."""
         try:
             con = sl.connect(ManagementGeneralLeaderboard._path)
             cur = con.cursor()

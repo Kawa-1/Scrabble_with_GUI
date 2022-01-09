@@ -34,8 +34,12 @@ class BoardReplayController(DummyWindow):
         # self.ui.game_id_label.setText('game_id: {}'.format(str(self.game_id)))
         self.ui.game_id_label.hide()
         self.ui.label.setText('move: {} of {}'.format(1, self.total_moves))
+        print(self.all_saved_moves)
         self.ui.current_player_label.setText('current player: {}'.format(self.all_saved_moves[0][1]))
-        self.ui.next_player_label.setText(self.all_saved_moves[self._current_move_id + 1][1])
+        if self.total_moves > 1:
+            self.ui.next_player_label.setText(self.all_saved_moves[self._current_move_id + 1][1])
+        else:
+            self.ui.next_player_label.setText("ONLY ONE MOVE")
 
         hide_labels([self.ui.status_label])
 

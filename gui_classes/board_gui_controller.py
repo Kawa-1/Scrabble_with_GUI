@@ -402,6 +402,10 @@ class Board_gui(QtWidgets.QMainWindow):
             # increase foul count
             self.players[self.current_player].fails = 1
 
+            for _tile in self.coords_of_letters_used:
+                eval("self.ui.board_label_" + str(_tile[0]) + "_" + str(_tile[1])).setEnabled(1)
+            self.coords_of_letters_used.clear()
+
             for i in range(15):
                 for j in range(15):
                     # clear player's virtual board
@@ -791,7 +795,8 @@ class Board_gui(QtWidgets.QMainWindow):
 
         self.players_sorted.sort(key=lambda x: x[1])
         ### SET WINNER ASSUMING SORTED[0][1] IS WINNER
-        ManagementGeneralLeaderboard.update_game_winner(self.game_id, self.players_sorted[0][1])
+        # ManagementGeneralLeaderboard.update_game_winner(self.game_id, self.players_sorted[0][1])
+        ManagementGeneralLeaderboard.update_game_winner(self.game_id, self.players_sorted[0][0])
 
         ### UPDATE MENU LEADERBOARD
         self.menu_handle.fetch_and_set_players_score()
