@@ -136,7 +136,7 @@ class BotAI:
 
     # return: [[set(), set(), {'A', 'X', ...}, ...]]
     @staticmethod
-    def get_cross_checks(board: list_of_lists, used_words) -> list_of_lists:
+    def get_cross_checks(t: Trie, board: list_of_lists, used_words) -> list_of_lists:
         """Possible letters for crossed words up&down"""
 
         cross_checks = [[set() for row in range(len(board))] for col in range(len(board))]
@@ -426,7 +426,7 @@ class BotAI:
         #used_words = set(checked_words)
         used_words = used_words = {"ZEBU", "BACKUP", "PERCHED", "EAX", "EXIST", "HOTDOG", "TOGAE", "MINKE", "EAGLES", "MINIM"}
         anchors = BotAI.get_anchors(board)
-        cross_checks = BotAI.get_cross_checks(board, used_words)
+        cross_checks = BotAI.get_cross_checks(t, board, used_words)
         potential_words = []
 
         transposed = False
@@ -437,7 +437,7 @@ class BotAI:
 
         board = list(zip(*board))
         anchors = BotAI.get_anchors(board)
-        cross_checks = BotAI.get_cross_checks(board, used_words)
+        cross_checks = BotAI.get_cross_checks(t, board, used_words)
 
         potential_words_transposed = []
         transposed = True
