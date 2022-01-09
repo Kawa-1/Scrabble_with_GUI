@@ -188,6 +188,7 @@ class Board_gui(QtWidgets.QMainWindow):
                     if label.styleSheet() != 'background-color:lightyellow':
                         label.setStyleSheet('background-color:lightyellow; color: black')
                         label.setText(self.letter_to_board)
+                        label.setEnabled(False)
                         self.new_player_move_board[i][j] = self.letter_to_board
                         self.check_in_which_move[i][j] = self.which_move
 
@@ -245,9 +246,10 @@ class Board_gui(QtWidgets.QMainWindow):
             _label = eval("self.ui.board_label_" + str(_tile[0]) + "_" + str(_tile[1]))
             if _label.styleSheet() != 'background-color:lightyellow':
                 _label.setStyleSheet('background-color:lightyellow; color: black')
-                _label.setText(self._letters[index])
+                _label.setText(_letters[index])
                 self.new_player_move_board[_tile[0]][_tile[1]] = _letters[index]
                 self.check_in_which_move[_tile[0]][_tile[1]] = _letters[index]
+                _label.setEnabled(False)
 
             self.letters_used.append(_letters[index])
             self.coords_of_letters_used.append([_tile[0], _tile[1]])
@@ -270,6 +272,9 @@ class Board_gui(QtWidgets.QMainWindow):
                     for word_and_coords in words_4_score.items():
                         self.letter_coordinates_dict = self.board.place_letters(word_and_coords[0], word_and_coords[1],
                                                                                 self.new_player_move_board)
+                        print(word_and_coords[0], word_and_coords[1])
+                        self.ai_place_letter(word_and_coords[0], word_and_coords[1])
+                        self.board.checked_words.update({word_and_coords[0]: word_and_coords[1]})
 
             elif self.players[self.current_player].difficulty == "EASY":
                 pass
