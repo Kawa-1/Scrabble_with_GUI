@@ -277,7 +277,20 @@ class Board_gui(QtWidgets.QMainWindow):
                         self.board.checked_words.update({word_and_coords[0]: word_and_coords[1]})
 
             elif self.players[self.current_player].difficulty == "EASY":
-                pass
+                self.players[self.current_player].rack = self.players[self.current_player].rack[:7]
+                self.valid_move, words_4_score, self.rack_AI = BotAI.ai_first_move_easy(self.loaded_dictionary,
+                                                                                        self.players[
+                                                                                            self.current_player].rack)
+
+                if self.valid_move is True:
+                    self.pass_first_move_check = 1
+                    for word_and_coords in words_4_score.items():
+                        self.letter_coordinates_dict = self.board.place_letters(word_and_coords[0], word_and_coords[1],
+                                                                                self.new_player_move_board)
+                        print(word_and_coords[0], word_and_coords[1])
+                        self.ai_place_letter(word_and_coords[0], word_and_coords[1])
+                        self.board.checked_words.update({word_and_coords[0]: word_and_coords[1]})
+
 
 
         elif (self.which_move == 1 or self.pass_first_move_check == 0):
@@ -291,11 +304,16 @@ class Board_gui(QtWidgets.QMainWindow):
         # WORKFLOW for AI
         elif self.players[self.current_player].bot is True and self.pass_first_move_check == 1:
             if self.players[self.current_player].difficulty == "HARD":
-                print("After first_move WORFLOW AI")
+                print("After first_move WORKFLOW AI")
                 self.players[self.current_player].rack = self.players[self.current_player].rack[:7]
-                self.valid_move, words_4_score, self.rack_AI = BotAI.make_best_move(self.t, self.players[self.current_player].rack,
-                                                                                    self.new_player_move_board, self.board.checked_words)
+                self.valid_move, words_4_score, self.rack_AI = BotAI.make_hard_move(self.t,
+                            self.players[self.current_player].rack, self.new_player_move_board, self.board.checked_words)
                 print("WORDS_4_SCORE_AI", words_4_score)
+
+            elif self.players[self.current_player].difficulty == "EASY":
+                self.players[self.current_player].rack = self.players[self.current_player].rack[:7]
+                self.valid_move, words_4_score, self.rack_AI = BotAI.make_easy_move(self.t,
+                          self.players[self.current_player].rack, self.new_player_move_board, self.board.checked_words)
 
 
 
