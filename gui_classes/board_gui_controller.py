@@ -293,7 +293,10 @@ class Board_gui(QtWidgets.QMainWindow):
             if self.players[self.current_player].difficulty == "HARD":
                 print("After first_move WORFLOW AI")
                 self.players[self.current_player].rack = self.players[self.current_player].rack[:7]
-                pass
+                self.valid_move, words_4_score, self.rack_AI = BotAI.make_best_move(self.t, self.players[self.current_player].rack,
+                                                                                    self.new_player_move_board, self.board.checked_words)
+                print("WORDS_4_SCORE_AI", words_4_score)
+
 
 
         else:
@@ -313,6 +316,14 @@ class Board_gui(QtWidgets.QMainWindow):
             self.dict_players[self.current_player][8] += self.board.get_score(words_4_score, self.new_player_move_board)
             # update players score on gui
             self.players[self.current_player].score = self.dict_players[self.current_player][8]
+            # place letters put by AI
+            letters = ""
+            coordinates = []
+            for word_and_coords in words_4_score.items():
+                self.board.checked_words.update({word_and_coords[0]: word_and_coords[1]})
+                letters += word_and_coords[0]
+                coordinates.extend(word_and_coords[1])
+            self.ai_place_letter(letters, coordinates)
             # copy the player's board onto main board
             self.actual_board = self.new_player_move_board
             ### INSERT BOARD INTO DB
@@ -532,6 +543,8 @@ class Board_gui(QtWidgets.QMainWindow):
 
     def clicked_clear(self):
         self.letters_used.clear()
+        for _tile in self.coords_of_letters_used:
+            eval("self.ui.board_label_" + str(_tile[0]) + "_" + str(_tile[1])).setEnabled(1)
         self.coords_of_letters_used.clear()
         for i in range(15):
             for j in range(15):
