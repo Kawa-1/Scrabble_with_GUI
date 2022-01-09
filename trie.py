@@ -1,3 +1,6 @@
+import platform
+import os
+
 class TrieNode:
     """A node in the trie structure"""
 
@@ -65,3 +68,21 @@ class Trie(object):
         #return (word, sum([Tile.values_of_letters.get(c) for c in word]))
         else:
             return ("", 0)
+
+    @staticmethod
+    def load_lexicon(trie: Trie):
+        _platform = platform.system()
+        path_of_dict = ""
+        if _platform == "Windows":
+            path_of_dict = "{}{}".format(os.getcwd(), "\\dict_for_game\\Collins.txt")
+
+
+        elif _platform == "Darwin":
+            path_of_dict = "{}{}".format(os.getcwd(), "/dict_for_game/Collins.txt")
+
+        with open("dict_for_game\\Collins.txt", mode='r') as f:
+            for word in f:
+                word = word.strip('\n')
+                trie.insert(word)
+
+        return trie

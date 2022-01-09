@@ -226,12 +226,15 @@ class Board_gui(QtWidgets.QMainWindow):
         return clicked_label
 
     def clicked_confirm(self):
-        if self.which_move == 1 or self.pass_first_move_check == 0:
+        #if (self.which_move == 1 or self.pass_first_move_check == 0) and self.players[self.current_player].bot is False:
+        if (self.which_move == 1 or self.pass_first_move_check == 0):
             self.letter_coordinates_dict = self.board.place_letters(self.letters_used, self.coords_of_letters_used, self.new_player_move_board)
             self.valid_move, words_4_score = self.board.first_move(self.coords_of_letters_used, self.new_player_move_board, self.loaded_dictionary)
             if self.valid_move is True:
                 self.pass_first_move_check = 1
 
+        # Here somewhere should be check if player is bot or not
+        #elif self.players[self.current_player].bot is False:
         else:
             self.letter_coordinates_dict = self.board.place_letters(self.letters_used, self.coords_of_letters_used, self.new_player_move_board)
             self.validity_rows_check = self.board.check_validity_placement_rows(self.new_player_move_board)
@@ -263,7 +266,7 @@ class Board_gui(QtWidgets.QMainWindow):
 
             self.dict_players[self.current_player][9] = 0
             # no foul committed; delete all warnings for the player if valid move
-            del self.players[self.current_player].fails
+            # del self.players[self.current_player].fails
 
             for i in range(15):
                 for j in range(15):

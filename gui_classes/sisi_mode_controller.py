@@ -1,8 +1,10 @@
 from gui_classes.hotseat_players_login_controller import *
 from gui_py_source.sisi_mode_window import Ui_sisi_mode_window
+import random
 
 
 class SisiModeController(DummyWindow):
+
     def __init__(self, menu):
         DummyWindow.__init__(self)
         self.menu_handle = menu
@@ -36,6 +38,8 @@ class SisiModeController(DummyWindow):
 
     @staticmethod
     def start_player_si_game(ai: str) -> None:
+            _names = ("David", "Mati", "Jerzy", "Jeff", "Joe", "Alice", "Robert", "Leokadia", "Kamil", "Barbara")
+            name = _names[random.randint(0, len(_names)-1)] + "_AI" + str(random.randint(0,20))
             print('%s %s' % ('player', ai))
             # ### GET CURRENT PLAYER ID
             # _player = Player(self.menu_handle.host_id, [])
