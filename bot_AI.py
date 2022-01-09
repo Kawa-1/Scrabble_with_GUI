@@ -12,6 +12,75 @@ import time
 
 class BotAI:
 
+
+    @staticmethod
+    def ai_first_move_easy(loaded_dictionary: dict, rack: list):
+        start = time.perf_counter()
+        found_words = []
+
+        words_4_score = {}
+
+        # Choose if we are going to put oloaded_dictionaryur word vertically or in horizontally
+        # 0 - horizontally; 1 - vertically
+        hor_or_vert = random.randint(0, 1)
+
+        # Let's change the order
+        random.shuffle(rack)
+
+        for letter in rack:
+            if len(found_words) > 10:
+                break
+            dictionary_np = loaded_dictionary.get(letter)
+            for word in nditer(dictionary_np):
+                word = str(word)
+                word_chars = list(word)
+                moving_rack = copy.deepcopy(rack)
+                lack_of_letter = False
+                for char in word_chars:
+                    if char not in moving_rack:
+                        lack_of_letter = True
+                        break
+
+                    else:
+                        moving_rack.remove(char)
+
+                if lack_of_letter is False:
+                    found_words.append(word)
+
+                else:
+                    continue
+
+        choose_word = random.randint(0, len(found_words) - 1)
+        choose_word = found_words[choose_word]
+        length_chosen = len(choose_word)
+
+        start_of_word = 7 - random.randint(0, length_chosen - 1)
+
+        coords = []
+        # means horizontally
+        if hor_or_vert == 0:
+            # adding coords of next letters
+            for i in range(0, length_chosen):
+                coords.append([7, start_of_word + i])
+
+            words_4_score.update({choose_word: coords})
+
+        else:
+            # adding coords of next letters
+            for i in range(0, length_chosen):
+                coords.append([start_of_word + i, 7])
+
+            words_4_score.update({choose_word: coords})
+
+        # print(words_4_score)
+        end = time.perf_counter()
+        print(end - start)
+        for letter in choose_word:
+            rack.remove(letter)
+
+        return True, words_4_score, rack
+
+
     @staticmethod
     def ai_first_move_hard(loaded_dictionary: dict, rack: list):
         start = time.perf_counter()
@@ -27,8 +96,8 @@ class BotAI:
         random.shuffle(rack)
 
         for letter in rack:
-            if len(found_words) > 10:
-                break
+            #if len(found_words) > 10:
+            #   break
             dictionary_np = loaded_dictionary.get(letter)
             # print(letter, dictionary_np)
             for word in nditer(dictionary_np):
@@ -422,9 +491,9 @@ class BotAI:
 
 
     @staticmethod
-    def make_best_move(t: Trie, rack: list, board: list_of_lists, checked_words: dict) -> (bool, dict, list, set):
-        #used_words = set(checked_words)
-        used_words = used_words = {"ZEBU", "BACKUP", "PERCHED", "EAX", "EXIST", "HOTDOG", "TOGAE", "MINKE", "EAGLES", "MINIM"}
+    def make_hard_move(t: Trie, rack: list, board: list_of_lists, checked_words: dict) -> (bool, dict, list):
+        used_words = set(checked_words)
+        #used_words = {"ZEBU", "BACKUP", "PERCHED", "EAX", "EXIST", "HOTDOG", "TOGAE", "MINKE", "EAGLES", "MINIM"}
         anchors = BotAI.get_anchors(board)
         cross_checks = BotAI.get_cross_checks(t, board, used_words)
         potential_words = []
@@ -486,6 +555,72 @@ class BotAI:
 
         return True, best, rack
 
+    @staticmethod
+    def make_easy_move(t: Trie, rack: list, board: list_of_lists, checked_words: dict) -> (bool, dict, list):
+        used_words = set(checked_words)
+        # used_words = {"ZEBU", "BACKUP", "PERCHED", "EAX", "EXIST", "HOTDOG", "TOGAE", "MINKE", "EAGLES", "MINIM"}
+        anchors = BotAI.get_anchors(board)
+        cross_checks = BotAI.get_cross_checks(t, board, used_words)
+        potential_words = []
+
+        transposed = False
+        for square in anchors:
+            rack_pass = rack.copy()
+            BotAI.left_part("", t.root, BotAI.get_count_empty_left(board, square[0], square[1]), square, board,
+                            rack_pass, used_words,
+                            cross_checks, potential_words)
+
+        board = list(zip(*board))
+        anchors = BotAI.get_anchors(board)
+        cross_checks = BotAI.get_cross_checks(t, board, used_words)
+
+        potential_words_transposed = []
+        transposed = True
+        for square in anchors:
+            rack_pass = rack.copy()
+            BotAI.left_part("", t.root, BotAI.get_count_empty_left(board, square[0], square[1]), square, board,
+                            rack_pass, used_words,
+                            cross_checks, potential_words_transposed)
+
+        # back home; not transposed board/board
+        board = list(map(lambda x: list(x), list(zip(*board))))
+        transposed = False
+        worst = sorted(potential_words, key=lambda x: (-x[3], -len(x[2])), reverse=True)[0]
+        worst_transposed = sorted(potential_words_transposed, key=lambda x: (-x[3], -len(x[2])), reverse=True)[0]
+
+        if worst_transposed[3] < worst[3]:
+            worst = [worst_transposed[0], list(map(lambda y: list(y)[::-1], worst_transposed[1])),
+                    list(map(lambda y: list(y)[::-1], worst_transposed[2])), worst_transposed[3]]
+            transposed = True
+
+        if worst[2] != []:
+            crossed = BotAI.find_cross_words(tuple(worst), used_words, board, transposed)
+        else:
+            # "!" means we do not count crossed words
+            crossed = {"!"}
+
+        if crossed == {} and transposed is True:
+            print("AI DID WRONG MOVE!! :))))")
+            board = list(map(lambda y: list(y), list(zip(*board))))
+            return False, {}, rack
+
+        elif crossed == {}:
+            print("ai did wrong move!! :DD")
+            return False, {}, rack
+
+        print(rack)
+        for index, coords in enumerate(worst[1]):
+            if board[coords[0]][coords[1]] == "-":
+                rack.remove(worst[0][index])
+
+        # format var worst for method get_score from board module
+        if crossed != {"!"}:
+            worst = {worst[0]: worst[1]}
+            worst.update(crossed)
+        else:
+            worst = {worst[0]: worst[1]}
+
+        return True, worst, rack
 
 if __name__ == "__main__":
     t = Trie()
