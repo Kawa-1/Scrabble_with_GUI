@@ -44,7 +44,8 @@ class SisiModeController(DummyWindow):
             # ### GET CURRENT PLAYER ID
             _player = Player(self.menu_handle.host_id, [])
             _ai = Player(name, [], True, ai.upper())
-            self.close()
+            self.hide()
+            # self.close()
             self.signal_closing()
             Board_gui(2, [_player, _ai], self.menu_handle)
 

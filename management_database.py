@@ -136,12 +136,15 @@ class ManagementGeneralLeaderboard:
             _last_index = cur.fetchall()[0][0]
             if _last_index is not None:
                 cur.execute("INSERT INTO all_games(game_id, players) VALUES(?, ?)", (_last_index+1, players,))
+                con.commit()
+                con.close()
+                return [True, _last_index+1]
             else:
                 cur.execute("INSERT INTO all_games(game_id, players) VALUES(?, ?)", (1, players,))
                 _last_index = 1
-            con.commit()
-            con.close()
-            return [True, _last_index]
+                con.commit()
+                con.close()
+                return [True, _last_index]
         except Exception as e:
             print(e)
             return [False, []]
@@ -170,6 +173,8 @@ class ManagementGeneralLeaderboard:
                 cur.execute("SELECT * FROM all_games ORDER BY game_id LIMIT (?)", (number,))
             elif number is None:
                 cur.execute("SELECT * FROM all_games")
+            # sussy?
+            # should be _all_games?
             _all_moves_per_game = cur.fetchall()
             con.commit()
             con.close()
