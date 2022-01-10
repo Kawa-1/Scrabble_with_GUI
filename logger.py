@@ -7,9 +7,9 @@ import platform
 def get_logger(name: __name__, level="INFO") -> logger:
     _path = ''
     if platform.system() == 'Darwin':
-        _path = '{}{}'.format(os.getcwd(), '/DatabaseLogs/scrabble.log')
+        _path = '{}{}'.format(os.getcwd(), '/Logs/scrabble.log')
     elif platform.system() == 'Windows':
-        _path = '{}{}'.format(os.getcwd(), '\\DatabaseLogs\\scrabble.log')
+        _path = '{}{}'.format(os.getcwd(), '\\Logs\\scrabble.log')
 
     possible_logs = {"DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"}
     level = level.upper()
