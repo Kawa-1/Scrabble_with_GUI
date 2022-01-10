@@ -1,7 +1,9 @@
+from PyQt6.QtCore import QRegularExpression
+
 import logger
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtWidgets import QMainWindow
+from PyQt6.QtWidgets import QMainWindow, QPushButton
 
 from auxiliary.gui_base_methods import board_to_string, string_to_board
 from word import Word
@@ -185,6 +187,10 @@ class Board_gui(QtWidgets.QMainWindow):
                 label, self.dict_board_labels[label][2], self.dict_board_labels[label][3])
             print(label, self.dict_board_labels[label][2], self.dict_board_labels[label][3])
 
+        ### ALTER BOARD GUI FOR AI
+        if self.players[self.current_player].bot is True:
+            self.alter_widgets_when_ai_turn()
+
         log.info("__INIT__ finished")
 
     def factory(self, label, i, j):
@@ -341,6 +347,7 @@ class Board_gui(QtWidgets.QMainWindow):
                 self.valid_move, words_4_score = self.board.check_words_from_board(self.loaded_dictionary, self.new_player_move_board)
 
         if self.valid_move is True and words_4_score != {} and self.players[self.current_player].bot is True:
+
             # increment moves_count
             self.moves_count += 1
             # index of score field
@@ -814,6 +821,12 @@ class Board_gui(QtWidgets.QMainWindow):
                 self.ui.pushButton6.setText(letter_helper[5])
                 self.ui.pushButton7.setText(letter_helper[6])
 
+                ### ALTER BOARD GUI
+                if self.players[self.current_player].bot is True:
+                    self.alter_widgets_when_ai_turn()
+                else:
+                    self.alter_widgets_when_player_turn()
+
     # def kicked_player_pop(self):
     #     self.window5 = QtWidgets.QMainWindow()
     #     self.ui = Ui_Form7(self.name_kicked_player)
@@ -828,11 +841,11 @@ class Board_gui(QtWidgets.QMainWindow):
         log.info("Game over")
         self.check_game_over = True
         self.players_sorted = []
-        self.moves_count = 0
         for key in self.players_to_db:
             self.players_sorted.append([key, self.players_to_db.get(key)])
 
-        self.players_sorted.sort(key=lambda x: x[1])
+        self.players_sorted = sorted(self.players_sorted, key=lambda y: y[1], reverse=True)
+
         ### SET WINNER ASSUMING SORTED[0][1] IS WINNER
         # ManagementGeneralLeaderboard.update_game_winner(self.game_id, self.players_sorted[0][1])
         ManagementGeneralLeaderboard.update_game_winner(self.game_id, self.players_sorted[0][0])
@@ -902,6 +915,36 @@ class Board_gui(QtWidgets.QMainWindow):
         # print("902 safe_words", self.dict_players[self.current_player])
         # print("903 safe_words", self.players[self.current_player].rack)
         print(self.dict_players)
+
+    def alter_widgets_when_ai_turn(self) -> None:
+        for widget in self.findChildren(QPushButton, QRegularExpression('^pushButton[1-9]$')):
+            widget.setVisible(0)
+
+        # hide change_letters
+        self.ui.change_letters.setVisible(0)
+        self.ui.change_letters_confirm.setVisible(0)
+        self.ui.change_letters_cancel.setVisible(0)
+        self.ui.frame.setVisible(0)
+
+        # alter background
+        self.ui.widget_17.setStyleSheet("background-color:\"aquamarine\"\n""")
+        self.ui.widget_18.setStyleSheet("background-color:\"aquamarine\"\n""")
+        self.ui.widget_4.setStyleSheet("background-color:\"coral\"\n""")
+
+    def alter_widgets_when_player_turn(self) -> None:
+        for widget in self.findChildren(QPushButton, QRegularExpression('^pushButton[1-9]$')):
+            widget.setVisible(1)
+
+        # hide change_letters
+        self.ui.change_letters.setVisible(1)
+        self.ui.change_letters_confirm.setVisible(1)
+        self.ui.change_letters_cancel.setVisible(1)
+        self.ui.frame.setVisible(1)
+
+        # alter background
+        self.ui.widget_17.setStyleSheet("background-color:\"lightblue\"\n""")
+        self.ui.widget_18.setStyleSheet("background-color:\"lightblue\"\n""")
+        self.ui.widget_4.setStyleSheet("background-color:\"lightgreen\"\n""")
 
     ######### BUTTONS HANDLERS
     def clicked_pushButton1(self):
