@@ -259,10 +259,10 @@ class Board_gui(QtWidgets.QMainWindow):
             _label = eval("self.ui.board_label_" + str(_tile[0]) + "_" + str(_tile[1]))
             if _label.styleSheet() != 'background-color:lightyellow':
                 _label.setStyleSheet('background-color:lightyellow; color: black')
-                _label.setText(_letters[index])
-                self.new_player_move_board[_tile[0]][_tile[1]] = _letters[index]
-                self.check_in_which_move[_tile[0]][_tile[1]] = _letters[index]
-                _label.setEnabled(False)
+            _label.setText(_letters[index])
+            self.new_player_move_board[_tile[0]][_tile[1]] = _letters[index]
+            self.check_in_which_move[_tile[0]][_tile[1]] = _letters[index]
+            _label.setEnabled(False)
 
             self.letters_used.append(_letters[index])
             self.coords_of_letters_used.append([_tile[0], _tile[1]])

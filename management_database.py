@@ -170,9 +170,9 @@ class ManagementGeneralLeaderboard:
             con = sl.connect(ManagementGeneralLeaderboard._path)
             cur = con.cursor()
             if number is not None:
-                cur.execute("SELECT * FROM all_games ORDER BY game_id LIMIT (?)", (number,))
+                cur.execute("SELECT * FROM all_games ORDER BY game_id DESC LIMIT (?)", (number,))
             elif number is None:
-                cur.execute("SELECT * FROM all_games")
+                cur.execute("SELECT * FROM all_games ORDER BY game_id DESC")
             # sussy?
             # should be _all_games?
             _all_moves_per_game = cur.fetchall()
