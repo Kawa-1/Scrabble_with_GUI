@@ -494,29 +494,30 @@ class BotAI:
     def make_hard_move(t: Trie, rack: list, board: list_of_lists, checked_words: dict) -> (bool, dict, list):
         used_words = set(checked_words)
         #used_words = {"ZEBU", "BACKUP", "PERCHED", "EAX", "EXIST", "HOTDOG", "TOGAE", "MINKE", "EAGLES", "MINIM"}
-        anchors = BotAI.get_anchors(board)
-        cross_checks = BotAI.get_cross_checks(t, board, used_words)
+        matrix = copy.deepcopy(board)
+        anchors = BotAI.get_anchors(matrix)
+        cross_checks = BotAI.get_cross_checks(t, matrix, used_words)
         potential_words = []
 
         transposed = False
         for square in anchors:
             rack_pass = rack.copy()
-            BotAI.left_part("", t.root, BotAI.get_count_empty_left(board, square[0], square[1]), square, board, rack_pass, used_words,
+            BotAI.left_part("", t.root, BotAI.get_count_empty_left(matrix, square[0], square[1]), square, matrix, rack_pass, used_words,
                       cross_checks, potential_words)
 
-        board = list(zip(*board))
-        anchors = BotAI.get_anchors(board)
-        cross_checks = BotAI.get_cross_checks(t, board, used_words)
+        matrix = list(zip(*matrix))
+        anchors = BotAI.get_anchors(matrix)
+        cross_checks = BotAI.get_cross_checks(t, matrix, used_words)
 
         potential_words_transposed = []
         transposed = True
         for square in anchors:
             rack_pass = rack.copy()
-            BotAI.left_part("", t.root, BotAI.get_count_empty_left(board, square[0], square[1]), square, board, rack_pass, used_words,
+            BotAI.left_part("", t.root, BotAI.get_count_empty_left(matrix, square[0], square[1]), square, matrix, rack_pass, used_words,
                       cross_checks, potential_words_transposed)
 
         # back home; not transposed board/board
-        board = list(map(lambda x: list(x), list(zip(*board))))
+        matrix = list(map(lambda x: list(x), list(zip(*matrix))))
         transposed = False
 
         # INIT those vars To omit __exception__ involved with lack of words in potential...
@@ -544,15 +545,21 @@ class BotAI:
                     list(map(lambda y: list(y)[::-1], best_transposed[2])), best_transposed[3]]
             transposed = True
 
+        print(potential_words)
+        print(potential_words_transposed)
+        print(best)
+        print(best_transposed)
+
         if best[2] != []:
-            crossed = BotAI.find_cross_words(tuple(best), used_words, board, transposed)
+            crossed = BotAI.find_cross_words(tuple(best), used_words, matrix, transposed)
         else:
             # "!" means we do not count crossed words
             crossed = {"!"}
 
         if crossed == {} and transposed is True:
             print("AI DID WRONG MOVE!! :))))")
-            board = list(map(lambda y: list(y), list(zip(*board))))
+            matrix = list(map(lambda y: list(y), list(zip(*matrix))))
+            transposed = False
             return False, {}, rack
 
         elif crossed == {}:
@@ -577,31 +584,32 @@ class BotAI:
     def make_easy_move(t: Trie, rack: list, board: list_of_lists, checked_words: dict) -> (bool, dict, list):
         used_words = set(checked_words)
         # used_words = {"ZEBU", "BACKUP", "PERCHED", "EAX", "EXIST", "HOTDOG", "TOGAE", "MINKE", "EAGLES", "MINIM"}
-        anchors = BotAI.get_anchors(board)
-        cross_checks = BotAI.get_cross_checks(t, board, used_words)
+        matrix = copy.deepcopy(board)
+        anchors = BotAI.get_anchors(matrix)
+        cross_checks = BotAI.get_cross_checks(t, matrix, used_words)
         potential_words = []
 
         transposed = False
         for square in anchors:
             rack_pass = rack.copy()
-            BotAI.left_part("", t.root, BotAI.get_count_empty_left(board, square[0], square[1]), square, board,
+            BotAI.left_part("", t.root, BotAI.get_count_empty_left(matrix, square[0], square[1]), square, matrix,
                             rack_pass, used_words,
                             cross_checks, potential_words)
 
-        board = list(zip(*board))
-        anchors = BotAI.get_anchors(board)
-        cross_checks = BotAI.get_cross_checks(t, board, used_words)
+        matrix = list(zip(*matrix))
+        anchors = BotAI.get_anchors(matrix)
+        cross_checks = BotAI.get_cross_checks(t, matrix, used_words)
 
         potential_words_transposed = []
         transposed = True
         for square in anchors:
             rack_pass = rack.copy()
-            BotAI.left_part("", t.root, BotAI.get_count_empty_left(board, square[0], square[1]), square, board,
+            BotAI.left_part("", t.root, BotAI.get_count_empty_left(matrix, square[0], square[1]), square, matrix,
                             rack_pass, used_words,
                             cross_checks, potential_words_transposed)
 
-        # back home; not transposed board/board
-        board = list(map(lambda x: list(x), list(zip(*board))))
+        # back home; not transposed board/matrix
+        matrix = list(map(lambda x: list(x), list(zip(*matrix))))
         transposed = False
 
         worst_transposed = []
@@ -632,14 +640,15 @@ class BotAI:
             transposed = True
 
         if worst[2] != []:
-            crossed = BotAI.find_cross_words(tuple(worst), used_words, board, transposed)
+            crossed = BotAI.find_cross_words(tuple(worst), used_words, matrix, transposed)
         else:
             # "!" means we do not count crossed words
             crossed = {"!"}
 
         if crossed == {} and transposed is True:
             print("AI DID WRONG MOVE!! :))))")
-            board = list(map(lambda y: list(y), list(zip(*board))))
+            matrix = list(map(lambda y: list(y), list(zip(*matrix))))
+            transposed = False
             return False, {}, rack
 
         elif crossed == {}:

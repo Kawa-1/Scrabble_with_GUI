@@ -1023,6 +1023,7 @@
 =======
 >>>>>>> 1c631f7b4499ed3123751560ce8fbf222db81d15
 >>>>>>> 05ffdec6e435de9d8bf8cfc814f638ac3690f5da
+<<<<<<< HEAD
 2022-01-10 21:45:13,789 LINE=194 func_name=__init__ | __INIT__ finished
 2022-01-10 21:58:16,246 LINE=194 func_name=__init__ | __INIT__ finished
 2022-01-10 21:58:22,224 LINE=281 func_name=clicked_confirm | Results of BotAI.ai_first_move_hard True,{'WIVING': [[7, 4], [7, 5], [7, 6], [7, 7], [7, 8], [7, 9]]},['B']
@@ -1144,3 +1145,443 @@
 2022-01-10 22:01:49,074 LINE=518 func_name=clicked_confirm | Object rack AI: ['U', 'Z', 'E', 'N']
 2022-01-10 22:01:49,074 LINE=520 func_name=clicked_confirm | Object rack AI after slice: ['R', 'O', 'V', 'U', 'Z', 'E', 'N']
 2022-01-10 22:01:49,075 LINE=781 func_name=change_player | Change player
+=======
+2022-01-10 21:19:34,981 LINE=194 func_name=__init__ | __INIT__ finished
+2022-01-10 21:19:45,249 LINE=281 func_name=clicked_confirm | Results of BotAI.ai_first_move_hard True,{'VIOLENT': [[1, 7], [2, 7], [3, 7], [4, 7], [5, 7], [6, 7], [7, 7]]},[]
+2022-01-10 21:19:45,250 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; VIOLENT:[[1, 7], [2, 7], [3, 7], [4, 7], [5, 7], [6, 7], [7, 7]]
+2022-01-10 21:19:45,251 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; VIOLENT:[[1, 7], [2, 7], [3, 7], [4, 7], [5, 7], [6, 7], [7, 7]]
+2022-01-10 21:19:45,329 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:19:45,330 LINE=452 func_name=clicked_confirm | place in rack 0 TILE: R
+2022-01-10 21:19:45,330 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:19:45,330 LINE=457 func_name=clicked_confirm | place in rack 1 TILE: Q
+2022-01-10 21:19:45,330 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:19:45,330 LINE=461 func_name=clicked_confirm | place in rack 2 TILE: Z
+2022-01-10 21:19:45,330 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:19:45,330 LINE=465 func_name=clicked_confirm | place in rack 3 TILE: D
+2022-01-10 21:19:45,330 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:19:45,330 LINE=469 func_name=clicked_confirm | place in rack 4 TILE: N
+2022-01-10 21:19:45,330 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:19:45,330 LINE=473 func_name=clicked_confirm | place in rack 5 TILE: I
+2022-01-10 21:19:45,330 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:19:45,330 LINE=477 func_name=clicked_confirm | place in rack 6 TILE: A
+2022-01-10 21:19:45,330 LINE=518 func_name=clicked_confirm | Object rack AI: []
+2022-01-10 21:19:45,330 LINE=520 func_name=clicked_confirm | Object rack AI after slice: ['R', 'Q', 'Z', 'D', 'N', 'I', 'A']
+2022-01-10 21:19:45,331 LINE=781 func_name=change_player | Change player
+2022-01-10 21:19:51,304 LINE=892 func_name=clicked_leaderboard | Leaderboard clicked
+2022-01-10 21:20:41,091 LINE=328 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'FIFE': [[3, 8], [4, 8], [5, 8], [6, 8]], 'OF': [[3, 7], [3, 8]], 'LI': [[4, 7], [4, 8]], 'EF': [[5, 7], [5, 8]], 'NE': [[6, 7], [6, 8]]}, ['L', 'H', 'E']
+2022-01-10 21:20:41,092 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; FIFEOFLIEFNE:[[3, 8], [4, 8], [5, 8], [6, 8], [3, 7], [3, 8], [4, 7], [4, 8], [5, 7], [5, 8], [6, 7], [6, 8]]
+2022-01-10 21:20:41,337 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:20:41,337 LINE=452 func_name=clicked_confirm | place in rack 0 TILE: T
+2022-01-10 21:20:41,337 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:20:41,337 LINE=457 func_name=clicked_confirm | place in rack 1 TILE: A
+2022-01-10 21:20:41,337 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:20:41,337 LINE=461 func_name=clicked_confirm | place in rack 2 TILE: U
+2022-01-10 21:20:41,337 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:20:41,337 LINE=465 func_name=clicked_confirm | place in rack 3 TILE: O
+2022-01-10 21:20:41,337 LINE=504 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 21:20:41,337 LINE=508 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 21:20:41,337 LINE=512 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 21:20:41,337 LINE=518 func_name=clicked_confirm | Object rack AI: ['L', 'H', 'E']
+2022-01-10 21:20:41,337 LINE=520 func_name=clicked_confirm | Object rack AI after slice: ['T', 'A', 'U', 'O', 'L', 'H', 'E']
+2022-01-10 21:20:41,338 LINE=781 func_name=change_player | Change player
+2022-01-10 21:20:46,139 LINE=328 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'TRAD': [(7, 7), (7, 8), (7, 9), (7, 10)], 'FIFR': [[3, 8], [4, 8], [5, 8], [7, 8]]}, ['Q', 'Z', 'N', 'I']
+2022-01-10 21:20:46,139 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; TRADFIFR:[(7, 7), (7, 8), (7, 9), (7, 10), [3, 8], [4, 8], [5, 8], [7, 8]]
+2022-01-10 21:20:46,422 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:20:46,422 LINE=452 func_name=clicked_confirm | place in rack 0 TILE: A
+2022-01-10 21:20:46,422 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:20:46,422 LINE=457 func_name=clicked_confirm | place in rack 1 TILE: A
+2022-01-10 21:20:46,422 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:20:46,422 LINE=461 func_name=clicked_confirm | place in rack 2 TILE: L
+2022-01-10 21:20:46,422 LINE=500 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 3
+2022-01-10 21:20:46,422 LINE=504 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 21:20:46,422 LINE=508 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 21:20:46,422 LINE=512 func_name=clicked_confirm | place in rack 3 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 21:20:46,422 LINE=518 func_name=clicked_confirm | Object rack AI: ['Q', 'Z', 'N', 'I']
+2022-01-10 21:20:46,423 LINE=520 func_name=clicked_confirm | Object rack AI after slice: ['A', 'A', 'L', 'Q', 'Z', 'N', 'I']
+2022-01-10 21:20:46,423 LINE=781 func_name=change_player | Change player
+2022-01-10 21:21:12,390 LINE=328 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'ANELE': [(6, 6), (6, 7), (6, 8), (6, 9), (6, 10)], 'LA': [[6, 9], [7, 9]], 'ED': [[6, 10], [7, 10]]}, ['T', 'U', 'O', 'H']
+2022-01-10 21:21:12,390 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; ANELELAED:[(6, 6), (6, 7), (6, 8), (6, 9), (6, 10), [6, 9], [7, 9], [6, 10], [7, 10]]
+2022-01-10 21:21:12,605 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:21:12,605 LINE=452 func_name=clicked_confirm | place in rack 0 TILE: V
+2022-01-10 21:21:12,605 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:21:12,605 LINE=457 func_name=clicked_confirm | place in rack 1 TILE: O
+2022-01-10 21:21:12,605 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:21:12,605 LINE=461 func_name=clicked_confirm | place in rack 2 TILE: X
+2022-01-10 21:21:12,605 LINE=500 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 3
+2022-01-10 21:21:12,605 LINE=504 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 21:21:12,605 LINE=508 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 21:21:12,605 LINE=512 func_name=clicked_confirm | place in rack 3 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 21:21:12,606 LINE=518 func_name=clicked_confirm | Object rack AI: ['T', 'U', 'O', 'H']
+2022-01-10 21:21:12,606 LINE=520 func_name=clicked_confirm | Object rack AI after slice: ['V', 'O', 'X', 'T', 'U', 'O', 'H']
+2022-01-10 21:21:12,606 LINE=781 func_name=change_player | Change player
+2022-01-10 21:21:16,549 LINE=328 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'NEF': [(5, 6), (5, 7), (5, 8)], 'NA': [[5, 6], [6, 6]]}, ['A', 'A', 'L', 'Q', 'Z', 'I']
+2022-01-10 21:21:16,549 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; NEFNA:[(5, 6), (5, 7), (5, 8), [5, 6], [6, 6]]
+2022-01-10 21:21:16,664 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:21:16,664 LINE=452 func_name=clicked_confirm | place in rack 0 TILE: S
+2022-01-10 21:21:16,664 LINE=492 func_name=clicked_confirm | index==0; place in rack 1 Setting Tiles which has been on already on the rack AI A
+2022-01-10 21:21:16,664 LINE=496 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 2
+2022-01-10 21:21:16,664 LINE=500 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 3
+2022-01-10 21:21:16,665 LINE=504 func_name=clicked_confirm | place in rack 3 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 21:21:16,665 LINE=508 func_name=clicked_confirm | place in rack 4 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 21:21:16,665 LINE=512 func_name=clicked_confirm | place in rack 5 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 21:21:16,665 LINE=518 func_name=clicked_confirm | Object rack AI: ['A', 'A', 'L', 'Q', 'Z', 'I']
+2022-01-10 21:21:16,665 LINE=520 func_name=clicked_confirm | Object rack AI after slice: ['S', 'A', 'A', 'L', 'Q', 'Z', 'I']
+2022-01-10 21:21:16,665 LINE=781 func_name=change_player | Change player
+2022-01-10 21:21:31,300 LINE=328 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'THO': [(8, 9), (8, 10), (8, 11)], 'LT': [[6, 9], [8, 9]], 'EH': [[6, 10], [8, 10]]}, ['V', 'X', 'U', 'O']
+2022-01-10 21:21:31,300 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; THOLTEH:[(8, 9), (8, 10), (8, 11), [6, 9], [8, 9], [6, 10], [8, 10]]
+2022-01-10 21:21:31,451 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:21:31,451 LINE=452 func_name=clicked_confirm | place in rack 0 TILE: E
+2022-01-10 21:21:31,452 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:21:31,452 LINE=457 func_name=clicked_confirm | place in rack 1 TILE: I
+2022-01-10 21:21:31,452 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:21:31,452 LINE=461 func_name=clicked_confirm | place in rack 2 TILE: R
+2022-01-10 21:21:31,452 LINE=500 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 3
+2022-01-10 21:21:31,452 LINE=504 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 21:21:31,452 LINE=508 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 21:21:31,452 LINE=512 func_name=clicked_confirm | place in rack 3 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 21:21:31,452 LINE=518 func_name=clicked_confirm | Object rack AI: ['V', 'X', 'U', 'O']
+2022-01-10 21:21:31,452 LINE=520 func_name=clicked_confirm | Object rack AI after slice: ['E', 'I', 'R', 'V', 'X', 'U', 'O']
+2022-01-10 21:21:31,453 LINE=781 func_name=change_player | Change player
+2022-01-10 21:22:18,165 LINE=328 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'SOZ': [[7, 11], [8, 11], [9, 11]], 'TRAS': [[7, 7], [7, 8], [7, 9], [7, 11]]}, ['A', 'A', 'L', 'Q', 'I']
+2022-01-10 21:22:18,165 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; SOZTRAS:[[7, 11], [8, 11], [9, 11], [7, 7], [7, 8], [7, 9], [7, 11]]
+2022-01-10 21:22:18,315 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:22:18,315 LINE=452 func_name=clicked_confirm | place in rack 0 TILE: R
+2022-01-10 21:22:18,315 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:22:18,315 LINE=457 func_name=clicked_confirm | place in rack 1 TILE: G
+2022-01-10 21:22:18,315 LINE=496 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 2
+2022-01-10 21:22:18,315 LINE=500 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 3
+2022-01-10 21:22:18,315 LINE=504 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 21:22:18,316 LINE=508 func_name=clicked_confirm | place in rack 3 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 21:22:18,316 LINE=512 func_name=clicked_confirm | place in rack 4 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 21:22:18,316 LINE=518 func_name=clicked_confirm | Object rack AI: ['A', 'A', 'L', 'Q', 'I']
+2022-01-10 21:22:18,316 LINE=520 func_name=clicked_confirm | Object rack AI after slice: ['R', 'G', 'A', 'A', 'L', 'Q', 'I']
+2022-01-10 21:22:18,316 LINE=781 func_name=change_player | Change player
+2022-01-10 21:22:30,740 LINE=328 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'ZEX': [(9, 11), (9, 12), (9, 13)]}, ['I', 'R', 'V', 'U', 'O']
+2022-01-10 21:22:30,741 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; ZEX:[(9, 11), (9, 12), (9, 13)]
+2022-01-10 21:22:30,843 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:22:30,843 LINE=452 func_name=clicked_confirm | place in rack 0 TILE: O
+2022-01-10 21:22:30,843 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:22:30,844 LINE=457 func_name=clicked_confirm | place in rack 1 TILE: R
+2022-01-10 21:22:30,844 LINE=496 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 2
+2022-01-10 21:22:30,844 LINE=500 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 3
+2022-01-10 21:22:30,844 LINE=504 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 21:22:30,844 LINE=508 func_name=clicked_confirm | place in rack 3 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 21:22:30,844 LINE=512 func_name=clicked_confirm | place in rack 4 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 21:22:30,844 LINE=518 func_name=clicked_confirm | Object rack AI: ['I', 'R', 'V', 'U', 'O']
+2022-01-10 21:22:30,844 LINE=520 func_name=clicked_confirm | Object rack AI after slice: ['O', 'R', 'I', 'R', 'V', 'U', 'O']
+2022-01-10 21:22:30,845 LINE=781 func_name=change_player | Change player
+2022-01-10 21:24:29,667 LINE=328 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'ZARI': [[9, 11], [10, 11], [11, 11], [12, 11]]}, ['G', 'A', 'L', 'Q']
+2022-01-10 21:24:29,667 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; ZARI:[[9, 11], [10, 11], [11, 11], [12, 11]]
+2022-01-10 21:24:30,057 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:24:30,057 LINE=452 func_name=clicked_confirm | place in rack 0 TILE: A
+2022-01-10 21:24:30,057 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:24:30,057 LINE=457 func_name=clicked_confirm | place in rack 1 TILE: N
+2022-01-10 21:24:30,057 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:24:30,057 LINE=461 func_name=clicked_confirm | place in rack 2 TILE: A
+2022-01-10 21:24:30,057 LINE=500 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 3
+2022-01-10 21:24:30,057 LINE=504 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 21:24:30,057 LINE=508 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 21:24:30,057 LINE=512 func_name=clicked_confirm | place in rack 3 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 21:24:30,057 LINE=518 func_name=clicked_confirm | Object rack AI: ['G', 'A', 'L', 'Q']
+2022-01-10 21:24:30,057 LINE=520 func_name=clicked_confirm | Object rack AI after slice: ['A', 'N', 'A', 'G', 'A', 'L', 'Q']
+2022-01-10 21:24:30,057 LINE=781 func_name=change_player | Change player
+2022-01-10 21:25:24,216 LINE=607 func_name=clicked_clear | Clear clicked
+2022-01-10 21:25:24,824 LINE=607 func_name=clicked_clear | Clear clicked
+2022-01-10 21:25:26,992 LINE=607 func_name=clicked_clear | Clear clicked
+2022-01-10 21:25:27,152 LINE=607 func_name=clicked_clear | Clear clicked
+2022-01-10 21:25:27,312 LINE=607 func_name=clicked_clear | Clear clicked
+2022-01-10 21:25:27,464 LINE=607 func_name=clicked_clear | Clear clicked
+2022-01-10 21:25:27,617 LINE=607 func_name=clicked_clear | Clear clicked
+2022-01-10 21:25:30,022 LINE=328 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'OOR': [[11, 10], [12, 10], [13, 10]], 'OR': [[11, 10], [11, 11]], 'OI': [[12, 10], [12, 11]]}, ['I', 'R', 'V', 'U']
+2022-01-10 21:25:30,023 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; OOROROI:[[11, 10], [12, 10], [13, 10], [11, 10], [11, 11], [12, 10], [12, 11]]
+2022-01-10 21:25:30,132 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:25:30,133 LINE=452 func_name=clicked_confirm | place in rack 0 TILE: E
+2022-01-10 21:25:30,133 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:25:30,133 LINE=457 func_name=clicked_confirm | place in rack 1 TILE: I
+2022-01-10 21:25:30,133 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:25:30,134 LINE=461 func_name=clicked_confirm | place in rack 2 TILE: O
+2022-01-10 21:25:30,134 LINE=500 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 3
+2022-01-10 21:25:30,134 LINE=504 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 21:25:30,136 LINE=508 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 21:25:30,136 LINE=512 func_name=clicked_confirm | place in rack 3 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 21:25:30,136 LINE=518 func_name=clicked_confirm | Object rack AI: ['I', 'R', 'V', 'U']
+2022-01-10 21:25:30,136 LINE=520 func_name=clicked_confirm | Object rack AI after slice: ['E', 'I', 'O', 'I', 'R', 'V', 'U']
+2022-01-10 21:25:30,139 LINE=781 func_name=change_player | Change player
+2022-01-10 21:25:31,616 LINE=607 func_name=clicked_clear | Clear clicked
+2022-01-10 21:25:31,744 LINE=607 func_name=clicked_clear | Clear clicked
+2022-01-10 21:25:32,368 LINE=899 func_name=clicked_help | Help clicked
+2022-01-10 21:25:42,327 LINE=328 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'ALIGN': [(4, 6), (4, 7), (4, 8), (4, 9), (4, 10)], 'ANA': [[4, 6], [5, 6], [6, 6]]}, ['A', 'A', 'L', 'Q']
+2022-01-10 21:25:42,327 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; ALIGNANA:[(4, 6), (4, 7), (4, 8), (4, 9), (4, 10), [4, 6], [5, 6], [6, 6]]
+2022-01-10 21:25:42,476 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:25:42,476 LINE=452 func_name=clicked_confirm | place in rack 0 TILE: B
+2022-01-10 21:25:42,476 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:25:42,477 LINE=457 func_name=clicked_confirm | place in rack 1 TILE: U
+2022-01-10 21:25:42,477 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:25:42,477 LINE=461 func_name=clicked_confirm | place in rack 2 TILE: R
+2022-01-10 21:25:42,477 LINE=500 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 3
+2022-01-10 21:25:42,477 LINE=504 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 21:25:42,477 LINE=508 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 21:25:42,477 LINE=512 func_name=clicked_confirm | place in rack 3 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 21:25:42,477 LINE=518 func_name=clicked_confirm | Object rack AI: ['A', 'A', 'L', 'Q']
+2022-01-10 21:25:42,477 LINE=520 func_name=clicked_confirm | Object rack AI after slice: ['B', 'U', 'R', 'A', 'A', 'L', 'Q']
+2022-01-10 21:25:42,480 LINE=781 func_name=change_player | Change player
+2022-01-10 21:29:55,318 LINE=194 func_name=__init__ | __INIT__ finished
+2022-01-10 21:30:15,986 LINE=281 func_name=clicked_confirm | Results of BotAI.ai_first_move_hard True,{'BONDER': [[7, 7], [7, 8], [7, 9], [7, 10], [7, 11], [7, 12]]},['T']
+2022-01-10 21:31:02,218 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; BONDER:[[7, 7], [7, 8], [7, 9], [7, 10], [7, 11], [7, 12]]
+2022-01-10 21:31:04,529 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; BONDER:[[7, 7], [7, 8], [7, 9], [7, 10], [7, 11], [7, 12]]
+2022-01-10 21:31:05,214 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:31:05,214 LINE=452 func_name=clicked_confirm | place in rack 0 TILE: E
+2022-01-10 21:31:05,215 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:31:05,215 LINE=457 func_name=clicked_confirm | place in rack 1 TILE: I
+2022-01-10 21:31:05,215 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:31:05,215 LINE=461 func_name=clicked_confirm | place in rack 2 TILE: A
+2022-01-10 21:31:05,215 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:31:05,216 LINE=465 func_name=clicked_confirm | place in rack 3 TILE: U
+2022-01-10 21:31:05,216 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:31:05,216 LINE=469 func_name=clicked_confirm | place in rack 4 TILE: H
+2022-01-10 21:31:05,216 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:31:05,216 LINE=473 func_name=clicked_confirm | place in rack 5 TILE: U
+2022-01-10 21:31:05,216 LINE=512 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 21:31:05,217 LINE=518 func_name=clicked_confirm | Object rack AI: ['T']
+2022-01-10 21:31:05,217 LINE=520 func_name=clicked_confirm | Object rack AI after slice: ['E', 'I', 'A', 'U', 'H', 'U', 'T']
+2022-01-10 21:31:05,218 LINE=781 func_name=change_player | Change player
+2022-01-10 21:31:58,580 LINE=328 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'BATTY': [[7, 7], [8, 7], [9, 7], [10, 7], [11, 7]]}, ['O', 'O', 'F']
+2022-01-10 21:31:59,272 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; BATTY:[[7, 7], [8, 7], [9, 7], [10, 7], [11, 7]]
+2022-01-10 21:32:00,381 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:32:00,381 LINE=452 func_name=clicked_confirm | place in rack 0 TILE: A
+2022-01-10 21:32:00,382 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:32:00,382 LINE=457 func_name=clicked_confirm | place in rack 1 TILE: L
+2022-01-10 21:32:00,382 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:32:00,382 LINE=461 func_name=clicked_confirm | place in rack 2 TILE: R
+2022-01-10 21:32:00,382 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:32:00,382 LINE=465 func_name=clicked_confirm | place in rack 3 TILE: W
+2022-01-10 21:32:00,382 LINE=504 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 21:32:00,383 LINE=508 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 21:32:00,383 LINE=512 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 21:32:00,383 LINE=518 func_name=clicked_confirm | Object rack AI: ['O', 'O', 'F']
+2022-01-10 21:32:00,383 LINE=520 func_name=clicked_confirm | Object rack AI after slice: ['A', 'L', 'R', 'W', 'O', 'O', 'F']
+2022-01-10 21:32:00,384 LINE=781 func_name=change_player | Change player
+2022-01-10 21:33:05,443 LINE=328 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'AIA': [(8, 7), (8, 8), (8, 9)], 'OI': [[7, 8], [8, 8]], 'NA': [[7, 9], [8, 9]]}, ['E', 'U', 'H', 'U', 'T']
+2022-01-10 21:33:05,585 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; AIAOINA:[(8, 7), (8, 8), (8, 9), [7, 8], [8, 8], [7, 9], [8, 9]]
+2022-01-10 21:33:05,725 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:33:05,725 LINE=452 func_name=clicked_confirm | place in rack 0 TILE: M
+2022-01-10 21:33:05,725 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:33:05,725 LINE=457 func_name=clicked_confirm | place in rack 1 TILE: U
+2022-01-10 21:33:05,725 LINE=496 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 2
+2022-01-10 21:33:05,726 LINE=500 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 3
+2022-01-10 21:33:05,726 LINE=504 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 21:33:05,726 LINE=508 func_name=clicked_confirm | place in rack 3 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 21:33:05,726 LINE=512 func_name=clicked_confirm | place in rack 4 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 21:33:05,726 LINE=518 func_name=clicked_confirm | Object rack AI: ['E', 'U', 'H', 'U', 'T']
+2022-01-10 21:33:05,726 LINE=520 func_name=clicked_confirm | Object rack AI after slice: ['M', 'U', 'E', 'U', 'H', 'U', 'T']
+2022-01-10 21:33:05,727 LINE=781 func_name=change_player | Change player
+2022-01-10 21:37:19,696 LINE=194 func_name=__init__ | __INIT__ finished
+2022-01-10 21:39:28,211 LINE=281 func_name=clicked_confirm | Results of BotAI.ai_first_move_hard True,{'BAFTS': [[3, 7], [4, 7], [5, 7], [6, 7], [7, 7]]},['N', 'I']
+2022-01-10 21:39:28,846 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; BAFTS:[[3, 7], [4, 7], [5, 7], [6, 7], [7, 7]]
+2022-01-10 21:39:31,147 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; BAFTS:[[3, 7], [4, 7], [5, 7], [6, 7], [7, 7]]
+2022-01-10 21:39:31,928 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:39:31,928 LINE=452 func_name=clicked_confirm | place in rack 0 TILE: B
+2022-01-10 21:39:31,928 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:39:31,928 LINE=457 func_name=clicked_confirm | place in rack 1 TILE: A
+2022-01-10 21:39:31,928 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:39:31,928 LINE=461 func_name=clicked_confirm | place in rack 2 TILE: K
+2022-01-10 21:39:31,929 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:39:31,929 LINE=465 func_name=clicked_confirm | place in rack 3 TILE: S
+2022-01-10 21:39:31,929 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:39:31,929 LINE=469 func_name=clicked_confirm | place in rack 4 TILE: O
+2022-01-10 21:39:31,929 LINE=508 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 21:39:31,929 LINE=512 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 21:39:31,929 LINE=518 func_name=clicked_confirm | Object rack AI: ['N', 'I']
+2022-01-10 21:39:31,929 LINE=520 func_name=clicked_confirm | Object rack AI after slice: ['B', 'A', 'K', 'S', 'O', 'N', 'I']
+2022-01-10 21:39:31,930 LINE=781 func_name=change_player | Change player
+2022-01-10 21:39:38,633 LINE=328 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'FID': [(5, 7), (5, 8), (5, 9)]}, ['L', 'L', 'G', 'A', 'V']
+2022-01-10 21:39:44,467 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; FID:[(5, 7), (5, 8), (5, 9)]
+2022-01-10 21:39:44,729 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:39:44,730 LINE=452 func_name=clicked_confirm | place in rack 0 TILE: E
+2022-01-10 21:39:44,730 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:39:44,730 LINE=457 func_name=clicked_confirm | place in rack 1 TILE: J
+2022-01-10 21:39:44,730 LINE=496 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 2
+2022-01-10 21:39:44,730 LINE=500 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 3
+2022-01-10 21:39:44,731 LINE=504 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 21:39:44,731 LINE=508 func_name=clicked_confirm | place in rack 3 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 21:39:44,731 LINE=512 func_name=clicked_confirm | place in rack 4 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 21:39:44,731 LINE=518 func_name=clicked_confirm | Object rack AI: ['L', 'L', 'G', 'A', 'V']
+2022-01-10 21:39:44,731 LINE=520 func_name=clicked_confirm | Object rack AI after slice: ['E', 'J', 'L', 'L', 'G', 'A', 'V']
+2022-01-10 21:39:44,732 LINE=781 func_name=change_player | Change player
+2022-01-10 21:39:51,876 LINE=328 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'OAK': [(4, 6), (4, 7), (4, 8)], 'KI': [[4, 8], [5, 8]]}, ['B', 'A', 'S', 'N', 'I']
+2022-01-10 21:39:52,024 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; OAKKI:[(4, 6), (4, 7), (4, 8), [4, 8], [5, 8]]
+2022-01-10 21:39:52,165 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:39:52,165 LINE=452 func_name=clicked_confirm | place in rack 0 TILE: T
+2022-01-10 21:39:52,165 LINE=449 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 21:39:52,166 LINE=457 func_name=clicked_confirm | place in rack 1 TILE: H
+2022-01-10 21:39:52,166 LINE=496 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 2
+2022-01-10 21:39:52,167 LINE=500 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 3
+2022-01-10 21:39:52,167 LINE=504 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 21:39:52,168 LINE=508 func_name=clicked_confirm | place in rack 3 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 21:39:52,168 LINE=512 func_name=clicked_confirm | place in rack 4 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 21:39:52,168 LINE=518 func_name=clicked_confirm | Object rack AI: ['B', 'A', 'S', 'N', 'I']
+2022-01-10 21:39:52,168 LINE=520 func_name=clicked_confirm | Object rack AI after slice: ['T', 'H', 'B', 'A', 'S', 'N', 'I']
+2022-01-10 21:39:52,178 LINE=781 func_name=change_player | Change player
+2022-01-10 22:11:02,447 LINE=194 func_name=__init__ | __INIT__ finished
+2022-01-10 22:11:08,656 LINE=281 func_name=clicked_confirm | Results of BotAI.ai_first_move_hard True,{'WADMOL': [[7, 7], [8, 7], [9, 7], [10, 7], [11, 7], [12, 7]]},['T']
+2022-01-10 22:11:08,656 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; WADMOL:[[7, 7], [8, 7], [9, 7], [10, 7], [11, 7], [12, 7]]
+2022-01-10 22:11:08,657 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; WADMOL:[[7, 7], [8, 7], [9, 7], [10, 7], [11, 7], [12, 7]]
+2022-01-10 22:11:08,890 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:11:08,891 LINE=453 func_name=clicked_confirm | place in rack 0 TILE: L
+2022-01-10 22:11:08,891 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:11:08,891 LINE=458 func_name=clicked_confirm | place in rack 1 TILE: A
+2022-01-10 22:11:08,891 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:11:08,891 LINE=462 func_name=clicked_confirm | place in rack 2 TILE: W
+2022-01-10 22:11:08,891 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:11:08,891 LINE=466 func_name=clicked_confirm | place in rack 3 TILE: C
+2022-01-10 22:11:08,891 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:11:08,891 LINE=470 func_name=clicked_confirm | place in rack 4 TILE: P
+2022-01-10 22:11:08,891 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:11:08,891 LINE=474 func_name=clicked_confirm | place in rack 5 TILE: N
+2022-01-10 22:11:08,891 LINE=513 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 22:11:08,891 LINE=519 func_name=clicked_confirm | Object rack AI: ['T']
+2022-01-10 22:11:08,891 LINE=521 func_name=clicked_confirm | Object rack AI after slice: ['L', 'A', 'W', 'C', 'P', 'N', 'T']
+2022-01-10 22:11:08,892 LINE=782 func_name=change_player | Change player
+2022-01-10 22:11:11,544 LINE=329 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'WAB': [(7, 7), (7, 8), (7, 9)]}, ['F', 'E', 'E', 'I', 'H']
+2022-01-10 22:11:11,545 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; WAB:[(7, 7), (7, 8), (7, 9)]
+2022-01-10 22:11:11,917 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:11:11,917 LINE=453 func_name=clicked_confirm | place in rack 0 TILE: I
+2022-01-10 22:11:11,917 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:11:11,917 LINE=458 func_name=clicked_confirm | place in rack 1 TILE: G
+2022-01-10 22:11:11,917 LINE=497 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 2
+2022-01-10 22:11:11,917 LINE=501 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 3
+2022-01-10 22:11:11,917 LINE=505 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 22:11:11,917 LINE=509 func_name=clicked_confirm | place in rack 3 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 22:11:11,917 LINE=513 func_name=clicked_confirm | place in rack 4 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 22:11:11,917 LINE=519 func_name=clicked_confirm | Object rack AI: ['F', 'E', 'E', 'I', 'H']
+2022-01-10 22:11:11,917 LINE=521 func_name=clicked_confirm | Object rack AI after slice: ['I', 'G', 'F', 'E', 'E', 'I', 'H']
+2022-01-10 22:11:11,918 LINE=782 func_name=change_player | Change player
+2022-01-10 22:11:35,033 LINE=329 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'WAP': [[11, 8], [12, 8], [13, 8]], 'OW': [[11, 7], [11, 8]], 'LA': [[12, 7], [12, 8]]}, ['L', 'C', 'N', 'T']
+2022-01-10 22:11:35,033 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; WAPOWLA:[[11, 8], [12, 8], [13, 8], [11, 7], [11, 8], [12, 7], [12, 8]]
+2022-01-10 22:11:35,257 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:11:35,257 LINE=453 func_name=clicked_confirm | place in rack 0 TILE: A
+2022-01-10 22:11:35,257 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:11:35,257 LINE=458 func_name=clicked_confirm | place in rack 1 TILE: L
+2022-01-10 22:11:35,258 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:11:35,258 LINE=462 func_name=clicked_confirm | place in rack 2 TILE: T
+2022-01-10 22:11:35,258 LINE=501 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 3
+2022-01-10 22:11:35,258 LINE=505 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 22:11:35,258 LINE=509 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 22:11:35,258 LINE=513 func_name=clicked_confirm | place in rack 3 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 22:11:35,258 LINE=519 func_name=clicked_confirm | Object rack AI: ['L', 'C', 'N', 'T']
+2022-01-10 22:11:35,258 LINE=521 func_name=clicked_confirm | Object rack AI after slice: ['A', 'L', 'T', 'L', 'C', 'N', 'T']
+2022-01-10 22:11:35,259 LINE=782 func_name=change_player | Change player
+2022-01-10 22:13:19,721 LINE=329 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'AHI': [(8, 7), (8, 8), (8, 9)], 'AH': [[7, 8], [8, 8]], 'BI': [[7, 9], [8, 9]]}, ['G', 'F', 'E', 'E', 'I']
+2022-01-10 22:13:19,722 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; AHIAHBI:[(8, 7), (8, 8), (8, 9), [7, 8], [8, 8], [7, 9], [8, 9]]
+2022-01-10 22:13:20,300 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:13:20,300 LINE=453 func_name=clicked_confirm | place in rack 0 TILE: I
+2022-01-10 22:13:20,300 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:13:20,300 LINE=458 func_name=clicked_confirm | place in rack 1 TILE: A
+2022-01-10 22:13:20,300 LINE=497 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 2
+2022-01-10 22:13:20,300 LINE=501 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 3
+2022-01-10 22:13:20,300 LINE=505 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 22:13:20,300 LINE=509 func_name=clicked_confirm | place in rack 3 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 22:13:20,301 LINE=513 func_name=clicked_confirm | place in rack 4 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 22:13:20,301 LINE=519 func_name=clicked_confirm | Object rack AI: ['G', 'F', 'E', 'E', 'I']
+2022-01-10 22:13:20,301 LINE=521 func_name=clicked_confirm | Object rack AI after slice: ['I', 'A', 'G', 'F', 'E', 'E', 'I']
+2022-01-10 22:13:20,301 LINE=782 func_name=change_player | Change player
+2022-01-10 22:13:23,977 LINE=329 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'DAN': [(9, 7), (9, 8), (9, 9)], 'AA': [[7, 8], [9, 8]], 'BN': [[7, 9], [9, 9]]}, ['L', 'T', 'L', 'C', 'T']
+2022-01-10 22:13:23,977 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; DANAABN:[(9, 7), (9, 8), (9, 9), [7, 8], [9, 8], [7, 9], [9, 9]]
+2022-01-10 22:13:24,096 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:13:24,096 LINE=453 func_name=clicked_confirm | place in rack 0 TILE: E
+2022-01-10 22:13:24,096 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:13:24,096 LINE=458 func_name=clicked_confirm | place in rack 1 TILE: D
+2022-01-10 22:13:24,096 LINE=497 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 2
+2022-01-10 22:13:24,096 LINE=501 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 3
+2022-01-10 22:13:24,096 LINE=505 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 22:13:24,096 LINE=509 func_name=clicked_confirm | place in rack 3 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 22:13:24,096 LINE=513 func_name=clicked_confirm | place in rack 4 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 22:13:24,096 LINE=519 func_name=clicked_confirm | Object rack AI: ['L', 'T', 'L', 'C', 'T']
+2022-01-10 22:13:24,096 LINE=521 func_name=clicked_confirm | Object rack AI after slice: ['E', 'D', 'L', 'T', 'L', 'C', 'T']
+2022-01-10 22:13:24,097 LINE=782 func_name=change_player | Change player
+2022-01-10 22:13:28,098 LINE=329 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'GAE': [(10, 9), (10, 10), (10, 11)], 'BIG': [[7, 9], [8, 9], [10, 9]]}, ['I', 'F', 'E', 'I']
+2022-01-10 22:13:28,099 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; GAEBIG:[(10, 9), (10, 10), (10, 11), [7, 9], [8, 9], [10, 9]]
+2022-01-10 22:13:28,289 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:13:28,289 LINE=453 func_name=clicked_confirm | place in rack 0 TILE: U
+2022-01-10 22:13:28,289 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:13:28,289 LINE=458 func_name=clicked_confirm | place in rack 1 TILE: L
+2022-01-10 22:13:28,289 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:13:28,289 LINE=462 func_name=clicked_confirm | place in rack 2 TILE: N
+2022-01-10 22:13:28,289 LINE=501 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 3
+2022-01-10 22:13:28,289 LINE=505 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 22:13:28,289 LINE=509 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 22:13:28,289 LINE=513 func_name=clicked_confirm | place in rack 3 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 22:13:28,290 LINE=519 func_name=clicked_confirm | Object rack AI: ['I', 'F', 'E', 'I']
+2022-01-10 22:13:28,290 LINE=521 func_name=clicked_confirm | Object rack AI after slice: ['U', 'L', 'N', 'I', 'F', 'E', 'I']
+2022-01-10 22:13:28,290 LINE=782 func_name=change_player | Change player
+2022-01-10 22:13:34,811 LINE=329 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'WELD': [(11, 8), (11, 9), (11, 10), (11, 11)], 'BINE': [[7, 9], [8, 9], [9, 9], [11, 9]], 'AL': [[10, 10], [11, 10]], 'ED': [[10, 11], [11, 11]]}, ['T', 'L', 'C', 'T']
+2022-01-10 22:13:34,811 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; WELDBINEALED:[(11, 8), (11, 9), (11, 10), (11, 11), [7, 9], [8, 9], [9, 9], [11, 9], [10, 10], [11, 10], [10, 11], [11, 11]]
+2022-01-10 22:13:34,999 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:13:34,999 LINE=453 func_name=clicked_confirm | place in rack 0 TILE: G
+2022-01-10 22:13:35,000 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:13:35,000 LINE=458 func_name=clicked_confirm | place in rack 1 TILE: H
+2022-01-10 22:13:35,000 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:13:35,000 LINE=462 func_name=clicked_confirm | place in rack 2 TILE: G
+2022-01-10 22:13:35,000 LINE=501 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 3
+2022-01-10 22:13:35,000 LINE=505 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 22:13:35,000 LINE=509 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 22:13:35,000 LINE=513 func_name=clicked_confirm | place in rack 3 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 22:13:35,000 LINE=519 func_name=clicked_confirm | Object rack AI: ['T', 'L', 'C', 'T']
+2022-01-10 22:13:35,000 LINE=521 func_name=clicked_confirm | Object rack AI after slice: ['G', 'H', 'G', 'T', 'L', 'C', 'T']
+2022-01-10 22:13:35,001 LINE=782 func_name=change_player | Change player
+2022-01-10 22:13:40,682 LINE=329 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'FED': [[9, 11], [10, 11], [11, 11]]}, ['U', 'L', 'N', 'I', 'E', 'I']
+2022-01-10 22:13:40,682 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; FED:[[9, 11], [10, 11], [11, 11]]
+2022-01-10 22:13:40,825 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:13:40,825 LINE=453 func_name=clicked_confirm | place in rack 0 TILE: N
+2022-01-10 22:13:40,825 LINE=493 func_name=clicked_confirm | index==0; place in rack 1 Setting Tiles which has been on already on the rack AI U
+2022-01-10 22:13:40,826 LINE=497 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 2
+2022-01-10 22:13:40,826 LINE=501 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 3
+2022-01-10 22:13:40,826 LINE=505 func_name=clicked_confirm | place in rack 3 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 22:13:40,826 LINE=509 func_name=clicked_confirm | place in rack 4 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 22:13:40,826 LINE=513 func_name=clicked_confirm | place in rack 5 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 22:13:40,826 LINE=519 func_name=clicked_confirm | Object rack AI: ['U', 'L', 'N', 'I', 'E', 'I']
+2022-01-10 22:13:40,826 LINE=521 func_name=clicked_confirm | Object rack AI after slice: ['N', 'U', 'L', 'N', 'I', 'E', 'I']
+2022-01-10 22:13:40,826 LINE=782 func_name=change_player | Change player
+2022-01-10 22:13:50,122 LINE=329 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'PHT': [(13, 8), (13, 9), (13, 10)]}, ['G', 'G', 'L', 'C', 'T']
+2022-01-10 22:13:50,122 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; PHT:[(13, 8), (13, 9), (13, 10)]
+2022-01-10 22:13:50,237 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:13:50,237 LINE=453 func_name=clicked_confirm | place in rack 0 TILE: I
+2022-01-10 22:13:50,237 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:13:50,237 LINE=458 func_name=clicked_confirm | place in rack 1 TILE: U
+2022-01-10 22:13:50,237 LINE=497 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 2
+2022-01-10 22:13:50,237 LINE=501 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 3
+2022-01-10 22:13:50,237 LINE=505 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 22:13:50,237 LINE=509 func_name=clicked_confirm | place in rack 3 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 22:13:50,237 LINE=513 func_name=clicked_confirm | place in rack 4 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 22:13:50,237 LINE=519 func_name=clicked_confirm | Object rack AI: ['G', 'G', 'L', 'C', 'T']
+2022-01-10 22:13:50,237 LINE=521 func_name=clicked_confirm | Object rack AI after slice: ['I', 'U', 'G', 'G', 'L', 'C', 'T']
+2022-01-10 22:13:50,238 LINE=782 func_name=change_player | Change player
+2022-01-10 22:14:14,531 LINE=329 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'INN': [(14, 10), (14, 11), (14, 12)], 'TI': [[13, 10], [14, 10]]}, ['U', 'L', 'E', 'I']
+2022-01-10 22:14:14,531 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; INNTI:[(14, 10), (14, 11), (14, 12), [13, 10], [14, 10]]
+2022-01-10 22:14:14,672 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:14:14,672 LINE=453 func_name=clicked_confirm | place in rack 0 TILE: I
+2022-01-10 22:14:14,672 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:14:14,672 LINE=458 func_name=clicked_confirm | place in rack 1 TILE: E
+2022-01-10 22:14:14,672 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:14:14,672 LINE=462 func_name=clicked_confirm | place in rack 2 TILE: T
+2022-01-10 22:14:14,672 LINE=501 func_name=clicked_confirm | place in rack 0 Setting Tiles which has been on already on the rack AI 3
+2022-01-10 22:14:14,672 LINE=505 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 22:14:14,672 LINE=509 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 22:14:14,672 LINE=513 func_name=clicked_confirm | place in rack 3 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 22:14:14,672 LINE=519 func_name=clicked_confirm | Object rack AI: ['U', 'L', 'E', 'I']
+2022-01-10 22:14:14,672 LINE=521 func_name=clicked_confirm | Object rack AI after slice: ['I', 'E', 'T', 'U', 'L', 'E', 'I']
+2022-01-10 22:14:14,673 LINE=782 func_name=change_player | Change player
+2022-01-10 22:14:19,475 LINE=329 func_name=clicked_confirm | Results of BotAI.make_hard_move True, {'ECH': [[11, 9], [12, 9], [13, 9]], 'LC': [[12, 7], [12, 9]]}, ['I', 'U', 'G', 'G', 'L', 'T']
+2022-01-10 22:14:19,475 LINE=256 func_name=ai_place_letter | Placing letters (It is not literally placing;) more like points to count) by AI; ECHLC:[[11, 9], [12, 9], [13, 9], [12, 7], [12, 9]]
+2022-01-10 22:14:19,587 LINE=450 func_name=clicked_confirm | Generating new Tile on the rack for AI
+2022-01-10 22:14:19,587 LINE=453 func_name=clicked_confirm | place in rack 0 TILE: X
+2022-01-10 22:14:19,588 LINE=493 func_name=clicked_confirm | index==0; place in rack 1 Setting Tiles which has been on already on the rack AI I
+2022-01-10 22:14:19,588 LINE=497 func_name=clicked_confirm | place in rack 1 Setting Tiles which has been on already on the rack AI 2
+2022-01-10 22:14:19,588 LINE=501 func_name=clicked_confirm | place in rack 2 Setting Tiles which has been on already on the rack AI 3
+2022-01-10 22:14:19,588 LINE=505 func_name=clicked_confirm | place in rack 3 Setting Tiles which has been on already on the rack AI 4
+2022-01-10 22:14:19,588 LINE=509 func_name=clicked_confirm | place in rack 4 Setting Tiles which has been on already on the rack AI 5
+2022-01-10 22:14:19,588 LINE=513 func_name=clicked_confirm | place in rack 5 Setting Tiles which has been on already on the rack AI 6
+2022-01-10 22:14:19,588 LINE=519 func_name=clicked_confirm | Object rack AI: ['I', 'U', 'G', 'G', 'L', 'T']
+2022-01-10 22:14:19,588 LINE=521 func_name=clicked_confirm | Object rack AI after slice: ['X', 'I', 'U', 'G', 'G', 'L', 'T']
+2022-01-10 22:14:19,589 LINE=782 func_name=change_player | Change player
+>>>>>>> a38c4f00a74cc15ce38c8248c237a31e9194241a

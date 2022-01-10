@@ -321,6 +321,7 @@ class Board_gui(QtWidgets.QMainWindow):
         elif self.players[self.current_player].bot is True and self.pass_first_move_check == 1:
             if self.players[self.current_player].difficulty == "HARD":
                 print("After first_move WORKFLOW AI")
+                # It was made due to bug which have been found earlier | actually without this line below should be fine
                 self.players[self.current_player].rack = self.players[self.current_player].rack[:7]
                 self.valid_move, words_4_score, self.rack_AI = BotAI.make_hard_move(self.t,
                             self.players[self.current_player].rack, self.new_player_move_board, self.board.checked_words)
