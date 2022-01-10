@@ -350,7 +350,7 @@ class Board_gui(QtWidgets.QMainWindow):
             ManagementGeneralLeaderboard.save_board(_b2string, self.game_id, self.players[self.current_player].name,
                                                     self.moves_count)
             # acquire all board per move info; index[1][0][3] denotes board2string; index[] is bool
-            _string2b = string_to_board(ManagementGeneralLeaderboard.acquire_board(self.game_id)[1][0][3])
+            #_string2b = string_to_board(ManagementGeneralLeaderboard.acquire_board(self.game_id)[1][0][3])
 
             self.board.actual_board = self.actual_board
             # check for new adjacencies 0,1,2
@@ -379,7 +379,7 @@ class Board_gui(QtWidgets.QMainWindow):
             # TODO: copy self.new_player_move_board into db
             ManagementGeneralLeaderboard.save_board(_b2string, self.game_id, self.players[self.current_player].name, self.moves_count)
             # acquire all board per move info; index[1][0][3] denotes board2string; index[] is bool
-            _string2b = string_to_board(ManagementGeneralLeaderboard.acquire_board(self.game_id)[1][0][3])
+            #_string2b = string_to_board(ManagementGeneralLeaderboard.acquire_board(self.game_id)[1][0][3])
 
             self.board.actual_board = self.actual_board
             # check for new adjacencies 0,1,2
@@ -801,6 +801,8 @@ class Board_gui(QtWidgets.QMainWindow):
         ### UPDATE MENU LEADERBOARD
         self.menu_handle.fetch_and_set_players_score()
 
+        self.menu_handle._is_hs_open = False
+
         self.window4 = QtWidgets.QMainWindow()
         self.ui4 = game_over.Ui_Form8(self.players_sorted, self)
         self.ui4.setupUi(self.window4)
@@ -820,10 +822,16 @@ class Board_gui(QtWidgets.QMainWindow):
     def new_player_pop(self):
         # open notification of turn termination
         self.window2 = QtWidgets.QMainWindow()
-        self.ui2 = Ui_Form6(self.players_sorted, self.dict_players[self.current_player][7])
-        self.ui2.setupUi(self.window2)
-        self.window2.show()
-        QtCore.QTimer.singleShot(3000, self.window2.close)
+        # Throws error when there are more than 2 players; during ending
+        # Jeżeli jest jeden gracz to wywoła się funcja game_over/endgame
+        if len(self.dict_players) == 1:
+            return
+        else:
+            print(self.dict_players[self.current_player][7])
+            self.ui2 = Ui_Form6(self.players_sorted, self.dict_players[self.current_player][7])
+            self.ui2.setupUi(self.window2)
+            self.window2.show()
+            QtCore.QTimer.singleShot(3000, self.window2.close)
 
     def clicked_leaderboard(self):
         self.window3 = QtWidgets.QMainWindow()
