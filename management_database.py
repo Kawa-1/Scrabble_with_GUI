@@ -44,7 +44,7 @@ class ManagementGeneralLeaderboard:
             con.commit()
             con.close()
         except Exception as e:
-            print(e)
+            print("insert_db!!!", e)
 
     @staticmethod
     def get_general_leaderboard() -> list_of_tuples:
