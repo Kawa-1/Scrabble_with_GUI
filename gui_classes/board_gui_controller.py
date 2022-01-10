@@ -127,6 +127,7 @@ class Board_gui(QtWidgets.QMainWindow):
         #     self.dict_players[i].append(0)
 
         print(self.dict_players)
+        #  WORKFLOW on the whole
         #  CONNECT METHODS TO OBJECTS OF GUI
         self.ui.leaderboardButton.clicked.connect(self.clicked_leaderboard)
         self.ui.helpButton.clicked.connect(self.clicked_help)
@@ -246,7 +247,7 @@ class Board_gui(QtWidgets.QMainWindow):
         return clicked_label
 
     def ai_place_letter(self, word: str, coords: list) -> None:
-        log.info("Placing letters by AI; {}:{}".format(word, coords))
+        log.info("Placing letters (It is not literally placing;) more like points to count) by AI; {}:{}".format(word, coords))
         _letters = list(word)
         for index, _tile in enumerate(coords):
             _label = eval("self.ui.board_label_" + str(_tile[0]) + "_" + str(_tile[1]))
@@ -441,32 +442,32 @@ class Board_gui(QtWidgets.QMainWindow):
                 log.info("Generating new Tile on the rack for AI")
                 self.new_letter = self.racks.bag.generate_letter_from_bag()
                 if i == 0:
-                    log.info("TILE: {}".format(self.new_letter))
+                    log.info("place in rack {} TILE: {}".format(i, self.new_letter))
                     self.ui.pushButton1.setText(self.new_letter)
                     # bylo git self.dict_players[self.current_player][1] = self.new_letter
                     self.dict_players[self.current_player][0] = self.new_letter
                 elif i == 1:
-                    log.info("TILE: {}".format(self.new_letter))
+                    log.info("place in rack {} TILE: {}".format(i, self.new_letter))
                     self.ui.pushButton2.setText(self.new_letter)
                     self.dict_players[self.current_player][1] = self.new_letter
                 elif i == 2:
-                    log.info("TILE: {}".format(self.new_letter))
+                    log.info("place in rack {} TILE: {}".format(i, self.new_letter))
                     self.ui.pushButton3.setText(self.new_letter)
                     self.dict_players[self.current_player][2] = self.new_letter
                 elif i == 3:
-                    log.info("TILE: {}".format(self.new_letter))
+                    log.info("place in rack {} TILE: {}".format(i, self.new_letter))
                     self.ui.pushButton4.setText(self.new_letter)
                     self.dict_players[self.current_player][3] = self.new_letter
                 elif i == 4:
-                    log.info("TILE: {}".format(self.new_letter))
+                    log.info("place in rack {} TILE: {}".format(i, self.new_letter))
                     self.ui.pushButton5.setText(self.new_letter)
                     self.dict_players[self.current_player][4] = self.new_letter
                 elif i == 5:
-                    log.info("TILE: {}".format(self.new_letter))
+                    log.info("place in rack {} TILE: {}".format(i, self.new_letter))
                     self.ui.pushButton6.setText(self.new_letter)
                     self.dict_players[self.current_player][5] = self.new_letter
                 elif i == 6:
-                    log.info("TILE: {}".format(self.new_letter))
+                    log.info("place in rack {} TILE: {}".format(i, self.new_letter))
                     self.ui.pushButton7.setText(self.new_letter)
                     self.dict_players[self.current_player][6] = self.new_letter
 
@@ -477,31 +478,31 @@ class Board_gui(QtWidgets.QMainWindow):
             index = 0
             for i in range(last_write+1, 7):
                 if i == 0:
-                    log.info("Setting Tiles which has been on already on the rack AI {}".format(self.rack_AI[index]))
+                    log.info("place in rack {} Setting Tiles which has been on already on the rack AI {}".format(index, i, self.rack_AI[index]))
                     self.ui.pushButton1.setText(self.new_letter)
                     self.dict_players[self.current_player][0] = self.rack_AI[index]
                 elif i == 1:
-                    log.info("Setting Tiles which has been on already on the rack AI {}".format(self.rack_AI[index]))
+                    log.info("index=={}; place in rack {} Setting Tiles which has been on already on the rack AI {}".format(index, i, self.rack_AI[index]))
                     self.ui.pushButton2.setText(self.new_letter)
                     self.dict_players[self.current_player][1] = self.rack_AI[index]
                 elif i == 2:
-                    log.info("Setting Tiles which has been on already on the rack AI {}".format(self.rack_AI[index]))
+                    log.info("place in rack {} Setting Tiles which has been on already on the rack AI {}".format(index, i, self.rack_AI[index]))
                     self.ui.pushButton3.setText(self.new_letter)
                     self.dict_players[self.current_player][2] = self.rack_AI[index]
                 elif i == 3:
-                    log.info("Setting Tiles which has been on already on the rack AI {}".format(self.rack_AI[index]))
+                    log.info("place in rack {} Setting Tiles which has been on already on the rack AI {}".format(index, i, self.rack_AI[index]))
                     self.ui.pushButton4.setText(self.new_letter)
                     self.dict_players[self.current_player][3] = self.rack_AI[index]
                 elif i == 4:
-                    log.info("Setting Tiles which has been on already on the rack AI {}".format(self.rack_AI[index]))
+                    log.info("place in rack {} Setting Tiles which has been on already on the rack AI {}".format(index, i, self.rack_AI[index]))
                     self.ui.pushButton5.setText(self.new_letter)
                     self.dict_players[self.current_player][4] = self.rack_AI[index]
                 elif i == 5:
-                    log.info("Setting Tiles which has been on already on the rack AI {}".format(self.rack_AI[index]))
+                    log.info("place in rack {} Setting Tiles which has been on already on the rack AI {}".format(index, i, self.rack_AI[index]))
                     self.ui.pushButton6.setText(self.new_letter)
                     self.dict_players[self.current_player][5] = self.rack_AI[index]
                 elif i == 6:
-                    log.info("Setting Tiles which has been on already on the rack AI {}".format(self.rack_AI[index]))
+                    log.info("place in rack {} Setting Tiles which has been on already on the rack AI {}".format(index, i, self.rack_AI[index]))
                     self.ui.pushButton7.setText(self.new_letter)
                     self.dict_players[self.current_player][6] = self.rack_AI[index]
 
@@ -781,7 +782,7 @@ class Board_gui(QtWidgets.QMainWindow):
                             self.dict_players[i+j] = self.dict_players.pop(i+j+1)
 
             if self.number_of_players == 1:
-                print(self.dict_players)
+                print("784", self.dict_players)
                 self.players_to_db[self.dict_players[0][7]] = self.dict_players[0][8]
                 self.managment_db.insert_db(self.players_to_db)
                 self.game_over()
@@ -889,14 +890,17 @@ class Board_gui(QtWidgets.QMainWindow):
         self.window6.show()
 
     def safe_words(self):
-        self.dict_players[self.current_player][0] = self.ui.pushButton1.text()
-        self.dict_players[self.current_player][1] = self.ui.pushButton2.text()
-        self.dict_players[self.current_player][2] = self.ui.pushButton3.text()
-        self.dict_players[self.current_player][3] = self.ui.pushButton4.text()
-        self.dict_players[self.current_player][4] = self.ui.pushButton5.text()
-        self.dict_players[self.current_player][5] = self.ui.pushButton6.text()
-        self.dict_players[self.current_player][6] = self.ui.pushButton7.text()
-
+        # print("893 safe_words", self.dict_players[self.current_player])
+        # print("894 safe_words", self.players[self.current_player].rack)
+        # self.dict_players[self.current_player][0] = self.ui.pushButton1.text()
+        # self.dict_players[self.current_player][1] = self.ui.pushButton2.text()
+        # self.dict_players[self.current_player][2] = self.ui.pushButton3.text()
+        # self.dict_players[self.current_player][3] = self.ui.pushButton4.text()
+        # self.dict_players[self.current_player][4] = self.ui.pushButton5.text()
+        # self.dict_players[self.current_player][5] = self.ui.pushButton6.text()
+        # self.dict_players[self.current_player][6] = self.ui.pushButton7.text()
+        # print("902 safe_words", self.dict_players[self.current_player])
+        # print("903 safe_words", self.players[self.current_player].rack)
         print(self.dict_players)
 
     ######### BUTTONS HANDLERS
