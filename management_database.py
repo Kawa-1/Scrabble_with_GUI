@@ -14,7 +14,7 @@ class ManagementGeneralLeaderboard:
 
     @staticmethod
     def insert_db(players_with_score: dict) -> noReturn:
-        """Need to change it..."""
+        """Name of this method may be misleading because we do here also update if player_name actually exists in db"""
         try:
             con = sl.connect(ManagementGeneralLeaderboard._path)
             cur = con.cursor()
@@ -23,7 +23,24 @@ class ManagementGeneralLeaderboard:
                 player_safe = ManagementGeneralLeaderboard.htmlspecialchars(player)
                 list_4_up.append((player_safe, players_with_score.get(player)))
 
-            cur.executemany("INSERT INTO general_leaderboard VALUES (?, ?)", list_4_up)
+            print(list_4_up)
+            cur.execute("SELECT * FROM general_leaderboard")
+            all = cur.fetchall()
+            # Creating DS involved with names which are in database (table general_leaderboard
+            all = set(map(lambda y: y[0], all))
+            print(all)
+            for player in list_4_up:
+                if player[0] not in all:
+                    cur.execute("INSERT INTO general_leaderboard VALUES (?, ?)", player)
+                else:
+                    temp_aux = []
+                    cur.execute("SELECT score FROM general_leaderboard WHERE player_name='{}'".format(player[0]))
+                    score = cur.fetchone()
+                    temp_aux.append(score[0])
+                    print(temp_aux)
+                    cur.execute(
+                        "UPDATE general_leaderboard SET score={} WHERE player_name='{}'".format(temp_aux[0] + player[1],
+                                                                                                player[0]))
             con.commit()
             con.close()
         except Exception as e:
