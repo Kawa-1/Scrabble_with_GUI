@@ -7,9 +7,9 @@ import sqlite3 as sl
 class CredentialsManager:
     _path = ''
     if platform.system() == 'Darwin':
-        _path = '{}{}'.format(os.getcwd(), '/DatabaseLogs/leaderboard.db')
+        _path = '{}{}'.format(os.getcwd(), '/leaderboard.db')
     elif platform.system() == 'Windows':
-        _path = '{}{}'.format(os.getcwd(), '\\DatabaseLogs\\leaderboard.db')
+        _path = '{}{}'.format(os.getcwd(), '\\leaderboard.db')
 
     @staticmethod
     def verify_credentials(login: str, password: str) -> bool:

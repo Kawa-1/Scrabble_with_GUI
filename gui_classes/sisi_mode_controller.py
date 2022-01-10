@@ -1,3 +1,5 @@
+from typing import Union
+
 from gui_classes.hotseat_players_login_controller import *
 from gui_py_source.sisi_mode_window import Ui_sisi_mode_window
 from player import Player
@@ -49,22 +51,36 @@ class SisiModeController(DummyWindow):
             self.signal_closing()
             Board_gui(2, [_player, _ai], self.menu_handle)
 
-    def verify_checkboxes(self) -> bool:
-        _s1_checkboxes = [checkbox for checkbox in self.findChildren(QCheckBox, QRegularExpression('s1_*')) if checkbox.isChecked()]
-        _s2_checkboxes = [checkbox for checkbox in self.findChildren(QCheckBox, QRegularExpression('s2_*')) if checkbox.isChecked()]
+    def verify_checkboxes(self) -> [bool, list]:
+        si = self.findChildren(QCheckBox, QRegularExpression('si1_*'))
+        _s1_checkboxes = [checkbox for checkbox in self.findChildren(QCheckBox, QRegularExpression('si1_*')) if checkbox.isChecked()]
+        _s2_checkboxes = [checkbox for checkbox in self.findChildren(QCheckBox, QRegularExpression('si2_*')) if checkbox.isChecked()]
 
-        if len(_s1_checkboxes) % 2 or len(_s2_checkboxes) % 2:
+        if len(_s1_checkboxes) == 2 or len(_s2_checkboxes) == 2:
             uncheck_all([*_s1_checkboxes, *_s2_checkboxes])
-            return False
-        elif not len(_s1_checkboxes) % 2 and not len(_s2_checkboxes) % 2:
-            return True
+            return [False, []]
+        elif not len(_s1_checkboxes) == 2 and not len(_s2_checkboxes) == 2:
+            return [True, [*_s1_checkboxes, *_s2_checkboxes]]
         else:
             print('idk co to robi')
-            return False
+            return [False, []]
 
     def start_sisi_game(self) -> None:
-        if self.verify_checkboxes():
+        _verified, _checkboxes = self.verify_checkboxes()
+        if _verified:
+            _names = ("David", "Mati", "Jerzy", "Jeff", "Joe", "Alice", "Robert", "Leokadia", "Kamil", "Barbara")
             print('sisi +')
+            _name1 = _names[random.randint(0, len(_names)-1)] + "_AI" + str(random.randint(0,20))
+            _name2 = _names[random.randint(0, len(_names)-1)] + "_AI" + str(random.randint(0,20))
+            ### GET AI
+            _ai_mode = [chbox.objectName().split("_")[1] for chbox in _checkboxes]
+            _ai1 = Player(_name1, [], True, _ai_mode[0].upper())
+            _ai2 = Player(_name2, [], True, _ai_mode[1].upper())
+            self.hide()
+            # self.close()
+            self.signal_closing()
+            Board_gui(2, [_ai1, _ai2], self.menu_handle)
+
 
     def signal_closing(self) -> None:
         self.menu_handle._is_si_open = False

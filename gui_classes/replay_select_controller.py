@@ -56,7 +56,6 @@ class ReplaySelectController(DummyWindow):
             eval("self.ui.game{}_button".format(i+1)).clicked.connect(lambda state, x=_game_index: self.open_chosen_replay(x))
             eval("self.ui.game{}_button".format(i+1)).setVisible(1)
 
-
         ### ASSUME FOR NOW THAT ONLY FOUR GAMES CAN BE REPLAYED
         hide_labels([self.ui.backwards_button, self.ui.forwards_button])
 
