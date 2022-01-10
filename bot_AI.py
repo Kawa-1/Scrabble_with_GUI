@@ -617,12 +617,12 @@ class BotAI:
 
         elif len(potential_words_transposed) == 0:
             worst = sorted(potential_words, key=lambda x: (len(x[2]), x[3]), reverse=True)[0]
-            worst_transposed = [0, 0, 0, 0]
+            worst_transposed = [99999, 99999, 99999, 99999]
 
         else:
             worst = sorted(potential_words, key=lambda x: (len(x[2]), x[3]), reverse=True)[0]
             worst_transposed = sorted(potential_words_transposed, key=lambda x: (len(x[2]), x[3]), reverse=True)[0]
-        
+
         worst = sorted(potential_words, key=lambda x: (-x[3], -len(x[2])), reverse=True)[0]
         worst_transposed = sorted(potential_words_transposed, key=lambda x: (-x[3], -len(x[2])), reverse=True)[0]
 
