@@ -798,6 +798,10 @@ class Board_gui(QtWidgets.QMainWindow):
         # ManagementGeneralLeaderboard.update_game_winner(self.game_id, self.players_sorted[0][1])
         ManagementGeneralLeaderboard.update_game_winner(self.game_id, self.players_sorted[0][0])
 
+        ### DELETE GAME_ID IF self.moves_count == 0
+        if self.moves_count == 0:
+            ManagementGeneralLeaderboard.delete_empty_game(self.game_id)
+
         ### UPDATE MENU LEADERBOARD
         self.menu_handle.fetch_and_set_players_score()
         self.menu_handle._is_hs_open = False
@@ -1016,6 +1020,11 @@ class Board_gui(QtWidgets.QMainWindow):
                     self.ui.pushButton7.setStyleSheet('background-color:lightgrey')
                     self.pushButton7_check = 0
                     self.letter_to_board = ""
+
+    def closeEvent(self, a0: QtGui.QCloseEvent) -> None:
+        if self.moves_count == 0:
+            ManagementGeneralLeaderboard.delete_empty_game(self.game_id)
+        a0.accept()
 
 
 if __name__ == "__main__":

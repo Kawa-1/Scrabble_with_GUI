@@ -183,3 +183,38 @@ class ManagementGeneralLeaderboard:
             print(e)
             return [False, []]
 
+    @staticmethod
+    def delete_empty_game(game_id: int) -> None:
+        try:
+            con = sl.connect(ManagementGeneralLeaderboard._path)
+            cur = con.cursor()
+            cur.execute("DELETE FROM all_games WHERE game_id=(?)", (game_id,))
+            con.commit()
+            con.close()
+        except Exception as e:
+            print(e)
+
+    @staticmethod
+    def delete_empty_games_onstart() -> None:
+        try:
+            con = sl.connect(ManagementGeneralLeaderboard._path)
+            cur = con.cursor()
+            cur.execute("SELECT game_id FROM all_games")
+            _all_games = cur.fetchall()
+            _all_games = list(map(lambda y: y[0], _all_games))
+
+            cur.execute("SELECT distinct(game_id) FROM saved_boards")
+            _uniq_id_in_saved_boards = cur.fetchall()
+            _uniq_id_in_saved_boards = list(map(lambda y: y[0], _uniq_id_in_saved_boards))
+
+            for game in _all_games:
+                if game not in _uniq_id_in_saved_boards:
+                    cur.execute("DELETE FROM all_games WHERE game_id=(?)", (game,))
+
+            con.commit()
+            con.close()
+        except Exception as e:
+            print(e)
+
+
+
