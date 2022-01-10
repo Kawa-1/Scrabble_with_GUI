@@ -80,7 +80,6 @@ class MenuWindowController(DummyWindow):
             self.hide()
 
     def open_logout_alert(self) -> None:
-        # TODO: make it an actual alert
         self.close()
         from gui_classes.login_window_controller import LoginWindowController
         LoginWindowController()

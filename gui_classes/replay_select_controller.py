@@ -19,6 +19,8 @@ class ReplaySelectController(DummyWindow):
         """
         # omit [0] param == status
         self.saved_games = ManagementGeneralLeaderboard.acquire_games_list(number=4)[1]
+        # self.saved_games = ManagementGeneralLeaderboard.acquire_games_list()[1]
+
 
         self.ui = Ui_replay_select_window()
         self.ui.setupUi(self)
@@ -29,7 +31,7 @@ class ReplaySelectController(DummyWindow):
         set_image_to_button(self.ui.backwards_button, 'returnleft.png')
         set_image_to_button(self.ui.return_to_menu_button, 'returnleft.png')
 
-        ### HIDE BUTTONS <- zabije sie
+        ### HIDE BUTTONS
         hide_labels(self.findChildren(QPushButton, QRegularExpression('game*')))
 
         ### SET BUTTON EVENT HANDLERS
@@ -54,6 +56,7 @@ class ReplaySelectController(DummyWindow):
             eval("self.ui.game{}_button".format(i+1)).clicked.connect(lambda state, x=_game_index: self.open_chosen_replay(x))
             eval("self.ui.game{}_button".format(i+1)).setVisible(1)
 
+
         ### ASSUME FOR NOW THAT ONLY FOUR GAMES CAN BE REPLAYED
         hide_labels([self.ui.backwards_button, self.ui.forwards_button])
 
@@ -76,6 +79,22 @@ class ReplaySelectController(DummyWindow):
 
     def signal_closing(self) -> None:
         self.menu_handle._is_replay_open = False
+
+    def add_game_replay_handlers(self) -> None:
+        _pages = 1
+        for _game in range(self.saved_games):
+            if _game % 4:
+                _game_index = self.saved_games[_game][0]
+                _players = self.saved_games[_game][1]
+                _text_2_btn = "{}{}{}".format(_game_index, ': ', _players)
+                eval("self.ui.game{}_button".format(_game + 1)).setText(_text_2_btn)
+                eval("self.ui.game{}_button".format(_game + 1)).clicked.connect(
+                    lambda state, x=_game_index: self.open_chosen_replay(x)
+                )
+                eval("self.ui.game{}_button".format(_game + 1)).setVisible(1)
+
+    def add_pages(self) -> None:
+        pass
 
     def return_to_menu(self):
         self.menu_handle.show()

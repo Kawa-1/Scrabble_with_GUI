@@ -800,7 +800,6 @@ class Board_gui(QtWidgets.QMainWindow):
 
         ### UPDATE MENU LEADERBOARD
         self.menu_handle.fetch_and_set_players_score()
-
         self.menu_handle._is_hs_open = False
 
         self.window4 = QtWidgets.QMainWindow()
