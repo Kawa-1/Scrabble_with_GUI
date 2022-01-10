@@ -8,9 +8,9 @@ import sqlite3 as sl
 class ManagementGeneralLeaderboard:
     _path = ''
     if platform.system() == 'Darwin':
-        _path = '{}{}'.format(os.getcwd(), '/leaderboard.db')
+        _path = '{}{}'.format(os.getcwd(), '/DatabaseLogs/leaderboard.db')
     elif platform.system() == 'Windows':
-        _path = '{}{}'.format(os.getcwd(), '\\leaderboard.db')
+        _path = '{}{}'.format(os.getcwd(), '\\DatabaseLogs\\leaderboard.db')
 
     @staticmethod
     def insert_db(players_with_score: dict) -> noReturn:

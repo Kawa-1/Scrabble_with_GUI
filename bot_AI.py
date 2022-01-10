@@ -518,6 +518,20 @@ class BotAI:
         # back home; not transposed board/board
         board = list(map(lambda x: list(x), list(zip(*board))))
         transposed = False
+
+        # INIT this var To omit __exception__ involved with lack of words in potential...
+        best_transposed = []
+        if len(potential_words) == 0 and len(potential_words_transposed) == 0:
+            return False, {}, rack
+
+        elif len(potential_words) == 0:
+            best = [best_transposed[0], list(map(lambda y: list(y)[::-1], best_transposed[1])),
+                    list(map(lambda y: list(y)[::-1], best_transposed[2])), best_transposed[3]]
+            transposed = True
+
+        elif len(potential_words_transposed) == 0:
+            best_transposed = best
+
         best = sorted(potential_words, key=lambda x: (len(x[2]), x[3]), reverse=True)[0]
         best_transposed = sorted(potential_words_transposed, key=lambda x: (len(x[2]), x[3]), reverse=True)[0]
 

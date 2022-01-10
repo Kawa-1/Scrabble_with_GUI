@@ -1,3 +1,5 @@
+import logger
+
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtWidgets import QMainWindow
 
@@ -18,6 +20,8 @@ from gui_py_source.board_window import Ui_board_window
 
 from trie import Trie, TrieNode
 from bot_AI import BotAI
+
+log = logger.get_logger(__name__)
 
 
 class Board_gui(QtWidgets.QMainWindow):
@@ -60,7 +64,7 @@ class Board_gui(QtWidgets.QMainWindow):
         self.letters_used = []
         self.coords_of_letters_used = []
         self.loaded_dictionary = Word.get_the_dictionary_for_words()
-        print(self.loaded_dictionary)
+        #print(self.loaded_dictionary)
 
         # AI LEXICON !!!!!! Trie Data Structure & rack_AI
         self.t = Trie()
@@ -180,6 +184,7 @@ class Board_gui(QtWidgets.QMainWindow):
                 label, self.dict_board_labels[label][2], self.dict_board_labels[label][3])
             print(label, self.dict_board_labels[label][2], self.dict_board_labels[label][3])
 
+        log.info("__INIT__ finished")
 
     def factory(self, label, i, j):
         def clicked_label(event):
@@ -241,6 +246,7 @@ class Board_gui(QtWidgets.QMainWindow):
         return clicked_label
 
     def ai_place_letter(self, word: str, coords: list) -> None:
+        log.info("Placing letters by AI; {}:{}".format(word, coords))
         _letters = list(word)
         for index, _tile in enumerate(coords):
             _label = eval("self.ui.board_label_" + str(_tile[0]) + "_" + str(_tile[1]))
@@ -264,6 +270,9 @@ class Board_gui(QtWidgets.QMainWindow):
                 print(type(self.loaded_dictionary))
                 self.valid_move, words_4_score, self.rack_AI = BotAI.ai_first_move_hard(self.loaded_dictionary,
                                                                                    self.players[self.current_player].rack)
+
+                log.info("Results of BotAI.ai_first_move_hard {},{},{}".format(self.valid_move, words_4_score,
+                                                                               self.rack_AI))
                 if self.valid_move is True:
                     self.pass_first_move_check = 1
                     #word_letters = ""
@@ -309,12 +318,16 @@ class Board_gui(QtWidgets.QMainWindow):
                 self.valid_move, words_4_score, self.rack_AI = BotAI.make_hard_move(self.t,
                             self.players[self.current_player].rack, self.new_player_move_board, self.board.checked_words)
                 print("WORDS_4_SCORE_AI", words_4_score)
+                log.info("Results of BotAI.make_hard_move {}, {}, {}".format(self.valid_move, words_4_score,
+                                                                             self.rack_AI))
 
             elif self.players[self.current_player].difficulty == "EASY":
                 self.players[self.current_player].rack = self.players[self.current_player].rack[:7]
                 self.valid_move, words_4_score, self.rack_AI = BotAI.make_easy_move(self.t,
                           self.players[self.current_player].rack, self.new_player_move_board, self.board.checked_words)
 
+                log.info("Results of BotAI.make_easy_move {}, {}, {}".format(self.valid_move, words_4_score,
+                                                                             self.rack_AI))
 
 
         else:
@@ -402,6 +415,8 @@ class Board_gui(QtWidgets.QMainWindow):
             # increase foul count
             self.players[self.current_player].fails = 1
 
+            log.info("Adding penalty point for {}".format(self.players[self.current_player].name))
+
             for _tile in self.coords_of_letters_used:
                 eval("self.ui.board_label_" + str(_tile[0]) + "_" + str(_tile[1])).setEnabled(1)
             self.coords_of_letters_used.clear()
@@ -423,27 +438,35 @@ class Board_gui(QtWidgets.QMainWindow):
             how_many_tiles_used = 7 - len(self.rack_AI)
             last_write = 0
             for i in range(0, how_many_tiles_used):
+                log.info("Generating new Tile on the rack for AI")
                 self.new_letter = self.racks.bag.generate_letter_from_bag()
                 if i == 0:
+                    log.info("TILE: {}".format(self.new_letter))
                     self.ui.pushButton1.setText(self.new_letter)
                     # bylo git self.dict_players[self.current_player][1] = self.new_letter
                     self.dict_players[self.current_player][0] = self.new_letter
                 elif i == 1:
+                    log.info("TILE: {}".format(self.new_letter))
                     self.ui.pushButton2.setText(self.new_letter)
                     self.dict_players[self.current_player][1] = self.new_letter
                 elif i == 2:
+                    log.info("TILE: {}".format(self.new_letter))
                     self.ui.pushButton3.setText(self.new_letter)
                     self.dict_players[self.current_player][2] = self.new_letter
                 elif i == 3:
+                    log.info("TILE: {}".format(self.new_letter))
                     self.ui.pushButton4.setText(self.new_letter)
                     self.dict_players[self.current_player][3] = self.new_letter
                 elif i == 4:
+                    log.info("TILE: {}".format(self.new_letter))
                     self.ui.pushButton5.setText(self.new_letter)
                     self.dict_players[self.current_player][4] = self.new_letter
                 elif i == 5:
+                    log.info("TILE: {}".format(self.new_letter))
                     self.ui.pushButton6.setText(self.new_letter)
                     self.dict_players[self.current_player][5] = self.new_letter
                 elif i == 6:
+                    log.info("TILE: {}".format(self.new_letter))
                     self.ui.pushButton7.setText(self.new_letter)
                     self.dict_players[self.current_player][6] = self.new_letter
 
@@ -454,30 +477,39 @@ class Board_gui(QtWidgets.QMainWindow):
             index = 0
             for i in range(last_write+1, 7):
                 if i == 0:
+                    log.info("Setting Tiles which has been on already on the rack AI {}".format(self.rack_AI[index]))
                     self.ui.pushButton1.setText(self.new_letter)
                     self.dict_players[self.current_player][0] = self.rack_AI[index]
                 elif i == 1:
+                    log.info("Setting Tiles which has been on already on the rack AI {}".format(self.rack_AI[index]))
                     self.ui.pushButton2.setText(self.new_letter)
                     self.dict_players[self.current_player][1] = self.rack_AI[index]
                 elif i == 2:
+                    log.info("Setting Tiles which has been on already on the rack AI {}".format(self.rack_AI[index]))
                     self.ui.pushButton3.setText(self.new_letter)
                     self.dict_players[self.current_player][2] = self.rack_AI[index]
                 elif i == 3:
+                    log.info("Setting Tiles which has been on already on the rack AI {}".format(self.rack_AI[index]))
                     self.ui.pushButton4.setText(self.new_letter)
                     self.dict_players[self.current_player][3] = self.rack_AI[index]
                 elif i == 4:
+                    log.info("Setting Tiles which has been on already on the rack AI {}".format(self.rack_AI[index]))
                     self.ui.pushButton5.setText(self.new_letter)
                     self.dict_players[self.current_player][4] = self.rack_AI[index]
                 elif i == 5:
+                    log.info("Setting Tiles which has been on already on the rack AI {}".format(self.rack_AI[index]))
                     self.ui.pushButton6.setText(self.new_letter)
                     self.dict_players[self.current_player][5] = self.rack_AI[index]
                 elif i == 6:
+                    log.info("Setting Tiles which has been on already on the rack AI {}".format(self.rack_AI[index]))
                     self.ui.pushButton7.setText(self.new_letter)
                     self.dict_players[self.current_player][6] = self.rack_AI[index]
 
                 index += 1
 
+            log.info("Object rack AI: {}".format(self.players[self.current_player].rack))
             self.players[self.current_player].rack = self.dict_players[self.current_player][:7]
+            log.info("Object rack AI after slice: {}".format(self.players[self.current_player].rack))
 
         # player can skip move and exchange letters on rack
         elif self.valid_move is True:
@@ -564,6 +596,7 @@ class Board_gui(QtWidgets.QMainWindow):
         #                 [eval("self.board_label_" + str(i) + "_" + str(j)).text(), eval("self.board_label_" + str(i) + "_" + str(j)).styleSheet()]
 
     def clicked_clear(self):
+        log.info("Clear clicked")
         self.letters_used.clear()
         for _tile in self.coords_of_letters_used:
             eval("self.ui.board_label_" + str(_tile[0]) + "_" + str(_tile[1])).setEnabled(1)
@@ -622,14 +655,17 @@ class Board_gui(QtWidgets.QMainWindow):
                         self.pushButton7_check = 0
 
     def clicked_change_letters(self):
+        log.info("Change letters clicked")
         self.change_letters_check = 1
         self.ui.change_letters.setStyleSheet("background-color:\"red\"\n""")
 
     def clicked_change_letters_cancel(self):
+        log.info("Change letters cancel clicked")
         self.change_letters_check = 0
         self.ui.change_letters.setStyleSheet("background-color:\"lightgrey\"\n""")
 
     def clicked_change_letters_confirm(self):
+        log.info("Change letters confirm clicked")
         if self.change_letters_check == 1:
             self.temp = 0
 
@@ -711,7 +747,7 @@ class Board_gui(QtWidgets.QMainWindow):
                                                   letter_helper[6]]
         # if self.dict_players[self.current_player][9] == 2 or self.dict_players[self.current_player][10] == 3:
         if self.dict_players[self.current_player][9] == 3:
-
+            log.info("Kicking player")
             self.name_kicked_player = self.dict_players[self.current_player][7]
 
             self.players_to_db[self.dict_players[self.current_player][7]] = self.dict_players[self.current_player][8]
@@ -734,6 +770,7 @@ class Board_gui(QtWidgets.QMainWindow):
             self.game_over()
 
         else:
+            log.info("Change player")
             if self.check_if_player_kicked is True:
                 for i in range(self.number_of_players + 1):
                     if i in self.dict_players:
@@ -787,6 +824,7 @@ class Board_gui(QtWidgets.QMainWindow):
     ######### POP-UP HANDLERS
     # ui[1-9] is how ui[0] remains intact kurwa trzeba bylo to od nowa pisac
     def game_over(self):
+        log.info("Game over")
         self.check_game_over = True
         self.players_sorted = []
         self.moves_count = 0
@@ -837,12 +875,14 @@ class Board_gui(QtWidgets.QMainWindow):
             QtCore.QTimer.singleShot(3000, self.window2.close)
 
     def clicked_leaderboard(self):
+        log.info("Leaderboard clicked")
         self.window3 = QtWidgets.QMainWindow()
         self.ui3 = Ui_Form5(self.players_sorted)
         self.ui3.setupUi(self.window3)
         self.window3.show()
 
     def clicked_help(self):
+        log.info("Help clicked")
         self.window6 = QtWidgets.QMainWindow()
         self.ui6 = Ui_Form9()
         self.ui6.setupUi(self.window6)
