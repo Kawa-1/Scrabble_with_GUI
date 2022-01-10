@@ -134,7 +134,11 @@ class ManagementGeneralLeaderboard:
             cur = con.cursor()
             cur.execute("SELECT max(game_id) FROM all_games")
             _last_index = cur.fetchall()[0][0]
-            cur.execute("INSERT INTO all_games(game_id, players) VALUES(?, ?)", (_last_index+1, players,))
+            if _last_index is not None:
+                cur.execute("INSERT INTO all_games(game_id, players) VALUES(?, ?)", (_last_index+1, players,))
+            else:
+                cur.execute("INSERT INTO all_games(game_id, players) VALUES(?, ?)", (1, players,))
+                _last_index = 1
             con.commit()
             con.close()
             return [True, _last_index]

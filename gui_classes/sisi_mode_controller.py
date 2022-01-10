@@ -44,9 +44,9 @@ class SisiModeController(DummyWindow):
             # ### GET CURRENT PLAYER ID
             _player = Player(self.menu_handle.host_id, [])
             _ai = Player(name, [], True, ai.upper())
-            Board_gui(2, [_player, _ai], self.menu_handle)
             self.close()
             self.signal_closing()
+            Board_gui(2, [_player, _ai], self.menu_handle)
 
     def verify_checkboxes(self) -> bool:
         _s1_checkboxes = [checkbox for checkbox in self.findChildren(QCheckBox, QRegularExpression('s1_*')) if checkbox.isChecked()]
