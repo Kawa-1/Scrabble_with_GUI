@@ -207,6 +207,8 @@ class BotAI:
     @staticmethod
     def get_cross_checks(t: Trie, board: list_of_lists, used_words) -> list_of_lists:
         """Possible letters for crossed words up&down"""
+        def get_between_cross_checks():
+            pass
 
         cross_checks = [[set() for row in range(len(board))] for col in range(len(board))]
 
@@ -311,8 +313,32 @@ class BotAI:
 
         # The purpose of this IF is to add the letter preceeding an anchor
         if limit == 0 and board[anchor_square[0]][anchor_square[1]-1] != "-":
-            BotAI.extend_right_part(board[anchor_square[0]][anchor_square[1]-1], node.children.get(board[anchor_square[0]][anchor_square[1]-1]), anchor_square[0], anchor_square[1],
-                                    board, rack, used_words, cross_checks, potential_words)
+            letter_preceeding_anchor = board[anchor_square[0]][anchor_square[1] - 1]
+            coords_of_preceeding = (anchor_square[0], anchor_square[1] - 1)
+            if board[coords_of_preceeding[0]][coords_of_preceeding[1] - 1] == "-":
+                BotAI.extend_right_part(board[anchor_square[0]][anchor_square[1] - 1],
+                                        node.children.get(board[anchor_square[0]][anchor_square[1] - 1]),
+                                        anchor_square[0], anchor_square[1],
+                                        board, rack, used_words, cross_checks, potential_words)
+
+            else:
+                # Getting the word on the left from the anchor
+                left_word = ''
+                row = coords_of_preceeding[0]
+                column = coords_of_preceeding[1]
+                # i guess 'column > -1' is not necessary
+                while column > - 1 and board[row][column] != '-':
+                    left_word += board[row][column]
+                    column -= 1
+
+                # We need to reverse that word as we were backtracking the row
+                left_word = left_word[::-1]
+                # Set actual node in trie
+                for char in left_word:
+                    node = node.children[char]
+
+                BotAI.extend_right_part(left_word, node, anchor_square[0], anchor_square[1], board, rack, used_words,
+                                        cross_checks, potential_words)
 
         elif limit >= 0:
             BotAI.extend_right_part(partial_word, node, anchor_square[0], anchor_square[1], board, rack, used_words,
@@ -449,7 +475,8 @@ class BotAI:
                         row -= 1
 
                     word = ""
-                    while row + 1 < 15 and board[row + 1][column] != "-":
+                    #while row + 1 < 15 and board[row + 1][column] != "-":
+                    while row < 15 and board[row][column] != "-":
                         word += board[row][column]
                         coords_new_words[index].append([row, column])
                         row += 1
