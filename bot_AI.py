@@ -219,7 +219,7 @@ class BotAI:
                 # Purpose of this var: To distinguish situation if allowed_letters are set() because we didn't find letter downwards or it is impossible to create word downwards
                 found_downards = False
 
-                # check downwards e.g. [X]BUS
+                # check downwards e.g. [X]BUS perpendicular
                 if (i + 1 < 15 and board[i][j] == "-" and board[i + 1][j] != "-"):
                     found_downards = True
                     allowed_letters = set()
@@ -246,7 +246,7 @@ class BotAI:
                         else:
                             cross_checks[i][j] = allowed_letters
 
-                # check upwards e.g. BUS[X]
+                # check upwards e.g. BUS[X] perpendicular
                 if (i - 1 > - 1 and board[i][j] == "-" and board[i - 1][j] != "-" and "!" not in cross_checks[i][j]):
                     allowed_letters = set()
                     coord_tile = i - 1
@@ -263,7 +263,7 @@ class BotAI:
                             # potential_word = letter + word
                             potential_word = word + letter
 
-                            if t.get_word(potential_word)[0] != "":
+                            if t.get_word(potential_word)[0] != "" and potential_word not in used_words:
                                 allowed_letters.add(letter)
 
                             else:
@@ -274,6 +274,7 @@ class BotAI:
                         else:
 
                             if found_downards is True:
+                                # Intersection because in previous case we were checking downwards! the same coord; Now we are checking upwards
                                 cross_checks[i][j] = cross_checks[i][j] & allowed_letters
                                 if cross_checks[i][j] == set():
                                     cross_checks[i][j].add("!")
@@ -283,6 +284,44 @@ class BotAI:
                                     cross_checks[i][j].add("!")
                                 else:
                                     cross_checks[i][j] = allowed_letters
+
+        # Check Cross-like in the same row/i : 'M','E','-','I','C','O' (assuming that ICO as a word exists...)
+        for i in range(len(board)):
+            for j in range(len(board)):
+                if cross_checks[i][j] == {"!"}:
+                    continue
+                if j-1 > -1 and board[i][j - 1] != "-" and  j+1 < 15 and board[i][j + 1] != "-":
+                    allowed_letters = set()
+                    row = i
+                    col = j
+                    left_word_part = ""
+                    right_word_part = ""
+                    while col - 1> -1 and board[row][col - 1] != "-":
+                        left_word_part += board[row][col - 1]
+                        col -= 1
+
+                    col = i
+                    while col + 1 < 15 and board[row][col + 1] != "-":
+                        right_word_part += board[row][col + 1]
+                        col += 1
+
+                    for letter in set(ascii_uppercase):
+                        potential_word = f"{left_word_part}{letter}{right_word_part}"
+                        if t.get_word(potential_word)[0] != "" and potential_word not in used_words:
+                            allowed_letters.add(letter)
+
+                    if allowed_letters == set():
+                        cross_checks[i][j] == {'!'}
+
+                    # Case cross_checks[i][j] != {'!'} was checked before
+                    elif cross_checks[i][j] != set():
+                        cross_checks[i][j] = cross_checks[i][j] & allowed_letters
+                        if cross_checks[i][j] == set():
+                            cross_checks[i][j] = {"!"}
+
+                    else:
+                        cross_checks[i][j] = allowed_letters
+
 
         return cross_checks
 
@@ -584,6 +623,7 @@ class BotAI:
             # "!" means we do not count crossed words
             crossed = {"!"}
 
+        # Rarely; it is the case when we didn't check the word which is going to be init on the board by AI
         if crossed == {} and transposed is True:
             print("AI DID WRONG MOVE!! :))))")
             matrix = list(map(lambda y: list(y), list(zip(*matrix))))
@@ -605,6 +645,12 @@ class BotAI:
             best.update(crossed)
         else:
             best = {best[0]: best[1]}
+
+        # Rarely; If AI make wrong move involved with correctness of word
+        for word in best:
+            if t.get_word(word)[0] == "":
+                print("AI used word which doesn't exist :D")
+                return False, {}, rack
 
         return True, best, rack
 
@@ -646,18 +692,18 @@ class BotAI:
             return False, {}, rack
 
         elif len(potential_words) == 0:
-            worst_transposed = sorted(potential_words_transposed, key=lambda x: (len(x[2]), x[3]), reverse=True)[0]
+            worst_transposed = sorted(potential_words_transposed, key=lambda x: (-x[3], -len(x[2])), reverse=True)[0]
             worst = [worst_transposed[0], list(map(lambda y: list(y)[::-1], worst_transposed[1])),
                     list(map(lambda y: list(y)[::-1], worst_transposed[2])), worst_transposed[3]]
             transposed = True
 
         elif len(potential_words_transposed) == 0:
-            worst = sorted(potential_words, key=lambda x: (len(x[2]), x[3]), reverse=True)[0]
+            worst = sorted(potential_words, key=lambda x: (-x[3], -len(x[2])), reverse=True)[0]
             # Temporary solution...
             worst_transposed = [99999, 99999, 99999, 99999]
 
         else:
-            worst = sorted(potential_words, key=lambda x: (len(x[2]), x[3]), reverse=True)[0]
+            worst = sorted(potential_words, key=lambda x: (-x[3], -len(x[2])), reverse=True)[0]
             worst_transposed = sorted(potential_words_transposed, key=lambda x: (len(x[2]), x[3]), reverse=True)[0]
 
         worst = sorted(potential_words, key=lambda x: (-x[3], -len(x[2])), reverse=True)[0]
@@ -671,9 +717,10 @@ class BotAI:
         if worst[2] != []:
             crossed = BotAI.find_cross_words(tuple(worst), used_words, matrix, transposed)
         else:
-            # "!" means we do not count crossed words
+            # "!" means we do not count crossed words | lack of them
             crossed = {"!"}
 
+        # Rarely; it is the case when we didn't check the word which is going to be init on the board by AI
         if crossed == {} and transposed is True:
             print("AI DID WRONG MOVE!! :))))")
             matrix = list(map(lambda y: list(y), list(zip(*matrix))))
@@ -696,6 +743,13 @@ class BotAI:
         else:
             worst = {worst[0]: worst[1]}
 
+        # Rarely; If AI make wrong move involved with correctness of word
+        for word in worst:
+            if t.get_word(word)[0] == "":
+                print("AI used word which doesn't exist :D")
+                return False, {}, rack
+
+        print(worst)
         return True, worst, rack
 
 if __name__ == "__main__":
