@@ -207,7 +207,9 @@ class BotAI:
     @staticmethod
     def get_cross_checks(t: Trie, board: list_of_lists, used_words) -> list_of_lists:
         """Possible letters for crossed words up&down"""
-        def get_between_cross_checks():
+        def get_between_cross_checks(t: Trie, board: list_of_lists, used_words, row: int, column: int):
+            """Need to get cross checks in the same dimension; case: 'M','E','-','I','C','O'; assuming that ICO as a word
+                exists, the only letter which would be possible to place between 'E' and 'I' is 'X'"""
             pass
 
         cross_checks = [[set() for row in range(len(board))] for col in range(len(board))]
@@ -403,8 +405,6 @@ class BotAI:
                     BotAI.extend_right_part(partial_word + board[row][column], node.children.get(board[row][column]), row, column+1, board,
                                       rack, used_words, cross_checks, potential_words)
 
-
-    @staticmethod
     def find_cross_words(tuple_word: tuple, used_words: set, board: list_of_lists, transposed: bool) -> (int, set):
         # passing everything transposed or make a logic about it && board.get_score should be implemented
         #       at returns
@@ -452,8 +452,9 @@ class BotAI:
                         row -= 1
 
                     word = ""
-                    while row + 1 < 15 and board[row + 1][column] != "-":
-                        # należy zwalidować przypadek kiedy natrafiamy na wrzuconą przez nas literę
+                    # while (row + 1 < 15 and board[row + 1][column] != "-"):
+                    while (row + 1 < 15 and board[row][column] != "-") or row == row_init:
+                        # Valid situation when we cross letter put by us (This letter is not init on board yet)
                         if row == row_init:
                             word += letter_crossed
                             coords_new_words[index].append([row, column])
@@ -475,13 +476,13 @@ class BotAI:
                         row -= 1
 
                     word = ""
-                    #while row + 1 < 15 and board[row + 1][column] != "-":
+                    # while row + 1 < 15 and board[row + 1][column] != "-": #UPDATE#!
                     while row < 15 and board[row][column] != "-":
                         word += board[row][column]
                         coords_new_words[index].append([row, column])
                         row += 1
 
-                    # Situation when our word will have 2 letters only, including added one
+                    # Situation when our word will have 2 letters only, including added one | due to the UPDATE#! it may be unnecessary
                     if len(word) == 0:
                         word += board[row][column]
                         coords_new_words[index].append([row, column])
