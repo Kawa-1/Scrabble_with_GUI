@@ -2,7 +2,7 @@ from __future__ import annotations
 from random import randint, shuffle
 
 
-# Wymagane jest aby gracze korzystali z tej samej instancji klasy Bag()
+# Wymagane jest aby gracze korzystali z tej samej instancji klasy Bag
 
 
 class Bag:
