@@ -65,9 +65,9 @@ def clear_input(*argv: QLineEdit) -> None:
 
 def uncheck_all(arg1: list, *argv: QCheckBox):
     for each in arg1:
-        each.isChecked = False
+        each.setChecked(False)
     for each in argv:
-        each.isChecked = False
+        each.setChecked(False)
 
 
 def disable_mac_focus(arg1: list,  *argv: QLineEdit) -> None:

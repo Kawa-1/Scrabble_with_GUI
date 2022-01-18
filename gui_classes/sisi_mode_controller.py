@@ -52,17 +52,13 @@ class SisiModeController(DummyWindow):
             Board_gui(2, [_player, _ai], self.menu_handle)
 
     def verify_checkboxes(self) -> [bool, list]:
-        si = self.findChildren(QCheckBox, QRegularExpression('si1_*'))
         _s1_checkboxes = [checkbox for checkbox in self.findChildren(QCheckBox, QRegularExpression('si1_*')) if checkbox.isChecked()]
         _s2_checkboxes = [checkbox for checkbox in self.findChildren(QCheckBox, QRegularExpression('si2_*')) if checkbox.isChecked()]
 
-        if len(_s1_checkboxes) == 2 or len(_s2_checkboxes) == 2:
-            uncheck_all([*_s1_checkboxes, *_s2_checkboxes])
-            return [False, []]
-        elif not len(_s1_checkboxes) == 2 and not len(_s2_checkboxes) == 2:
+        if len(_s1_checkboxes) == 1 and len(_s2_checkboxes) == 1:
             return [True, [*_s1_checkboxes, *_s2_checkboxes]]
         else:
-            print('idk co to robi')
+            uncheck_all([*_s1_checkboxes, *_s2_checkboxes])
             return [False, []]
 
     def start_sisi_game(self) -> None:
