@@ -45,14 +45,17 @@ class LoginWindowController(DummyWindow):
         _login = self.ui.login_input.text()
 
         if _pass != '' and _login != '':
-            # verify supplied data, if correct return open MenuWindow and quit LoginWindow
-            # TODO: update MenuWindow(); pass credentials to MenuWindow constructor
-            if credentials_manager.CredentialsManager.verify_credentials(_login, _pass):
-                MenuWindowController(_login)
-                quit_window(self)
+            if len(_pass) in range(2, 9) and len(_login) in range(2, 9):
+                # verify supplied data, if correct return open MenuWindow and quit LoginWindow
+                # TODO: update MenuWindow(); pass credentials to MenuWindow constructor
+                if credentials_manager.CredentialsManager.verify_credentials(_login, _pass):
+                    MenuWindowController(_login)
+                    quit_window(self)
+                else:
+                    clear_input(self.ui.password_input, self.ui.login_input)
+                    self.ui.error_label.setText('niepoprawne dane')
             else:
-                clear_input(self.ui.password_input, self.ui.login_input)
-                self.ui.error_label.setText('niepoprawne dane')
+                self.ui.error_label.setText('wybierz dlugosc 2-9 znaków')
         else:
             print('uzupelnij oba pola')
             self.ui.error_label.setText('uzupełnij oba pola')
@@ -76,16 +79,19 @@ class LoginWindowController(DummyWindow):
         _login = self.ui.reg_login_input.text()
 
         if _pass != '' and _login != '':
-            if credentials_manager.CredentialsManager.register_player(_login, _pass):
-                clear_input(self.ui.reg_password_input, self.ui.reg_login_input)
-                self.ui.error_register_label.setStyleSheet('color: rgb(62, 231, 41)')
-                self.ui.error_register_label.setText('poprawnie zarejestrowano')
-                self.setFocus()
-            # such credentials exist in database; then:
+            if len(_pass) in range(2, 9) and len(_login) in range(2, 9):
+                if credentials_manager.CredentialsManager.register_player(_login, _pass):
+                    clear_input(self.ui.reg_password_input, self.ui.reg_login_input)
+                    self.ui.error_register_label.setStyleSheet('color: rgb(62, 231, 41)')
+                    self.ui.error_register_label.setText('poprawnie zarejestrowano')
+                    self.setFocus()
+                # such credentials exist in database; then:
+                else:
+                    clear_input(self.ui.reg_password_input, self.ui.reg_login_input)
+                    self.ui.error_label.setStyleSheet('color: red')
+                    self.ui.error_register_label.setText('spróbuj inne dane')
             else:
-                clear_input(self.ui.reg_password_input, self.ui.reg_login_input)
-                self.ui.error_label.setStyleSheet('color: red')
-                self.ui.error_register_label.setText('spróbuj inne dane')
+                self.ui.error_register_label.setText('wybierz dlugosc 2-9 znaków')
         else:
             print('uzupelnij oba pola')
             self.ui.error_register_label.setText('uzupełnij oba pola')
