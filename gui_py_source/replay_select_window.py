@@ -101,22 +101,109 @@ class Ui_replay_select_window(object):
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.game1_button = QtWidgets.QPushButton(self.verticalLayoutWidget)
-        self.game1_button.setObjectName("game1_button")
-        self.verticalLayout.addWidget(self.game1_button)
-        self.game2_button = QtWidgets.QPushButton(self.verticalLayoutWidget)
-        self.game2_button.setObjectName("game2_button")
-        self.verticalLayout.addWidget(self.game2_button)
-        self.game3_button = QtWidgets.QPushButton(self.verticalLayoutWidget)
-        self.game3_button.setObjectName("game3_button")
-        self.verticalLayout.addWidget(self.game3_button)
-        self.game4_button = QtWidgets.QPushButton(self.verticalLayoutWidget)
-        self.game4_button.setObjectName("game4_button")
-        self.verticalLayout.addWidget(self.game4_button)
+        self.game1_button_1 = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.game1_button_1.setObjectName("game1_button_1")
+        self.verticalLayout.addWidget(self.game1_button_1)
+        self.game2_button_1 = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.game2_button_1.setObjectName("game2_button_1")
+        self.verticalLayout.addWidget(self.game2_button_1)
+        self.game3_button_1 = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.game3_button_1.setObjectName("game3_button_1")
+        self.verticalLayout.addWidget(self.game3_button_1)
+        self.game4_button_1 = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.game4_button_1.setObjectName("game4_button_1")
+        self.verticalLayout.addWidget(self.game4_button_1)
         self.stackedWidget.addWidget(self.replay_1_page)
-        self.page_2 = QtWidgets.QWidget()
-        self.page_2.setObjectName("page_2")
-        self.stackedWidget.addWidget(self.page_2)
+        self.replay_2_page = QtWidgets.QWidget()
+        self.replay_2_page.setStyleSheet("QWidget{\n"
+"    background-color: rgb(22, 60, 27);\n"
+"}\n"
+"QPushButton{\n"
+"    background-color: beige;\n"
+"    border-radius: 7px;\n"
+"    min-height: 20px;\n"
+"    color: black;\n"
+"}")
+        self.replay_2_page.setObjectName("replay_2_page")
+        self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.replay_2_page)
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(10, 10, 231, 191))
+        self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.game1_button_2 = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
+        self.game1_button_2.setObjectName("game1_button_2")
+        self.verticalLayout_2.addWidget(self.game1_button_2)
+        self.game2_button_2 = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
+        self.game2_button_2.setObjectName("game2_button_2")
+        self.verticalLayout_2.addWidget(self.game2_button_2)
+        self.game3_button_2 = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
+        self.game3_button_2.setObjectName("game3_button_2")
+        self.verticalLayout_2.addWidget(self.game3_button_2)
+        self.game4_button_2 = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
+        self.game4_button_2.setObjectName("game4_button_2")
+        self.verticalLayout_2.addWidget(self.game4_button_2)
+        self.stackedWidget.addWidget(self.replay_2_page)
+        self.replay_3_page = QtWidgets.QWidget()
+        self.replay_3_page.setStyleSheet("QWidget{\n"
+"    background-color: rgb(22, 60, 27);\n"
+"}\n"
+"QPushButton{\n"
+"    background-color: beige;\n"
+"    border-radius: 7px;\n"
+"    min-height: 20px;\n"
+"    color: black;\n"
+"}")
+        self.replay_3_page.setObjectName("replay_3_page")
+        self.verticalLayoutWidget_3 = QtWidgets.QWidget(self.replay_3_page)
+        self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(10, 10, 231, 191))
+        self.verticalLayoutWidget_3.setObjectName("verticalLayoutWidget_3")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_3)
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.game1_button_3 = QtWidgets.QPushButton(self.verticalLayoutWidget_3)
+        self.game1_button_3.setObjectName("game1_button_3")
+        self.verticalLayout_3.addWidget(self.game1_button_3)
+        self.game2_button_3 = QtWidgets.QPushButton(self.verticalLayoutWidget_3)
+        self.game2_button_3.setObjectName("game2_button_3")
+        self.verticalLayout_3.addWidget(self.game2_button_3)
+        self.game3_button_3 = QtWidgets.QPushButton(self.verticalLayoutWidget_3)
+        self.game3_button_3.setObjectName("game3_button_3")
+        self.verticalLayout_3.addWidget(self.game3_button_3)
+        self.game4_button_3 = QtWidgets.QPushButton(self.verticalLayoutWidget_3)
+        self.game4_button_3.setObjectName("game4_button_3")
+        self.verticalLayout_3.addWidget(self.game4_button_3)
+        self.stackedWidget.addWidget(self.replay_3_page)
+        self.replay_4_page = QtWidgets.QWidget()
+        self.replay_4_page.setStyleSheet("QWidget{\n"
+"    background-color: rgb(22, 60, 27);\n"
+"}\n"
+"QPushButton{\n"
+"    background-color: beige;\n"
+"    border-radius: 7px;\n"
+"    min-height: 20px;\n"
+"    color: black;\n"
+"}")
+        self.replay_4_page.setObjectName("replay_4_page")
+        self.verticalLayoutWidget_4 = QtWidgets.QWidget(self.replay_4_page)
+        self.verticalLayoutWidget_4.setGeometry(QtCore.QRect(10, 10, 231, 191))
+        self.verticalLayoutWidget_4.setObjectName("verticalLayoutWidget_4")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_4)
+        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.game1_button_4 = QtWidgets.QPushButton(self.verticalLayoutWidget_4)
+        self.game1_button_4.setObjectName("game1_button_4")
+        self.verticalLayout_4.addWidget(self.game1_button_4)
+        self.game2_button_4 = QtWidgets.QPushButton(self.verticalLayoutWidget_4)
+        self.game2_button_4.setObjectName("game2_button_4")
+        self.verticalLayout_4.addWidget(self.game2_button_4)
+        self.game3_button_4 = QtWidgets.QPushButton(self.verticalLayoutWidget_4)
+        self.game3_button_4.setObjectName("game3_button_4")
+        self.verticalLayout_4.addWidget(self.game3_button_4)
+        self.game4_button_4 = QtWidgets.QPushButton(self.verticalLayoutWidget_4)
+        self.game4_button_4.setObjectName("game4_button_4")
+        self.verticalLayout_4.addWidget(self.game4_button_4)
+        self.stackedWidget.addWidget(self.replay_4_page)
         self.backwards_button = QtWidgets.QPushButton(self.game_mode_frame)
         self.backwards_button.setGeometry(QtCore.QRect(60, 330, 71, 32))
         self.backwards_button.setStyleSheet("QPushButton{\n"
@@ -158,6 +245,7 @@ class Ui_replay_select_window(object):
         replay_select_window.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(replay_select_window)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(replay_select_window)
 
     def retranslateUi(self, replay_select_window):
@@ -165,10 +253,22 @@ class Ui_replay_select_window(object):
         replay_select_window.setWindowTitle(_translate("replay_select_window", "MainWindow"))
         self.name_label.setText(_translate("replay_select_window", "<html><head/><body><p><span style=\" font-weight:700;\">Scrabble</span></p><p><br/></p></body></html>"))
         self.game_mode_label.setText(_translate("replay_select_window", "<html><head/><body><p><span style=\" font-size:18pt;\">Obejrzyj powtórkę gry</span></p></body></html>"))
-        self.game1_button.setText(_translate("replay_select_window", "PushButton"))
-        self.game2_button.setText(_translate("replay_select_window", "PushButton"))
-        self.game3_button.setText(_translate("replay_select_window", "PushButton"))
-        self.game4_button.setText(_translate("replay_select_window", "PushButton"))
+        self.game1_button_1.setText(_translate("replay_select_window", "PushButton"))
+        self.game2_button_1.setText(_translate("replay_select_window", "PushButton"))
+        self.game3_button_1.setText(_translate("replay_select_window", "PushButton"))
+        self.game4_button_1.setText(_translate("replay_select_window", "PushButton"))
+        self.game1_button_2.setText(_translate("replay_select_window", "PushButton"))
+        self.game2_button_2.setText(_translate("replay_select_window", "PushButton"))
+        self.game3_button_2.setText(_translate("replay_select_window", "PushButton"))
+        self.game4_button_2.setText(_translate("replay_select_window", "PushButton"))
+        self.game1_button_3.setText(_translate("replay_select_window", "PushButton"))
+        self.game2_button_3.setText(_translate("replay_select_window", "PushButton"))
+        self.game3_button_3.setText(_translate("replay_select_window", "PushButton"))
+        self.game4_button_3.setText(_translate("replay_select_window", "PushButton"))
+        self.game1_button_4.setText(_translate("replay_select_window", "PushButton"))
+        self.game2_button_4.setText(_translate("replay_select_window", "PushButton"))
+        self.game3_button_4.setText(_translate("replay_select_window", "PushButton"))
+        self.game4_button_4.setText(_translate("replay_select_window", "PushButton"))
         self.game_mode_label_2.setText(_translate("replay_select_window", "<html><head/><body><p><span style=\" font-size:11pt;\">kliknij przycisk i włącz powtórkę</span></p></body></html>"))
 
 

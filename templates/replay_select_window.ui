@@ -172,6 +172,9 @@ background-color: rgb(22, 60, 27);
 	background-color: rgb(22, 60, 27);
 }</string>
       </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
       <widget class="QWidget" name="replay_1_page">
        <property name="styleSheet">
         <string notr="true">QWidget{
@@ -195,28 +198,28 @@ QPushButton{
         </property>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
-          <widget class="QPushButton" name="game1_button">
+          <widget class="QPushButton" name="game1_button_1">
            <property name="text">
             <string>PushButton</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="game2_button">
+          <widget class="QPushButton" name="game2_button_1">
            <property name="text">
             <string>PushButton</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="game3_button">
+          <widget class="QPushButton" name="game3_button_1">
            <property name="text">
             <string>PushButton</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="game4_button">
+          <widget class="QPushButton" name="game4_button_1">
            <property name="text">
             <string>PushButton</string>
            </property>
@@ -225,7 +228,165 @@ QPushButton{
         </layout>
        </widget>
       </widget>
-      <widget class="QWidget" name="page_2"/>
+      <widget class="QWidget" name="replay_2_page">
+       <property name="styleSheet">
+        <string notr="true">QWidget{
+	background-color: rgb(22, 60, 27);
+}
+QPushButton{
+	background-color: beige;
+	border-radius: 7px;
+	min-height: 20px;
+	color: black;
+}</string>
+       </property>
+       <widget class="QWidget" name="verticalLayoutWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>231</width>
+          <height>191</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QPushButton" name="game1_button_2">
+           <property name="text">
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="game2_button_2">
+           <property name="text">
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="game3_button_2">
+           <property name="text">
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="game4_button_2">
+           <property name="text">
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="replay_3_page">
+       <property name="styleSheet">
+        <string notr="true">QWidget{
+	background-color: rgb(22, 60, 27);
+}
+QPushButton{
+	background-color: beige;
+	border-radius: 7px;
+	min-height: 20px;
+	color: black;
+}</string>
+       </property>
+       <widget class="QWidget" name="verticalLayoutWidget_3">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>231</width>
+          <height>191</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QPushButton" name="game1_button_3">
+           <property name="text">
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="game2_button_3">
+           <property name="text">
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="game3_button_3">
+           <property name="text">
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="game4_button_3">
+           <property name="text">
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="replay_4_page">
+       <property name="styleSheet">
+        <string notr="true">QWidget{
+	background-color: rgb(22, 60, 27);
+}
+QPushButton{
+	background-color: beige;
+	border-radius: 7px;
+	min-height: 20px;
+	color: black;
+}</string>
+       </property>
+       <widget class="QWidget" name="verticalLayoutWidget_4">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>231</width>
+          <height>191</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <widget class="QPushButton" name="game1_button_4">
+           <property name="text">
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="game2_button_4">
+           <property name="text">
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="game3_button_4">
+           <property name="text">
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="game4_button_4">
+           <property name="text">
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
      </widget>
      <widget class="QPushButton" name="backwards_button">
       <property name="geometry">

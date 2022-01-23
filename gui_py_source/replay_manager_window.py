@@ -67,7 +67,7 @@ class Ui_replay_manager_window(object):
         self.label.setGeometry(QtCore.QRect(30, 180, 111, 31))
         self.label.setObjectName("label")
         self.next_player_label = QtWidgets.QLabel(self.menu_frame)
-        self.next_player_label.setGeometry(QtCore.QRect(150, 180, 161, 31))
+        self.next_player_label.setGeometry(QtCore.QRect(130, 180, 161, 31))
         self.next_player_label.setStyleSheet("QLabel{\n"
 "    color: beige;\n"
 "}")

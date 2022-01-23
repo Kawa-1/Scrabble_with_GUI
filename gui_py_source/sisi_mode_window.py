@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '/Users/mzieba/Documents/szkola/code/Scrabble_with_GUI/templates/sisi_mode_window.ui'
+# Form implementation generated from reading ui file '/Users/mzieba/Documents/szkola/3rok/5semestr/io.nosync/scrabble/Scrabble_with_GUI/Scrabble_with_GUI/templates/sisi_mode_window.ui'
 #
 # Created by: PyQt6 UI code generator 6.0.3
 #
@@ -67,7 +67,7 @@ class Ui_sisi_mode_window(object):
 "")
         self.player_si_level_select_page.setObjectName("player_si_level_select_page")
         self.hard_si_button = QtWidgets.QPushButton(self.player_si_level_select_page)
-        self.hard_si_button.setGeometry(QtCore.QRect(140, 169, 50, 121))
+        self.hard_si_button.setGeometry(QtCore.QRect(160, 169, 50, 121))
         font = QtGui.QFont()
         font.setPointSize(18)
         self.hard_si_button.setFont(font)
@@ -99,7 +99,7 @@ class Ui_sisi_mode_window(object):
 "}")
         self.si_mode_label_2.setObjectName("si_mode_label_2")
         self.easy_si_button = QtWidgets.QPushButton(self.player_si_level_select_page)
-        self.easy_si_button.setGeometry(QtCore.QRect(40, 220, 50, 71))
+        self.easy_si_button.setGeometry(QtCore.QRect(20, 220, 50, 71))
         font = QtGui.QFont()
         font.setPointSize(18)
         self.easy_si_button.setFont(font)
@@ -129,6 +129,17 @@ class Ui_sisi_mode_window(object):
 "    color: rgb(204, 204, 143);\n"
 "}")
         self.game_mode_desc_2.setObjectName("game_mode_desc_2")
+        self.medium_si_button = QtWidgets.QPushButton(self.player_si_level_select_page)
+        self.medium_si_button.setGeometry(QtCore.QRect(90, 190, 50, 101))
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        self.medium_si_button.setFont(font)
+        self.medium_si_button.setStyleSheet("QPushButton{\n"
+"    border-radius: 20;\n"
+"    background-color: rgb(255, 165, 50);\n"
+"}")
+        self.medium_si_button.setText("")
+        self.medium_si_button.setObjectName("medium_si_button")
         self.game_mode_stacked.addWidget(self.player_si_level_select_page)
         self.sisi_level_select_page = QtWidgets.QWidget()
         self.sisi_level_select_page.setObjectName("sisi_level_select_page")
@@ -174,7 +185,7 @@ class Ui_sisi_mode_window(object):
         self.si_icon_label_3.setText("")
         self.si_icon_label_3.setObjectName("si_icon_label_3")
         self.si_icon_label_4 = QtWidgets.QLabel(self.sisi_level_select_page)
-        self.si_icon_label_4.setGeometry(QtCore.QRect(40, 190, 41, 41))
+        self.si_icon_label_4.setGeometry(QtCore.QRect(40, 170, 41, 41))
         self.si_icon_label_4.setStyleSheet("QLabel {\n"
 "    \n"
 "    image: url(:/newPrefix/images/gamer.png);\n"
@@ -182,7 +193,7 @@ class Ui_sisi_mode_window(object):
         self.si_icon_label_4.setText("")
         self.si_icon_label_4.setObjectName("si_icon_label_4")
         self.si_icon_label_5 = QtWidgets.QLabel(self.sisi_level_select_page)
-        self.si_icon_label_5.setGeometry(QtCore.QRect(150, 190, 41, 41))
+        self.si_icon_label_5.setGeometry(QtCore.QRect(150, 170, 41, 41))
         self.si_icon_label_5.setStyleSheet("QLabel {\n"
 "    \n"
 "    image: url(:/newPrefix/images/gamer.png);\n"
@@ -190,7 +201,7 @@ class Ui_sisi_mode_window(object):
         self.si_icon_label_5.setText("")
         self.si_icon_label_5.setObjectName("si_icon_label_5")
         self.si1_easy_checkbox = QtWidgets.QCheckBox(self.sisi_level_select_page)
-        self.si1_easy_checkbox.setGeometry(QtCore.QRect(40, 250, 85, 20))
+        self.si1_easy_checkbox.setGeometry(QtCore.QRect(40, 230, 85, 20))
         self.si1_easy_checkbox.setObjectName("si1_easy_checkbox")
         self.si1_hard_checkbox = QtWidgets.QCheckBox(self.sisi_level_select_page)
         self.si1_hard_checkbox.setGeometry(QtCore.QRect(40, 280, 85, 20))
@@ -199,16 +210,18 @@ class Ui_sisi_mode_window(object):
         self.si2_hard_checkbox.setGeometry(QtCore.QRect(150, 280, 85, 20))
         self.si2_hard_checkbox.setObjectName("si2_hard_checkbox")
         self.si2_easy_checkbox = QtWidgets.QCheckBox(self.sisi_level_select_page)
-        self.si2_easy_checkbox.setGeometry(QtCore.QRect(150, 250, 85, 20))
+        self.si2_easy_checkbox.setGeometry(QtCore.QRect(150, 230, 85, 20))
         self.si2_easy_checkbox.setObjectName("si2_easy_checkbox")
         self.sisi_game_button = QtWidgets.QPushButton(self.sisi_level_select_page)
         self.sisi_game_button.setGeometry(QtCore.QRect(100, 300, 41, 32))
         self.sisi_game_button.setText("")
         self.sisi_game_button.setObjectName("sisi_game_button")
-        self.sisi_error_label = QtWidgets.QLabel(self.sisi_level_select_page)
-        self.sisi_error_label.setGeometry(QtCore.QRect(40, 160, 151, 20))
-        self.sisi_error_label.setAlignment(QtCore.Qt.Alignment.AlignCenter)
-        self.sisi_error_label.setObjectName("sisi_error_label")
+        self.si1_medium_checkbox = QtWidgets.QCheckBox(self.sisi_level_select_page)
+        self.si1_medium_checkbox.setGeometry(QtCore.QRect(40, 255, 85, 20))
+        self.si1_medium_checkbox.setObjectName("si1_medium_checkbox")
+        self.si1_medium_checkbox_2 = QtWidgets.QCheckBox(self.sisi_level_select_page)
+        self.si1_medium_checkbox_2.setGeometry(QtCore.QRect(150, 255, 85, 20))
+        self.si1_medium_checkbox_2.setObjectName("si1_medium_checkbox_2")
         self.game_mode_stacked.addWidget(self.sisi_level_select_page)
         self.game_mode_select_page = QtWidgets.QWidget()
         self.game_mode_select_page.setObjectName("game_mode_select_page")
@@ -296,7 +309,7 @@ class Ui_sisi_mode_window(object):
         sisi_mode_window.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(sisi_mode_window)
-        self.game_mode_stacked.setCurrentIndex(2)
+        self.game_mode_stacked.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(sisi_mode_window)
 
     def retranslateUi(self, sisi_mode_window):
@@ -321,7 +334,8 @@ class Ui_sisi_mode_window(object):
         self.si1_hard_checkbox.setText(_translate("sisi_mode_window", "hard"))
         self.si2_hard_checkbox.setText(_translate("sisi_mode_window", "hard"))
         self.si2_easy_checkbox.setText(_translate("sisi_mode_window", "easy"))
-        self.sisi_error_label.setText(_translate("sisi_mode_window", "TextLabel"))
+        self.si1_medium_checkbox.setText(_translate("sisi_mode_window", "medium"))
+        self.si1_medium_checkbox_2.setText(_translate("sisi_mode_window", "medium"))
         self.game_mode_label.setText(_translate("sisi_mode_window", "<html><head/><body><p><span style=\" font-size:18pt;\">Tryb gry</span></p></body></html>"))
         self.si_mode_label.setText(_translate("sisi_mode_window", "<html><head/><body><p><span style=\" font-size:24pt; font-weight:700; font-style:italic;\">vs SI mode</span></p></body></html>"))
         self.game_mode_desc.setHtml(_translate("sisi_mode_window", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
