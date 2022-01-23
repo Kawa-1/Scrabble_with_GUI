@@ -295,6 +295,7 @@ class Board_gui(QtWidgets.QMainWindow):
                         self.board.checked_words.update({word_and_coords[0]: word_and_coords[1]})
                         self.dict_players[self.current_player][11] = word_and_coords[0]
                         self.players[self.current_player].word_best = word_and_coords[0]
+                        #self.t.word_delete(word_and_coords[0]) # It would be repeated...
 
                         #self.dict_players[self.current_player][10] += len(word_and_coords[0])
                         #self.players[self.current_player].tiles_put = len(word_and_coords[0])
@@ -315,6 +316,7 @@ class Board_gui(QtWidgets.QMainWindow):
                         self.board.checked_words.update({word_and_coords[0]: word_and_coords[1]})
                         self.dict_players[self.current_player][11] = word_and_coords[0]
                         self.players[self.current_player].word_best = word_and_coords[0]
+                        #self.t.word_delete(word_and_coords[0]) # It would be repeated...
 
 
 
@@ -372,6 +374,7 @@ class Board_gui(QtWidgets.QMainWindow):
                 self.board.checked_words.update({word_and_coords[0]: word_and_coords[1]})
                 letters += word_and_coords[0]
                 coordinates.extend(word_and_coords[1])
+                self.t.word_delete(word_and_coords[0])
                 if len(word_and_coords[0]) > len(self.players[self.current_player].word_best):
                     self.players[self.current_player].word_best = word_and_coords[0]
                     self.dict_players[self.current_player][11] = word_and_coords[0]
@@ -416,6 +419,7 @@ class Board_gui(QtWidgets.QMainWindow):
             # acquire all board per move info; index[1][0][3] denotes board2string; index[] is bool
             #_string2b = string_to_board(ManagementGeneralLeaderboard.acquire_board(self.game_id)[1][0][3])
             for word in words_4_score.keys():
+                self.t.word_delete(word)
                 if len(word) > len(self.players[self.current_player].word_best):
                     self.players[self.current_player].word_best = word
                     self.dict_players[self.current_player][11] = word

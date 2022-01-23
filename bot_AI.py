@@ -646,7 +646,8 @@ class BotAI:
         else:
             best = {best[0]: best[1]}
 
-        # Rarely; If AI make wrong move involved with correctness of word
+        # Very Rarely; If AI make wrong move involved with correctness of word
+        # I think it is actually impossible because actually we are "deleting" words in the TRIE
         for word in best:
             if t.get_word(word)[0] == "":
                 print("AI used word which doesn't exist :D")
