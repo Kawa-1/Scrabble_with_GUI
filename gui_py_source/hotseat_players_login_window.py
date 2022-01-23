@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '/Users/mzieba/Documents/szkola/code/Scrabble_with_GUI/templates/hotseat_players_login_window.ui'
+# Form implementation generated from reading ui file '/Users/mzieba/Documents/szkola/3rok/5semestr/io.nosync/scrabble/Scrabble_with_GUI/Scrabble_with_GUI/templates/hotseat_players_login_window.ui'
 #
 # Created by: PyQt6 UI code generator 6.0.3
 #
@@ -792,12 +792,12 @@ class Ui_hotseat_players_login_window(object):
 "lineedit-password-character: 9679;\n"
 "}")
         self.p1of4_pass.setObjectName("p1of4_pass")
-        self.wrong_cred_labe_1of4 = QtWidgets.QLabel(self.player1of4_login_stacked)
-        self.wrong_cred_labe_1of4.setGeometry(QtCore.QRect(20, 110, 151, 20))
-        self.wrong_cred_labe_1of4.setStyleSheet("QLabel {\n"
+        self.wrong_cred_label_1of4 = QtWidgets.QLabel(self.player1of4_login_stacked)
+        self.wrong_cred_label_1of4.setGeometry(QtCore.QRect(20, 110, 151, 20))
+        self.wrong_cred_label_1of4.setStyleSheet("QLabel {\n"
 "    color:red;\n"
 "}")
-        self.wrong_cred_labe_1of4.setObjectName("wrong_cred_labe_1of4")
+        self.wrong_cred_label_1of4.setObjectName("wrong_cred_label_1of4")
         self.p1of4_login_button = QtWidgets.QPushButton(self.player1of4_login_stacked)
         self.p1of4_login_button.setGeometry(QtCore.QRect(10, 60, 31, 31))
         self.p1of4_login_button.setStyleSheet("QPushButton{\n"
@@ -1077,7 +1077,7 @@ class Ui_hotseat_players_login_window(object):
         self.player1of4_name_label.setText(_translate("hotseat_players_login_window", "gracz 1."))
         self.correct_cred_label_7.setText(_translate("hotseat_players_login_window", "poprawnie zalogowano"))
         self.label_10.setText(_translate("hotseat_players_login_window", "gracz 1."))
-        self.wrong_cred_labe_1of4.setText(_translate("hotseat_players_login_window", "wprowadzono złe dane"))
+        self.wrong_cred_label_1of4.setText(_translate("hotseat_players_login_window", "wprowadzono złe dane"))
         self.label_11.setText(_translate("hotseat_players_login_window", "gracz 2."))
         self.wrong_cred_label_2of4.setText(_translate("hotseat_players_login_window", "wprowadzono złe dane"))
         self.player2of4_name_label.setText(_translate("hotseat_players_login_window", "gracz 2."))

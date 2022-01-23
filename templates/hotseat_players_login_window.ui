@@ -1787,7 +1787,7 @@ lineedit-password-character: 9679;
 }</string>
            </property>
           </widget>
-          <widget class="QLabel" name="wrong_cred_labe_1of4">
+          <widget class="QLabel" name="wrong_cred_label_1of4">
            <property name="geometry">
             <rect>
              <x>20</x>
