@@ -105,6 +105,8 @@ class Board_gui(QtWidgets.QMainWindow):
             self.dict_players[i].append(self.players[i].name)
             self.dict_players[i].append(self.players[i].score)
             self.dict_players[i].append(self.players[i].fails)
+            self.dict_players[i].append(self.players[i].tiles_put)
+            self.dict_players[i].append(self.players[i].word_best)
             #self.dict_players[i].append(self.players[i].swapped)
 
 
@@ -185,7 +187,7 @@ class Board_gui(QtWidgets.QMainWindow):
         for label in self.dict_board_labels:
             label.mousePressEvent = self.factory(
                 label, self.dict_board_labels[label][2], self.dict_board_labels[label][3])
-            print(label, self.dict_board_labels[label][2], self.dict_board_labels[label][3])
+            #print(label, self.dict_board_labels[label][2], self.dict_board_labels[label][3])
 
         ### ALTER BOARD GUI FOR AI
         if self.players[self.current_player].bot is True:
@@ -291,6 +293,11 @@ class Board_gui(QtWidgets.QMainWindow):
                         print(word_and_coords[0], word_and_coords[1])
                         self.ai_place_letter(word_and_coords[0], word_and_coords[1])
                         self.board.checked_words.update({word_and_coords[0]: word_and_coords[1]})
+                        self.dict_players[self.current_player][11] = word_and_coords[0]
+                        self.players[self.current_player].word_best = word_and_coords[0]
+
+                        #self.dict_players[self.current_player][10] += len(word_and_coords[0])
+                        #self.players[self.current_player].tiles_put = len(word_and_coords[0])
 
             elif self.players[self.current_player].difficulty == "EASY":
                 self.players[self.current_player].rack = self.players[self.current_player].rack[:7]
@@ -306,6 +313,8 @@ class Board_gui(QtWidgets.QMainWindow):
                         print(word_and_coords[0], word_and_coords[1])
                         self.ai_place_letter(word_and_coords[0], word_and_coords[1])
                         self.board.checked_words.update({word_and_coords[0]: word_and_coords[1]})
+                        self.dict_players[self.current_player][11] = word_and_coords[0]
+                        self.players[self.current_player].word_best = word_and_coords[0]
 
 
 
@@ -339,7 +348,7 @@ class Board_gui(QtWidgets.QMainWindow):
 
 
         else:
-            # It is the normal workflow for player /not/ AI!!!
+            # It is the normal workflow for player not AI!!!
             self.letter_coordinates_dict = self.board.place_letters(self.letters_used, self.coords_of_letters_used, self.new_player_move_board)
             self.validity_rows_check = self.board.check_validity_placement_rows(self.new_player_move_board)
             self.validity_columns_check = self.board.check_validity_placement_columns(self.new_player_move_board)
@@ -363,6 +372,10 @@ class Board_gui(QtWidgets.QMainWindow):
                 self.board.checked_words.update({word_and_coords[0]: word_and_coords[1]})
                 letters += word_and_coords[0]
                 coordinates.extend(word_and_coords[1])
+                if len(word_and_coords[0]) > len(self.players[self.current_player].word_best):
+                    self.players[self.current_player].word_best = word_and_coords[0]
+                    self.dict_players[self.current_player][11] = word_and_coords[0]
+
             self.ai_place_letter(letters, coordinates)
             # copy the player's board onto main board
             self.actual_board = self.new_player_move_board
@@ -402,6 +415,10 @@ class Board_gui(QtWidgets.QMainWindow):
             ManagementGeneralLeaderboard.save_board(_b2string, self.game_id, self.players[self.current_player].name, self.moves_count)
             # acquire all board per move info; index[1][0][3] denotes board2string; index[] is bool
             #_string2b = string_to_board(ManagementGeneralLeaderboard.acquire_board(self.game_id)[1][0][3])
+            for word in words_4_score.keys():
+                if len(word) > len(self.players[self.current_player].word_best):
+                    self.players[self.current_player].word_best = word
+                    self.dict_players[self.current_player][11] = word
 
             self.board.actual_board = self.actual_board
             # check for new adjacencies 0,1,2
@@ -445,6 +462,8 @@ class Board_gui(QtWidgets.QMainWindow):
         if self.valid_move is True and self.players[self.current_player].bot is True:
             # SWITCH would be useful...
             how_many_tiles_used = 7 - len(self.rack_AI)
+            self.dict_players[self.current_player][10] += how_many_tiles_used
+            self.players[self.current_player].tiles_put = how_many_tiles_used
             last_write = 0
             for i in range(0, how_many_tiles_used):
                 log.info("Generating new Tile on the rack for AI")
@@ -529,6 +548,8 @@ class Board_gui(QtWidgets.QMainWindow):
                 self.ui.pushButton1.setText(self.new_letter)
                 # bylo git self.dict_players[self.current_player][1] = self.new_letter
                 self.dict_players[self.current_player][0] = self.new_letter
+                self.dict_players[self.current_player][10] += 1
+                self.players[self.current_player].tiles_put = 1
                 #print(self.dict_players[self.current_player])
                 #print(self.dict_players[self.current_player][0])
 
@@ -536,6 +557,8 @@ class Board_gui(QtWidgets.QMainWindow):
                 self.new_letter = self.racks.bag.generate_letter_from_bag()
                 self.ui.pushButton2.setText(self.new_letter)
                 self.dict_players[self.current_player][1] = self.new_letter
+                self.dict_players[self.current_player][10] += 1
+                self.players[self.current_player].tiles_put = 1
                 #print(self.dict_players[self.current_player])
                 #print(self.dict_players[self.current_player][1])
 
@@ -543,26 +566,38 @@ class Board_gui(QtWidgets.QMainWindow):
                 self.new_letter = self.racks.bag.generate_letter_from_bag()
                 self.ui.pushButton3.setText(self.new_letter)
                 self.dict_players[self.current_player][2] = self.new_letter
+                self.dict_players[self.current_player][10] += 1
+                self.players[self.current_player].tiles_put = 1
 
             if self.pushButton4_used == 1:
                 self.new_letter = self.racks.bag.generate_letter_from_bag()
                 self.ui.pushButton4.setText(self.new_letter)
                 self.dict_players[self.current_player][3] = self.new_letter
+                self.dict_players[self.current_player][10] += 1
+                self.players[self.current_player].tiles_put = 1
 
             if self.pushButton5_used == 1:
                 self.new_letter = self.racks.bag.generate_letter_from_bag()
                 self.ui.pushButton5.setText(self.new_letter)
                 self.dict_players[self.current_player][4] = self.new_letter
+                self.dict_players[self.current_player][10] += 1
+                self.players[self.current_player].tiles_put = 1
 
             if self.pushButton6_used == 1:
                 self.new_letter = self.racks.bag.generate_letter_from_bag()
                 self.ui.pushButton6.setText(self.new_letter)
                 self.dict_players[self.current_player][5] = self.new_letter
+                self.dict_players[self.current_player][10] += 1
+                self.players[self.current_player].tiles_put = 1
 
             if self.pushButton7_used == 1:
                 self.new_letter = self.racks.bag.generate_letter_from_bag()
                 self.ui.pushButton7.setText(self.new_letter)
                 self.dict_players[self.current_player][6] = self.new_letter
+                self.dict_players[self.current_player][10] += 1
+                self.players[self.current_player].tiles_put = 1
+
+
 
         self.pushButton1_used = 0
         self.pushButton2_used = 0

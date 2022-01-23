@@ -71,6 +71,17 @@ class Trie(object):
         else:
             return ("", 0)
 
+    def word_delete(self, word: str):
+
+        node = self.root
+
+        for char in word:
+            if char in node.children:
+                node = node.children[char]
+
+        if node.is_end is True:
+            node.is_end = False
+
     @staticmethod
     def load_lexicon(trie: Trie):
         _platform = platform.system()

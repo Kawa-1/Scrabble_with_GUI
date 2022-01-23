@@ -12,6 +12,8 @@ class Player:
         self._fails = 0
         self._bot = bot
         self._difficulty = difficulty
+        self._tiles_put = 0
+        self._word_best = ""
         #self.tiles_put_statistics = ""
         #self._swapped = 0
 
@@ -38,6 +40,14 @@ class Player:
     @property
     def difficulty(self):
         return self._difficulty
+
+    @property
+    def tiles_put(self):
+        return self._tiles_put
+
+    @property
+    def word_best(self):
+        return self._word_best
 
     #@property
     #def swapped(self):
@@ -70,6 +80,14 @@ class Player:
     @difficulty.setter
     def difficulty(self, level):
         self._difficulty = level
+
+    @tiles_put.setter
+    def tiles_put(self, tiles_put):
+        self._tiles_put += tiles_put
+
+    @word_best.setter
+    def word_best(self, best_word):
+        self._word_best = best_word
 
     @fails.deleter
     def fails(self):
