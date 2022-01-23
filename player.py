@@ -1,8 +1,16 @@
+from enum import Enum
+
+# Not implemented Enum; JUST IDEA YET
+class LevelAI(Enum):
+    HARD = "hard"
+    MEDIUM = "hard"
+    EASY = "easy"
+
 class Player:
     """This class will hold information involved with information of user
     who has logged in to play the game
     """
-    # Empty string mean player, EASY means AI as well as HARD means AI; considering difficulty parameter
+    # Empty string mean player, EASY means AI as well as HARD means AI as well as MEDIUM; considering difficulty parameter
     def __init__(self, name: str, rack: list, bot=False, difficulty=""):
         self._name = name
         if bot is True:

@@ -300,7 +300,7 @@ class Board_gui(QtWidgets.QMainWindow):
                         #self.dict_players[self.current_player][10] += len(word_and_coords[0])
                         #self.players[self.current_player].tiles_put = len(word_and_coords[0])
 
-            elif self.players[self.current_player].difficulty == "EASY":
+            elif self.players[self.current_player].difficulty == "EASY" or self.players[self.current_player].difficulty == "MEDIUM":
                 self.players[self.current_player].rack = self.players[self.current_player].rack[:7]
                 self.valid_move, words_4_score, self.rack_AI = BotAI.ai_first_move_easy(self.loaded_dictionary,
                                                                                         self.players[
@@ -317,7 +317,6 @@ class Board_gui(QtWidgets.QMainWindow):
                         self.dict_players[self.current_player][11] = word_and_coords[0]
                         self.players[self.current_player].word_best = word_and_coords[0]
                         #self.t.word_delete(word_and_coords[0]) # It would be repeated...
-
 
 
         elif (self.which_move == 1 or self.pass_first_move_check == 0):
@@ -346,6 +345,17 @@ class Board_gui(QtWidgets.QMainWindow):
                           self.players[self.current_player].rack, self.new_player_move_board, self.board.checked_words)
 
                 log.info("Results of BotAI.make_easy_move {}, {}, {}".format(self.valid_move, words_4_score,
+                                                                             self.rack_AI))
+
+            elif self.players[self.current_player].difficulty == "MEDIUM":
+                self.players[self.current_player].rack = self.players[self.current_player].rack[:7]
+                self.valid_move, words_4_score, self.rack_AI = BotAI.make_medium_move(self.t,
+                                                                                    self.players[
+                                                                                        self.current_player].rack,
+                                                                                    self.new_player_move_board,
+                                                                                    self.board.checked_words)
+
+                log.info("Results of BotAI.make_medium_move {}, {}, {}".format(self.valid_move, words_4_score,
                                                                              self.rack_AI))
 
 

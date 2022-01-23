@@ -656,6 +656,107 @@ class BotAI:
         return True, best, rack
 
     @staticmethod
+    def make_medium_move(t: Trie, rack: list, board: list_of_lists, checked_words: dict) -> (bool, dict, list):
+        used_words = set(checked_words)
+        # used_words = {"ZEBU", "BACKUP", "PERCHED", "EAX", "EXIST", "HOTDOG", "TOGAE", "MINKE", "EAGLES", "MINIM"}
+        matrix = copy.deepcopy(board)
+        anchors = BotAI.get_anchors(matrix)
+        cross_checks = BotAI.get_cross_checks(t, matrix, used_words)
+        potential_words = []
+
+        transposed = False
+        for square in anchors:
+            rack_pass = rack.copy()
+            BotAI.left_part("", t.root, BotAI.get_count_empty_left(matrix, square[0], square[1]), square, matrix,
+                            rack_pass, used_words,
+                            cross_checks, potential_words)
+
+        matrix = list(zip(*matrix))
+        anchors = BotAI.get_anchors(matrix)
+        cross_checks = BotAI.get_cross_checks(t, matrix, used_words)
+
+        potential_words_transposed = []
+        transposed = True
+        for square in anchors:
+            rack_pass = rack.copy()
+            BotAI.left_part("", t.root, BotAI.get_count_empty_left(matrix, square[0], square[1]), square, matrix,
+                            rack_pass, used_words,
+                            cross_checks, potential_words_transposed)
+
+        # back home; not transposed board/matrix
+        matrix = list(map(lambda x: list(x), list(zip(*matrix))))
+        transposed = False
+
+        med_transposed = []
+        med = []
+        if len(potential_words) == 0 and len(potential_words_transposed) == 0:
+            return False, {}, rack
+
+        elif len(potential_words) == 0:
+            med_transposed = sorted(potential_words_transposed, key=lambda x: (x[3], -len(x[2])), reverse=True)[random.randint(0, len(potential_words_transposed)-1)]
+            med = [med_transposed[0], list(map(lambda y: list(y)[::-1], med_transposed[1])),
+                     list(map(lambda y: list(y)[::-1], med_transposed[2])), med_transposed[3]]
+            transposed = True
+
+        elif len(potential_words_transposed) == 0:
+            med = sorted(potential_words, key=lambda x: (x[3], -len(x[2])), reverse=True)[random.randint(0, len(potential_words)-1)]
+            # Temporary solution...
+            med_transposed = [99999, 99999, 99999, 99999]
+
+        else:
+            med = sorted(potential_words, key=lambda x: (x[3], -len(x[2])), reverse=True)[random.randint(0, len(potential_words_transposed)-1)]
+            med_transposed = sorted(potential_words_transposed, key=lambda x: (len(x[2]), x[3]), reverse=True)[random.randint(0, len(potential_words_transposed)-1)]
+
+        # med = sorted(potential_words, key=lambda x: (x[3], -len(x[2])), reverse=True)[0]
+        # med_transposed = sorted(potential_words_transposed, key=lambda x: (x[3], -len(x[2])), reverse=True)[0]
+
+        swap = random.randint(0,1)
+
+        if swap == 1:
+            med = [med_transposed[0], list(map(lambda y: list(y)[::-1], med_transposed[1])),
+                     list(map(lambda y: list(y)[::-1], med_transposed[2])), med_transposed[3]]
+            transposed = True
+
+        if med[2] != []:
+            crossed = BotAI.find_cross_words(tuple(worst), used_words, matrix, transposed)
+        else:
+            # "!" means we do not count crossed words | lack of them
+            crossed = {"!"}
+
+        # Rarely; it is the case when we didn't check the word which is going to be init on the board by AI
+        if crossed == {} and transposed is True:
+            print("AI DID WRONG MOVE!! :))))")
+            matrix = list(map(lambda y: list(y), list(zip(*matrix))))
+            transposed = False
+            return False, {}, rack
+
+        elif crossed == {}:
+            print("ai did wrong move!! :DD")
+            return False, {}, rack
+
+        print(rack)
+        for index, coords in enumerate(med[1]):
+            if board[coords[0]][coords[1]] == "-":
+                rack.remove(med[0][index])
+
+        # format var worst for method get_score from board module
+        if crossed != {"!"}:
+            med = {med[0]: med[1]}
+            med.update(crossed)
+        else:
+            med = {med[0]: med[1]}
+
+        # Rarely; If AI make wrong move involved with correctness of word
+        for word in med:
+            if t.get_word(word)[0] == "":
+                print("AI used word which doesn't exist :D")
+                return False, {}, rack
+
+        print(med)
+        return True, med, rack
+
+
+    @staticmethod
     def make_easy_move(t: Trie, rack: list, board: list_of_lists, checked_words: dict) -> (bool, dict, list):
         used_words = set(checked_words)
         # used_words = {"ZEBU", "BACKUP", "PERCHED", "EAX", "EXIST", "HOTDOG", "TOGAE", "MINKE", "EAGLES", "MINIM"}
@@ -705,10 +806,10 @@ class BotAI:
 
         else:
             worst = sorted(potential_words, key=lambda x: (-x[3], -len(x[2])), reverse=True)[0]
-            worst_transposed = sorted(potential_words_transposed, key=lambda x: (len(x[2]), x[3]), reverse=True)[0]
+            worst_transposed = sorted(potential_words_transposed, key=lambda x: (-x[3], -len(x[2])), reverse=True)[0]
 
-        worst = sorted(potential_words, key=lambda x: (-x[3], -len(x[2])), reverse=True)[0]
-        worst_transposed = sorted(potential_words_transposed, key=lambda x: (-x[3], -len(x[2])), reverse=True)[0]
+        # worst = sorted(potential_words, key=lambda x: (-x[3], -len(x[2])), reverse=True)[0]
+        # worst_transposed = sorted(potential_words_transposed, key=lambda x: (-x[3], -len(x[2])), reverse=True)[0]
 
         if worst_transposed[3] < worst[3]:
             worst = [worst_transposed[0], list(map(lambda y: list(y)[::-1], worst_transposed[1])),
