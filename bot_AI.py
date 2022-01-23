@@ -601,7 +601,7 @@ class BotAI:
 
         elif len(potential_words_transposed) == 0:
             best = sorted(potential_words, key=lambda x: (len(x[2]), x[3]), reverse=True)[0]
-            best_transposed = [0, 0, 0, 0]
+            best_transposed = best
 
         else:
             best = sorted(potential_words, key=lambda x: (len(x[2]), x[3]), reverse=True)[0]
@@ -701,10 +701,10 @@ class BotAI:
         elif len(potential_words_transposed) == 0:
             med = sorted(potential_words, key=lambda x: (x[3], -len(x[2])), reverse=True)[random.randint(0, len(potential_words)-1)]
             # Temporary solution...
-            med_transposed = [99999, 99999, 99999, 99999]
+            med_transposed = med
 
         else:
-            med = sorted(potential_words, key=lambda x: (x[3], -len(x[2])), reverse=True)[random.randint(0, len(potential_words_transposed)-1)]
+            med = sorted(potential_words, key=lambda x: (x[3], -len(x[2])), reverse=True)[random.randint(0, len(potential_words)-1)]
             med_transposed = sorted(potential_words_transposed, key=lambda x: (len(x[2]), x[3]), reverse=True)[random.randint(0, len(potential_words_transposed)-1)]
 
         # med = sorted(potential_words, key=lambda x: (x[3], -len(x[2])), reverse=True)[0]
@@ -802,7 +802,7 @@ class BotAI:
         elif len(potential_words_transposed) == 0:
             worst = sorted(potential_words, key=lambda x: (-x[3], -len(x[2])), reverse=True)[0]
             # Temporary solution...
-            worst_transposed = [99999, 99999, 99999, 99999]
+            worst_transposed = worst
 
         else:
             worst = sorted(potential_words, key=lambda x: (-x[3], -len(x[2])), reverse=True)[0]
