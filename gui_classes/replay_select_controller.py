@@ -46,17 +46,17 @@ class ReplaySelectController(DummyWindow):
             TODO: extend to all saved games -> add paging: 4 buttons(game_id) per page
             REQUIRED: custom QWidgets: QStackedWidget
         """
-        # for i in range(len(self.saved_games)):
-        #     print(self.saved_games)
-        #     print(self.saved_games[i][0])
-        #     _game_index = self.saved_games[i][0]
-        #     _players = self.saved_games[i][1]
-        #     _text_2_btn = "{}{}{}".format(_game_index, ': ', _players)
-        #     eval("self.ui.game{}_button".format(i+1)).setText(_text_2_btn)
-        #     eval("self.ui.game{}_button".format(i+1)).clicked.connect(lambda state, x=_game_index: self.open_chosen_replay(x))
-        #     eval("self.ui.game{}_button".format(i+1)).setVisible(1)
+        for i in range(len(self.saved_games)):
+            print(self.saved_games)
+            print(self.saved_games[i][0])
+            _game_index = self.saved_games[i][0]
+            _players = self.saved_games[i][1]
+            _text_2_btn = "{}{}{}".format(_game_index, ': ', _players)
+            eval("self.ui.game{}_button_1".format(i+1)).setText(_text_2_btn)
+            eval("self.ui.game{}_button_1".format(i+1)).clicked.connect(lambda state, x=_game_index: self.open_chosen_replay(x))
+            eval("self.ui.game{}_button_1".format(i+1)).setVisible(1)
 
-        self.add_game_replay_handlers()
+        # self.add_game_replay_handlers()
 
         ### ASSUME FOR NOW THAT ONLY FOUR GAMES CAN BE REPLAYED
         hide_labels([self.ui.backwards_button, self.ui.forwards_button])
