@@ -116,7 +116,7 @@ border-radius:10px;
       <enum>QFrame::Raised</enum>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="player_si_level_select_page">
       <property name="styleSheet">
@@ -511,7 +511,7 @@ p, li { white-space: pre-wrap; }
         <string>medium</string>
        </property>
       </widget>
-      <widget class="QCheckBox" name="si1_medium_checkbox_2">
+      <widget class="QCheckBox" name="si2_medium_checkbox">
        <property name="geometry">
         <rect>
          <x>150</x>

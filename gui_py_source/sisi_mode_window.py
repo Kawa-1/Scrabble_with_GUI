@@ -219,9 +219,9 @@ class Ui_sisi_mode_window(object):
         self.si1_medium_checkbox = QtWidgets.QCheckBox(self.sisi_level_select_page)
         self.si1_medium_checkbox.setGeometry(QtCore.QRect(40, 255, 85, 20))
         self.si1_medium_checkbox.setObjectName("si1_medium_checkbox")
-        self.si1_medium_checkbox_2 = QtWidgets.QCheckBox(self.sisi_level_select_page)
-        self.si1_medium_checkbox_2.setGeometry(QtCore.QRect(150, 255, 85, 20))
-        self.si1_medium_checkbox_2.setObjectName("si1_medium_checkbox_2")
+        self.si2_medium_checkbox = QtWidgets.QCheckBox(self.sisi_level_select_page)
+        self.si2_medium_checkbox.setGeometry(QtCore.QRect(150, 255, 85, 20))
+        self.si2_medium_checkbox.setObjectName("si2_medium_checkbox")
         self.game_mode_stacked.addWidget(self.sisi_level_select_page)
         self.game_mode_select_page = QtWidgets.QWidget()
         self.game_mode_select_page.setObjectName("game_mode_select_page")
@@ -309,7 +309,7 @@ class Ui_sisi_mode_window(object):
         sisi_mode_window.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(sisi_mode_window)
-        self.game_mode_stacked.setCurrentIndex(1)
+        self.game_mode_stacked.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(sisi_mode_window)
 
     def retranslateUi(self, sisi_mode_window):
@@ -335,7 +335,7 @@ class Ui_sisi_mode_window(object):
         self.si2_hard_checkbox.setText(_translate("sisi_mode_window", "hard"))
         self.si2_easy_checkbox.setText(_translate("sisi_mode_window", "easy"))
         self.si1_medium_checkbox.setText(_translate("sisi_mode_window", "medium"))
-        self.si1_medium_checkbox_2.setText(_translate("sisi_mode_window", "medium"))
+        self.si2_medium_checkbox.setText(_translate("sisi_mode_window", "medium"))
         self.game_mode_label.setText(_translate("sisi_mode_window", "<html><head/><body><p><span style=\" font-size:18pt;\">Tryb gry</span></p></body></html>"))
         self.si_mode_label.setText(_translate("sisi_mode_window", "<html><head/><body><p><span style=\" font-size:24pt; font-weight:700; font-style:italic;\">vs SI mode</span></p></body></html>"))
         self.game_mode_desc.setHtml(_translate("sisi_mode_window", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"

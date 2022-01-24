@@ -32,7 +32,7 @@ class SisiModeController(DummyWindow):
         )
         self.ui.hard_si_button.clicked.connect(lambda: self.start_player_si_game('hard'))
         self.ui.easy_si_button.clicked.connect(lambda: self.start_player_si_game('easy'))
-        # self.ui.medium_si_button.clicked.connect(lambda: self.start_player_si_game('medium'))
+        self.ui.medium_si_button.clicked.connect(lambda: self.start_player_si_game('medium'))
         self.ui.sisi_game_button.clicked.connect(lambda: self.start_sisi_game())
 
         ### THIS WAY EXIT CLICKED DOESNT BUST THE WHOLE APP
