@@ -389,6 +389,7 @@ class BotAI:
                 for letter in set(ascii_uppercase):
                     if node.children.get(letter) is not None:
                         if letter in rack:
+                            #node = node.children[letter]
                             rack.remove(letter)
                             BotAI.left_part(partial_word + letter, node, limit - 1, anchor_square, board, rack,
                                       used_words, cross_checks, potential_words)
@@ -718,7 +719,7 @@ class BotAI:
             transposed = True
 
         if med[2] != []:
-            crossed = BotAI.find_cross_words(tuple(worst), used_words, matrix, transposed)
+            crossed = BotAI.find_cross_words(tuple(med), used_words, matrix, transposed)
         else:
             # "!" means we do not count crossed words | lack of them
             crossed = {"!"}
@@ -739,7 +740,7 @@ class BotAI:
             if board[coords[0]][coords[1]] == "-":
                 rack.remove(med[0][index])
 
-        # format var worst for method get_score from board module
+        # format var med for method get_score from board module
         if crossed != {"!"}:
             med = {med[0]: med[1]}
             med.update(crossed)
