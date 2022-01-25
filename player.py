@@ -3,7 +3,7 @@ from enum import Enum
 # Not implemented Enum; JUST IDEA YET
 class LevelAI(Enum):
     HARD = "hard"
-    MEDIUM = "hard"
+    MEDIUM = "medium"
     EASY = "easy"
 
 class Player:
